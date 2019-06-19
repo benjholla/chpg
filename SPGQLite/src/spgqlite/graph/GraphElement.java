@@ -8,14 +8,14 @@ import java.util.Set;
 
 public abstract class GraphElement {
 	
-	private static Integer instances = 0;
-	private Integer instanceID;
+	private static Integer addresses = 0;
+	private Integer address;
 	
 	private Set<String> tags;
 	private Map<String,Object> attributes;
 	
 	protected GraphElement() {
-		this.instanceID = instances++;
+		this.address = addresses++;
 		this.tags = new HashSet<String>();
 		this.attributes = new HashMap<String,Object>();
 	}
@@ -44,9 +44,13 @@ public abstract class GraphElement {
 		return attributes.remove(name);
 	}
 	
+	public Integer getAddress() {
+		return address;
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(instanceID);
+		return Objects.hash(address);
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public abstract class GraphElement {
 		if (!(obj instanceof GraphElement))
 			return false;
 		GraphElement other = (GraphElement) obj;
-		return Objects.equals(instanceID, other.instanceID);
+		return Objects.equals(address, other.address);
 	}
-
+	
 }

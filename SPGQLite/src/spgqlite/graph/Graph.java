@@ -1,5 +1,7 @@
 package spgqlite.graph;
 
+import java.util.Iterator;
+
 import spgqlite.graph.Node.NodeDirection;
 
 public class Graph {
@@ -54,25 +56,60 @@ public class Graph {
 	 * Add a graph element to the graph
 	 * @param graphElement
 	 */
-	public void add(GraphElement graphElement) {
+	public boolean add(GraphElement graphElement) {
+		boolean result = false;
 		if(graphElement instanceof Node) {
 			Node node = (Node) graphElement;
-			this.nodes.add(node);
+			result |= this.nodes.add(node);
 		} else if(graphElement instanceof Edge) {
 			Edge edge = (Edge) graphElement;
-			this.edges.add(edge);
-			this.nodes.add(edge.from());
-			this.nodes.add(edge.to());
+			result |= this.edges.add(edge);
+			result |= this.nodes.add(edge.from());
+			result |= this.nodes.add(edge.to());
 		}
+		return result;
 	}
 	
 	/**
 	 * Add graph elements to the graph
+	 * 
 	 * @param graphElements
+	 * @return Returns true if the graph changed as a result of the add operation
 	 */
-	public void add(GraphElementSet<? extends GraphElement> graphElements) {
+	public boolean add(GraphElementSet<? extends GraphElement> graphElements) {
+		boolean result = false;
 		for(GraphElement graphElement : graphElements) {
-			add(graphElement);
+			result |= add(graphElement);
+		}
+		return result;
+	}
+	
+	/**
+	 * Removes a graph element from the graph. If the element is an edge only the
+	 * edge will be removed if it exists. If the element is a node the node will be
+	 * removed and any edges connected to the node will be removed if they exist.
+	 * 
+	 * @param graphElement
+	 * @return Returns true if the graph changed as a result of the remove operation
+	 */
+	public boolean remove(GraphElement graphElement) {
+		if(graphElement instanceof Edge) {
+			Edge edge = (Edge) graphElement;
+			return edges.remove(edge);
+		} else {
+			boolean result = false;
+			Node node = (Node) graphElement;
+			result |= nodes.remove(node);
+			
+			Iterator<Edge> edgeIterator = edges.iterator();
+			while(edgeIterator.hasNext()) {
+				Edge edge = edgeIterator.next();
+				if(edge.from().equals(node) || edge.to().equals(node)) {
+					edgeIterator.remove();
+					result = true;
+				}
+			}
+			return result;
 		}
 	}
 
@@ -374,7 +411,6 @@ public class Graph {
 	 * resulting graph's nodes are the union of all nodes, and likewise for
 	 * edges.
 	 * 
-	 * @param a
 	 * @param graphs
 	 * @return
 	 */
@@ -404,9 +440,7 @@ public class Graph {
 	 * operation is useful for removing nodes from a graph, but may not be as
 	 * useful for operating on edges.
 	 * 
-	 * 
-	 * @param a
-	 * @param b
+	 * @param graphs
 	 * @return
 	 */
 	public Graph difference(Graph... graphs){
@@ -424,8 +458,8 @@ public class Graph {
 	
 	/**
 	 * Select this graph, excluding the edges from the given graphs. 
-	 * @param a
-	 * @param b
+	 * 
+	 * @param graphs
 	 * @return
 	 */
 	public Graph differenceEdges(Graph... graphs){
@@ -445,8 +479,7 @@ public class Graph {
 	 * resulting graph's nodes are the intersection of all node sets, and
 	 * likewise for edges.
 	 * 
-	 * @param a
-	 * @param b
+	 * @param graphs
 	 * @return
 	 */
 	public Graph intersection(Graph... graphs){
@@ -614,6 +647,30 @@ public class Graph {
 			}
 		}
 		return outEdges;
+	}
+	
+	/**
+	 * Yields the induced graph formed from the nodes in the current graph and all
+	 * of the edges in the given graph that connect pairs of nodes in the current
+	 * graph.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph induce(Graph... graphs){
+		Graph result = new Graph();
+		GraphElementSet<Node> nodes = new GraphElementHashSet<Node>(nodes());
+		GraphElementSet<Edge> edges = new GraphElementHashSet<Edge>(edges());
+		for(Graph graph : graphs){
+			for(Edge edge : graph.edges) {
+				if(nodes.contains(edge.from()) && nodes.contains(edge.to())) {
+					edges.add(edge);
+				}
+			}
+		}
+		result.nodes().addAll(nodes);
+		result.edges().addAll(edges);
+		return result;
 	}
 	
 }
