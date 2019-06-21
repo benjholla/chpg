@@ -1,4 +1,4 @@
-package spgqlite.algorithms;
+package spgqlite.graph.algorithms;
 
 import java.util.ArrayList;
 import java.util.HashSet;

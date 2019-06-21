@@ -1,10 +1,26 @@
 package spgqlite.graph;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import spgqlite.graph.Node.NodeDirection;
 
 public class Graph {
+	
+	public static Comparator<Graph> graphSizeComparator = new Comparator<Graph>() {
+		@Override
+		public int compare(Graph g1, Graph g2) {
+			int nodes = Integer.compare(g1.nodes().size(), g2.nodes().size());
+			if(nodes != 0) {
+				return nodes;
+			} else {
+				return Integer.compare(g1.edges().size(), g2.edges().size());
+			}
+		}
+	};
 
 	private GraphElementSet<Node> nodes;
 	private GraphElementSet<Edge> edges;
@@ -18,42 +34,63 @@ public class Graph {
 	}
 	
 	/**
-	 * Construct a graph with the given nodes and edges
-	 * @param nodes
-	 * @param edges
+	 * Construct a with the given nodes
 	 */
-	public Graph(GraphElementSet<Node> nodes, GraphElementSet<Edge> edges) {
-		this.nodes = new GraphElementHashSet<Node>(nodes);
-		this.edges = new GraphElementHashSet<Edge>(edges);
-		for(Edge edge : edges) {
-			this.nodes.add(edge.from());
-			this.nodes.add(edge.to());
+	public Graph(Node... nodes) {
+		this();
+		for(Node node : nodes) {
+			add(node);
 		}
 	}
 	
 	/**
+	 * Construct a graph with the given edges
+	 */
+	public Graph(Edge... edges) {
+		this();
+		for(Edge edge : edges) {
+			add(edge);
+		}
+	}
+	
+	/**
+	 * Construct a graph with the given nodes and edges
+	 * 
+	 * @param nodes
+	 * @param edges
+	 */
+	public Graph(GraphElementSet<Node> nodes, GraphElementSet<Edge> edges) {
+		this();
+		addAll(nodes);
+		addAll(edges);
+	}
+	
+	/**
 	 * Construct a graph with the given graph elements (mixed set of nodes and edges)
+	 * 
 	 * @param graphElements
 	 */
 	public Graph(GraphElementSet<? extends GraphElement> graphElements) {
-		this.nodes = new GraphElementHashSet<Node>();
-		this.edges = new GraphElementHashSet<Edge>();
-		add(graphElements);
+		this();
+		addAll(graphElements);
 	}
 	
 	/**
 	 * Construct a new graph with a shallow copy of the nodes and edges in the given graph
+	 * 
 	 * @param graph
 	 */
-	public Graph(Graph graph) {
-		this.nodes = new GraphElementHashSet<Node>();
-		this.edges = new GraphElementHashSet<Edge>();
-		add(graph.nodes);
-		add(graph.edges);
+	public Graph(Graph... graphs) {
+		this();
+		for(Graph graph : graphs) {
+			addAll(graph.nodes());
+			addAll(graph.edges());
+		}
 	}
 
 	/**
 	 * Add a graph element to the graph
+	 * 
 	 * @param graphElement
 	 */
 	public boolean add(GraphElement graphElement) {
@@ -74,9 +111,10 @@ public class Graph {
 	 * Add graph elements to the graph
 	 * 
 	 * @param graphElements
+	 * 
 	 * @return Returns true if the graph changed as a result of the add operation
 	 */
-	public boolean add(GraphElementSet<? extends GraphElement> graphElements) {
+	public boolean addAll(Iterable<? extends GraphElement> graphElements) {
 		boolean result = false;
 		for(GraphElement graphElement : graphElements) {
 			result |= add(graphElement);
@@ -90,6 +128,7 @@ public class Graph {
 	 * removed and any edges connected to the node will be removed if they exist.
 	 * 
 	 * @param graphElement
+	 * 
 	 * @return Returns true if the graph changed as a result of the remove operation
 	 */
 	public boolean remove(GraphElement graphElement) {
@@ -100,7 +139,6 @@ public class Graph {
 			boolean result = false;
 			Node node = (Node) graphElement;
 			result |= nodes.remove(node);
-			
 			Iterator<Edge> edgeIterator = edges.iterator();
 			while(edgeIterator.hasNext()) {
 				Edge edge = edgeIterator.next();
@@ -115,6 +153,7 @@ public class Graph {
 
 	/**
 	 * Return the nodes of the graph
+	 * 
 	 * @return
 	 */
 	public GraphElementSet<Node> nodes() {
@@ -123,6 +162,7 @@ public class Graph {
 
 	/**
 	 * Return the edges of the graph
+	 * 
 	 * @return
 	 */
 	public GraphElementSet<Edge> edges() {
@@ -131,6 +171,7 @@ public class Graph {
 	
 	/**
 	 * Returns true if the graph empty (has no nodes)
+	 * 
 	 * @return
 	 */
 	public boolean isEmpty() {
@@ -139,6 +180,7 @@ public class Graph {
 	
 	/**
 	 * Gets the node's predecessor or successor edges in this graph
+	 * 
 	 * @param node
 	 * @param direction
 	 * @return
@@ -161,6 +203,7 @@ public class Graph {
 	
 	/**
 	 * Returns the nodes in the graph without edges from the given direction
+	 * 
 	 * @param direction
 	 * @return
 	 */
@@ -251,6 +294,7 @@ public class Graph {
 	
 	/**
 	 * A convenience method for edges(String... tags)
+	 * 
 	 * @param tags
 	 * @return
 	 */
@@ -304,13 +348,38 @@ public class Graph {
 	
 	/**
 	 * Gets the predecessor nodes of the given node for this graph's edges
+	 * 
 	 * @param node
-	 * @return The set of incoming edges to the given node
+	 * 
+	 * @return The set of nodes reachable from incoming edges to the given nodes
 	 */
-	public GraphElementSet<Node> predecessors(Node node){
+	public GraphElementSet<Node> predecessors(Node... origin){
+		return predecessors(new GraphElementHashSet<Node>(origin));
+	}
+	
+	/**
+	 * Gets the predecessor nodes of the given node for this graph's edges
+	 * 
+	 * @param node
+	 * 
+	 * @return The set of nodes reachable from incoming edges to the given nodes
+	 */
+	public GraphElementSet<Node> predecessors(Graph origin){
+		return predecessors(origin.nodes());
+	}
+	
+	/**
+	 * Gets the predecessor nodes of the given node for this graph's edges
+	 * 
+	 * @param node
+	 * 
+	 * @return The set of nodes reachable from incoming edges to the given nodes
+	 */
+	public GraphElementSet<Node> predecessors(GraphElementSet<Node> origin){
 		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Edge edge : edges){
-			if(edge.to().equals(node)){
+		for(Node node : origin){
+			GraphElementSet<Edge> inEdges = getInEdgesToNode(node);
+			for(Edge edge : inEdges){
 				result.add(edge.from());
 			}
 		}
@@ -319,13 +388,38 @@ public class Graph {
 	
 	/**
 	 * Gets the successor nodes of the given node for this graph's edges
+	 * 
 	 * @param node
-	 * @return The set of out-coming edges from the given node
+	 * 
+	 * @return The set of nodes reachable from outgoing edges from the given nodes
 	 */
-	public GraphElementSet<Node> successors(Node node){
+	public GraphElementSet<Node> successors(Node... origin){
+		return successors(new GraphElementHashSet<Node>(origin));
+	}
+	
+	/**
+	 * Gets the successor nodes of the given node for this graph's edges
+	 * 
+	 * @param node
+	 * 
+	 * @return The set of nodes reachable from outgoing edges from the given nodes
+	 */
+	public GraphElementSet<Node> successors(Graph origin){
+		return successors(origin.nodes());
+	}
+	
+	/**
+	 * Gets the successor nodes of the given node for this graph's edges
+	 * 
+	 * @param node
+	 * 
+	 * @return The set of nodes reachable from outgoing edges from the given nodes
+	 */
+	public GraphElementSet<Node> successors(GraphElementSet<Node> origin){
 		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Edge edge : edges){
-			if(edge.from().equals(node)){
+		for(Node node : origin){
+			GraphElementSet<Edge> outEdges = getOutEdgesFromNode(node);
+			for(Edge edge : outEdges){
 				result.add(edge.to());
 			}
 		}
@@ -342,8 +436,22 @@ public class Graph {
 	 * @param origin
 	 * @return
 	 */
-	public Graph forwardStep(Node origin){
+	public Graph forwardStep(Node... origin){
 		return forwardStep(new GraphElementHashSet<Node>(origin));
+	}
+	
+	/**
+	 * From this graph, selects the subgraph reachable from the given nodes
+	 * along a path length of 1 in the forward direction.
+	 * 
+	 * The final result includes the given nodes, the traversed edges, and the
+	 * reachable nodes.
+	 * 
+	 * @param origin
+	 * @return
+	 */
+	public Graph forwardStep(Graph origin){
+		return forwardStep(origin.nodes());
 	}
 	
 	/**
@@ -379,8 +487,22 @@ public class Graph {
 	 * @param origin
 	 * @return
 	 */
-	public Graph reverseStep(Node origin){
+	public Graph reverseStep(Node... origin){
 		return reverseStep(new GraphElementHashSet<Node>(origin));
+	}
+	
+	/**
+	 * From this graph, selects the subgraph reachable from the given nodes
+	 * along a path length of 1 in the reverse direction.
+	 * 
+	 * The final result includes the given nodes, the traversed edges, and the
+	 * reachable nodes.
+	 * 
+	 * @param origin
+	 * @return
+	 */
+	public Graph reverseStep(Graph origin){
+		return reverseStep(origin.nodes());
 	}
 	
 	/**
@@ -414,17 +536,84 @@ public class Graph {
 	 * @param graphs
 	 * @return
 	 */
+	public Graph union(Node... nodes){
+		return union(new Graph(nodes));
+	}
+	
+	/**
+	 * Yields the union of this graph and the given graphs. That is, the
+	 * resulting graph's nodes are the union of all nodes, and likewise for
+	 * edges.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph union(Edge... edges){
+		return union(new Graph(edges));
+	}
+	
+	/**
+	 * Yields the union of this graph and the given graphs. That is, the
+	 * resulting graph's nodes are the union of all nodes, and likewise for
+	 * edges.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
 	public Graph union(Graph... graphs){
-		Graph result = new Graph();
-		GraphElementSet<Node> nodes = new GraphElementHashSet<Node>(nodes());
-		GraphElementSet<Edge> edges = new GraphElementHashSet<Edge>(edges());
-		for(Graph graph : graphs){
-			nodes.addAll(graph.nodes());
-			edges.addAll(graph.edges());
+		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
+		sortedGraphs.add(this);
+		Collections.sort(sortedGraphs, graphSizeComparator.reversed());
+		Graph initial = sortedGraphs.remove(0);
+		if(initial.isEmpty()) {
+			return new Graph();
 		}
-		result.nodes().addAll(nodes);
-		result.edges().addAll(edges);
-		return result;
+		Graph union = new Graph(initial.nodes(), initial.edges());
+		for(Graph graph : sortedGraphs){
+			union.nodes().addAll(graph.nodes());
+			union.edges().addAll(graph.edges());
+		}
+		return union;
+	}
+	
+	/**
+	 * Select this graph, excluding the graphs g. Note that, because
+	 * an edge is only in a graph if it's nodes are in a graph, removing an edge
+	 * will necessarily remove the nodes it connects as well. Removing either
+	 * node would remove the edge as well.
+	 * 
+	 * This behavior may seem counter-intuitive if one is thinking in terms of
+	 * removing a single edge from a graph. Consider the graphs: - g1: a -> b ->
+	 * c - g2: a -> b g1.remove(g2) yields the graph containing only node c:
+	 * because b is removed, so b -> c is also removed. In general, this
+	 * operation is useful for removing nodes from a graph, but may not be as
+	 * useful for operating on edges.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph difference(Node... nodes){
+		return difference(new Graph(nodes));
+	}
+	
+	/**
+	 * Select this graph, excluding the graphs g. Note that, because
+	 * an edge is only in a graph if it's nodes are in a graph, removing an edge
+	 * will necessarily remove the nodes it connects as well. Removing either
+	 * node would remove the edge as well.
+	 * 
+	 * This behavior may seem counter-intuitive if one is thinking in terms of
+	 * removing a single edge from a graph. Consider the graphs: - g1: a -> b ->
+	 * c - g2: a -> b g1.remove(g2) yields the graph containing only node c:
+	 * because b is removed, so b -> c is also removed. In general, this
+	 * operation is useful for removing nodes from a graph, but may not be as
+	 * useful for operating on edges.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph difference(Edge... edges){
+		return difference(new Graph(edges));
 	}
 	
 	/**
@@ -444,16 +633,32 @@ public class Graph {
 	 * @return
 	 */
 	public Graph difference(Graph... graphs){
-		Graph result = new Graph();
-		GraphElementSet<Node> nodes = new GraphElementHashSet<Node>(nodes());
-		GraphElementSet<Edge> edges = new GraphElementHashSet<Edge>(edges());
-		for(Graph graph : graphs){
-			nodes.removeAll(graph.nodes());
-			edges.removeAll(graph.edges());
+		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
+		sortedGraphs.add(this);
+		Collections.sort(sortedGraphs, graphSizeComparator.reversed());
+		Graph initial = sortedGraphs.remove(0);
+		if(initial.isEmpty()) {
+			return new Graph();
 		}
-		result.nodes().addAll(nodes);
-		result.edges().addAll(edges);
-		return result;
+		Graph difference = new Graph(initial.nodes(), initial.edges());
+		for(Graph graph : sortedGraphs){
+			difference.nodes().removeAll(graph.nodes());
+			difference.edges().removeAll(graph.edges());
+			if(difference.edges().isEmpty()) {
+				break;
+			}
+		}
+		return difference;
+	}
+	
+	/**
+	 * Select this graph, excluding the edges from the given graphs. 
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph differenceEdges(Edge... edges){
+		return differenceEdges(new Graph(edges));
 	}
 	
 	/**
@@ -463,15 +668,45 @@ public class Graph {
 	 * @return
 	 */
 	public Graph differenceEdges(Graph... graphs){
-		Graph result = new Graph();
-		GraphElementSet<Node> nodes = new GraphElementHashSet<Node>(nodes());
-		GraphElementSet<Edge> edges = new GraphElementHashSet<Edge>(edges());
-		for(Graph graph : graphs){
-			edges.retainAll(graph.edges());
+		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
+		sortedGraphs.add(this);
+		Collections.sort(sortedGraphs, graphSizeComparator.reversed());
+		Graph initial = sortedGraphs.remove(0);
+		if(initial.isEmpty()) {
+			return new Graph();
 		}
-		result.nodes().addAll(nodes);
-		result.edges().addAll(edges);
-		return result;
+		Graph difference = new Graph(initial.nodes(), initial.edges());
+		for(Graph graph : sortedGraphs){
+			difference.edges().removeAll(graph.edges());
+			if(difference.edges().isEmpty()) {
+				break;
+			}
+		}
+		return difference;
+	}
+	
+	/**
+	 * Yields the intersection of this graph and the given graphs. That is, the
+	 * resulting graph's nodes are the intersection of all node sets, and
+	 * likewise for edges.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph intersection(Node... nodes){
+		return intersection(new Graph(nodes));
+	}
+	
+	/**
+	 * Yields the intersection of this graph and the given graphs. That is, the
+	 * resulting graph's nodes are the intersection of all node sets, and
+	 * likewise for edges.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph intersection(Edge... edges){
+		return intersection(new Graph(edges));
 	}
 	
 	/**
@@ -483,16 +718,23 @@ public class Graph {
 	 * @return
 	 */
 	public Graph intersection(Graph... graphs){
-		Graph result = new Graph();
-		GraphElementSet<Node> nodes = new GraphElementHashSet<Node>(nodes());
-		GraphElementSet<Edge> edges = new GraphElementHashSet<Edge>(edges());
-		for(Graph graph : graphs){
-			nodes.retainAll(graph.nodes());
-			edges.retainAll(graph.edges());
+		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
+		sortedGraphs.add(this);
+		Collections.sort(sortedGraphs, graphSizeComparator);
+		Graph initial = sortedGraphs.remove(0);
+		if(initial.isEmpty()) {
+			return new Graph();
+		} else {
+			Graph intersection = new Graph(initial);
+			for(Graph graph : graphs){
+				intersection.nodes().retainAll(graph.nodes());
+				intersection.edges().retainAll(graph.edges());
+				if(intersection.isEmpty()) {
+					break;
+				}
+			}
+			return intersection;
 		}
-		result.nodes().addAll(nodes);
-		result.edges().addAll(edges);
-		return result;
 	}
 	
 	/**
@@ -504,7 +746,19 @@ public class Graph {
 	 * @return
 	 */
 	public Graph betweenStep(Node from, Node to){
-		return forwardStep(new GraphElementHashSet<Node>(from)).intersection(reverseStep(new GraphElementHashSet<Node>(to)));
+		return betweenStep(new GraphElementHashSet<Node>(from), new GraphElementHashSet<Node>(to));
+	}
+	
+	/**
+	 * From this graph, selects the subgraph such that the given nodes in to are
+	 * reachable from the nodes in from in a single step
+	 * 
+	 * @param from
+	 * @param to
+	 * @return
+	 */
+	public Graph betweenStep(Graph from, Graph to){
+		return betweenStep(from.nodes(), to.nodes());
 	}
 	
 	/**
@@ -516,7 +770,18 @@ public class Graph {
 	 * @return
 	 */
 	public Graph betweenStep(GraphElementSet<Node> from, GraphElementSet<Node> to){
-		return forwardStep(from).intersection(reverseStep(to));
+		if(from.isEmpty() || to.isEmpty()) {
+			return new Graph();
+		}
+		Graph forward = forwardStep(from);
+		if(forward.isEmpty()) {
+			return new Graph();
+		}
+		Graph reverse = reverseStep(to);
+		if(reverse.isEmpty()) {
+			return new Graph();
+		}
+		return forward.intersection(reverse);
 	}
 	
 	/**
@@ -531,7 +796,22 @@ public class Graph {
 	 * @return
 	 */
 	public Graph between(Node from, Node to) {
-		return forward(new GraphElementHashSet<Node>(from)).intersection(reverse(new GraphElementHashSet<Node>(to)));
+		return between(new GraphElementHashSet<Node>(from), new GraphElementHashSet<Node>(to));
+	}
+	
+	/**
+	 * From this graph, selects the subgraph such that the given nodes in to are
+	 * reachable from the nodes in from using forward traversal.
+	 * 
+	 * Logically equivalent to
+	 * graph.forward(from).intersection(graph.reverse(to)) .
+	 * 
+	 * @param from
+	 * @param to
+	 * @return
+	 */
+	public Graph between(Graph from, Graph to) {
+		return between(from.nodes(), to.nodes());
 	}
 	
 	/**
@@ -546,7 +826,29 @@ public class Graph {
 	 * @return
 	 */
 	public Graph between(GraphElementSet<Node> from, GraphElementSet<Node> to) {
-		return forward(from).intersection(reverse(to));
+		if(from.isEmpty() || to.isEmpty()) {
+			return new Graph();
+		}
+		Graph forward = forward(from);
+		if(forward.isEmpty()) {
+			return new Graph();
+		}
+		Graph reverse = reverse(to);
+		if(reverse.isEmpty()) {
+			return new Graph();
+		}
+		return forward.intersection(reverse);
+	}
+
+	/**
+	 * From this graph, selects the subgraph reachable from the given nodes
+	 * using forward transitive traversal.
+	 * 
+	 * @param origin
+	 * @return
+	 */
+	public Graph forward(Node... origin){
+		return forward(new GraphElementHashSet<Node>(origin));
 	}
 	
 	/**
@@ -556,8 +858,8 @@ public class Graph {
 	 * @param origin
 	 * @return
 	 */
-	public Graph forward(Node origin){
-		return forward(new GraphElementHashSet<Node>(origin));
+	public Graph forward(Graph origin){
+		return forward(origin.nodes());
 	}
 	
 	/**
@@ -591,8 +893,19 @@ public class Graph {
 	 * @param origin
 	 * @return
 	 */
-	public Graph reverse(Node origin){
+	public Graph reverse(Node... origin){
 		return reverse(new GraphElementHashSet<Node>(origin));
+	}
+	
+	/**
+	 * From this graph, selects the subgraph reachable from the given nodes
+	 * using reverse transitive traversal.
+	 * 
+	 * @param origin
+	 * @return
+	 */
+	public Graph reverse(Graph origin){
+		return reverse(origin.nodes());
 	}
 	
 	/**
@@ -621,6 +934,7 @@ public class Graph {
 	
 	/**
 	 * Gets incoming edges to node
+	 * 
 	 * @param node
 	 * @return The set of incoming edges to the given node
 	 */
@@ -636,6 +950,7 @@ public class Graph {
 	
 	/**
 	 * Gets out-coming edges from node
+	 * 
 	 * @param node
 	 * @return The set of out-coming edges from the given node
 	 */
@@ -657,19 +972,41 @@ public class Graph {
 	 * @param graphs
 	 * @return
 	 */
+	public Graph induce(Edge... edges){
+		return induce(new GraphElementHashSet<Edge>(edges));
+	}
+	
+	/**
+	 * Yields the induced graph formed from the nodes in the current graph and all
+	 * of the edges in the given graph that connect pairs of nodes in the current
+	 * graph.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
 	public Graph induce(Graph... graphs){
-		Graph result = new Graph();
-		GraphElementSet<Node> nodes = new GraphElementHashSet<Node>(nodes());
-		GraphElementSet<Edge> edges = new GraphElementHashSet<Edge>(edges());
+		GraphElementSet<Edge> inducibleEdges = new GraphElementHashSet<Edge>();
 		for(Graph graph : graphs){
-			for(Edge edge : graph.edges) {
-				if(nodes.contains(edge.from()) && nodes.contains(edge.to())) {
-					edges.add(edge);
-				}
+			inducibleEdges.addAll(graph.edges());
+		}
+		return induce(inducibleEdges);
+	}
+	
+	/**
+	 * Yields the induced graph formed from the nodes in the current graph and all
+	 * of the edges in the given graph that connect pairs of nodes in the current
+	 * graph.
+	 * 
+	 * @param graphs
+	 * @return
+	 */
+	public Graph induce(GraphElementSet<Edge> edges){
+		Graph result = new Graph(this);
+		for(Edge edge : edges) {
+			if(result.nodes().contains(edge.from()) && result.nodes().contains(edge.to())) {
+				result.edges().add(edge);
 			}
 		}
-		result.nodes().addAll(nodes);
-		result.edges().addAll(edges);
 		return result;
 	}
 	

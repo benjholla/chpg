@@ -1,16 +1,17 @@
 package spgqlite.graph;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Objects;
+import java.util.Set;
 
 public class GraphElementHashSet<E extends GraphElement> extends GraphElementSet<E> implements Iterable<E> {
 
-	private HashSet<E> set;
+	private Set<E> set;
 
-	public GraphElementHashSet() {}
+	public GraphElementHashSet() {
+		super();
+	}
 
 	public GraphElementHashSet(Iterable<E> iterable) {
 		super(iterable);
@@ -20,6 +21,10 @@ public class GraphElementHashSet<E extends GraphElement> extends GraphElementSet
 		super(element);
 	}
 	
+	public GraphElementHashSet(E[] elements) {
+		super(elements);
+	}
+
 	@Override
 	public int size() {
 		if(set == null) {
@@ -45,14 +50,11 @@ public class GraphElementHashSet<E extends GraphElement> extends GraphElementSet
 	 * element, the call leaves the set unchanged and returns false.
 	 */
 	public boolean add(E e) {
-		if(e == null) {
-			throw new RuntimeException("Graph element cannot be null!");
-		} else {
-			if(set == null) {
-				set = new HashSet<E>();
-			}
-			return set.add(e);
+		requireNonNullGraphElement(e);
+		if(set == null) {
+			set = new HashSet<E>();
 		}
+		return set.add(e);
 	}
 	
 	/**
@@ -61,8 +63,13 @@ public class GraphElementHashSet<E extends GraphElement> extends GraphElementSet
 	 * @return
 	 */
 	public boolean remove(E e) {
+		requireNonNullGraphElement(e);
 		if(set != null) {
-			return set.remove(e);
+			boolean modified = set.remove(e);
+			if(set.isEmpty()) {
+				set = null;
+			}
+			return modified;
 		}
 		return false;
 	}
@@ -86,27 +93,13 @@ public class GraphElementHashSet<E extends GraphElement> extends GraphElementSet
 	}
 	
 	@Override
-	public GraphElementSet<E> filter(String attr, Object value){
-		GraphElementSet<E> result = new GraphElementHashSet<E>();
-		if(attr != null && value != null){
-			for(E e : this){
-				if(e.hasAttr(attr) && e.attributes().get(attr) != null && e.attributes().get(attr).equals(value)){
-					result.add(e);
-				}
-			}
-		}
-		return result;
-	}
-
-	@Override
 	public void clear() {
-		if(set != null) {
-			set.clear();
-		}
+		set = null;
 	}
 
 	@Override
 	public boolean contains(E e) {
+		requireNonNullGraphElement(e);
 		if(set != null) {
 			return set.contains(e);
 		} else {
@@ -116,25 +109,39 @@ public class GraphElementHashSet<E extends GraphElement> extends GraphElementSet
 
 	@Override
 	public boolean retainAll(GraphElementCollection<E> collection) {
-		Objects.requireNonNull(collection);
-        boolean modified = false;
-        Iterator<E> it = iterator();
-        while (it.hasNext()) {
-            if (!collection.contains(it.next())) {
-                it.remove();
-                modified = true;
+		if(set == null) {
+			return false;
+		} else {
+			boolean modified = false;
+	        Iterator<E> iterator = set.iterator();
+	        while (iterator.hasNext()) {
+	            if (!collection.contains(iterator.next())) {
+	            	iterator.remove();
+	                modified = true;
+	            }
+	        }
+	        if(set.isEmpty()) {
+            	set = null;
             }
-        }
-        return modified;
+	        return modified;
+		}
 	}
 
+	/**
+	 * Returns a shallow copy of the graph element set as a <code>java.util.Set</code>
+	 */
 	@Override
-	public Collection<E> toStandardCollection() {
+	public Set<E> toStandardSet() {
 		if(set != null) {
-			return set;
+			return new HashSet<E>(set);
 		} else {
-			set = new HashSet<E>();
-			return set;
+			return new HashSet<E>();
+		}
+	}
+	
+	private void requireNonNullGraphElement(E element) {
+		if(element == null) {
+			throw new IllegalArgumentException("Graph element cannot be null!");
 		}
 	}
 

@@ -113,17 +113,9 @@ public abstract class GraphElementCollection<E extends GraphElement> implements 
 	 * specified collection is also a collection, this operation effectively modifies this
 	 * collection so that its value is the intersection of the two collections.
 	 * 
-	 * @param iterable
+	 * @param collection
 	 * @return
 	 */
-	public abstract boolean retainAll(GraphElementCollection<E> iterable);
-	
-	/**
-	 * Returns a graph element collection filtered to elements with the attribute key and value
-	 * @param attr
-	 * @param value
-	 * @return
-	 */
-	public abstract GraphElementCollection<E> filter(String attr, Object value);
+	public abstract boolean retainAll(GraphElementCollection<E> collection);
 	
 }
