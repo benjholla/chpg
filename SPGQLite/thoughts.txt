@@ -1,0 +1,9 @@
+Naming is hard...
+
+Logical Hierarchy Idea:
+	- Graph (no tags, only attributes)
+	- PropertyGraph (with tags, flat hierarchy)
+	- HierarchalPropertyGraph (with tags that have a hierarchy defined by a simple "Graph")
+
+Cons: The name "Graph" is simple to type but saving that for the final type is weird as far as naming goes
+Idea: Save "Graph" for the HierarchalPropertyGraph and create a new "Schema" type that implements a simple flat labeled node only graph
