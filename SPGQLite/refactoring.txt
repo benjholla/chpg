@@ -1,0 +1,6 @@
+- All GraphElement objects (Node and Edge) have tags and attributes and form a PropertyGraph
+- A SchemaNode is a Node with an attribute value of the tag name set for a given attribute key
+- A SchemaEdge is an Edge tagged with a given tag name
+- A SchemaGraph is a Graph with SchemaNode nodes and SchemaEdge edges
+- A HierarchalGraph is a PropertyGraph with a SchemaGraph reference for computing implicit tags
+- Graph extends HierarchalGraph and adds no new functions (just a rename)

@@ -22,8 +22,8 @@ public class Graph {
 		}
 	};
 
-	private GraphElementSet<Node> nodes;
-	private GraphElementSet<Edge> edges;
+	protected GraphElementSet<Node> nodes;
+	protected GraphElementSet<Edge> edges;
 	
 	/**
 	 * Construct an empty graph
@@ -236,114 +236,6 @@ public class Graph {
 	 */
 	public GraphElementSet<Node> roots(){
 		return limit(NodeDirection.IN);
-	}
-	
-	/**
-	 * A convenience method for nodes(String... tags)
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Node> nodes(String... tags){
-		return nodesTaggedWithAny(tags);
-	}
-	
-	/**
-	 * Returns the set of nodes from this graph that are tagged with all of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Node> nodesTaggedWithAny(String... tags){
-		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
-			for(String tag : tags){
-				if(node.tags().contains(tag)){
-					result.add(node);
-					break;
-				}
-			}
-		}
-		return result;
-	}
-	
-	/**
-	 * Returns the set of nodes from this graph that are tagged with any of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Node> nodesTaggedWithAll(String... tags){
-		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
-			boolean add = true;
-			for(String tag : tags){
-				if(!node.tags().contains(tag)){
-					add = false;
-					break;
-				}
-			}
-			if(add){
-				result.add(node);
-			}
-		}
-		return result;
-	}
-	
-	/**
-	 * A convenience method for edges(String... tags)
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Edge> edges(String... tags){
-		return edgesTaggedWithAny(tags);
-	}
-	
-	/**
-	 * Returns the set of edges from this graph that are tagged with any of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Edge> edgesTaggedWithAny(String... tags){
-		GraphElementSet<Edge> result = new GraphElementHashSet<Edge>();
-		for(Edge edge : edges){
-			for(String tag : tags){
-				if(edge.tags().contains(tag)){
-					result.add(edge);
-					break;
-				}
-			}
-		}
-		return result;
-	}
-	
-	/**
-	 * Returns the set of edges from this graph that are tagged with all of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Edge> edgesTaggedWithAll(String... tags){
-		GraphElementSet<Edge> result = new GraphElementHashSet<Edge>();
-		for(Edge edge : edges){
-			boolean add = true;
-			for(String tag : tags){
-				if(!edge.tags().contains(tag)){
-					add = false;
-					break;
-				}
-			}
-			if(add){
-				result.add(edge);
-			}
-		}
-		return result;
 	}
 	
 	/**

@@ -2,8 +2,8 @@ package spgqlite.graph;
 
 public class Edge extends GraphElement {
 
-	private Node from;
-	private Node to;
+	protected Node from;
+	protected Node to;
 	
 	public Edge(Node from, Node to) {
 		super();
@@ -21,7 +21,7 @@ public class Edge extends GraphElement {
 
 	@Override
 	public String toString() {
-		return "Edge [\n\tFrom " + from + "\n\tTo " + to + "\n\tAttributes: " + this.attributes().toString() + ", Tags: " + this.tags().toString() + "\n]";
+		return "Edge [\n\tFrom " + from + "\n\tTo " + to + "\n]";
 	}
 	
 }
