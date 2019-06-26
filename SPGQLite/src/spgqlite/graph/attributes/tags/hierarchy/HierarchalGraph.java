@@ -1,9 +1,10 @@
 package spgqlite.graph.attributes.tags.hierarchy;
 
-import spgqlite.graph.GraphElement;
 import spgqlite.graph.GraphElementSet;
 import spgqlite.graph.attributes.tags.TaggedEdge;
 import spgqlite.graph.attributes.tags.TaggedGraph;
+import spgqlite.graph.attributes.tags.TaggedGraphElement;
+import spgqlite.graph.attributes.tags.TaggedGraphElementSet;
 import spgqlite.graph.attributes.tags.TaggedNode;
 
 public class HierarchalGraph extends TaggedGraph {
@@ -55,7 +56,7 @@ public class HierarchalGraph extends TaggedGraph {
 	 * 
 	 * @param graphElements
 	 */
-	public HierarchalGraph(SchemaGraph schema, GraphElementSet<? extends GraphElement> graphElements) {
+	public HierarchalGraph(SchemaGraph schema, TaggedGraphElementSet<? extends TaggedGraphElement> graphElements) {
 		this(schema);
 		addAll(graphElements);
 	}

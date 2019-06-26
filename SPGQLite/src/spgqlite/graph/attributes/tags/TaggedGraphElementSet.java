@@ -1,8 +1,8 @@
 package spgqlite.graph.attributes.tags;
 
-import spgqlite.graph.GraphElementSet;
+import spgqlite.graph.attributes.AttributedGraphElementSet;
 
-public abstract class TaggedGraphElementSet<E extends TaggedGraphElement> extends GraphElementSet<E> {
+public abstract class TaggedGraphElementSet<E extends TaggedGraphElement> extends AttributedGraphElementSet<E> {
 
 	public TaggedGraphElementSet() {}
 
