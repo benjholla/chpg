@@ -8,9 +8,9 @@ import java.util.Iterator;
 
 import spgqlite.graph.Node.NodeDirection;
 
-public class Graph {
+public abstract class Graph {
 	
-	public static Comparator<Graph> graphSizeComparator = new Comparator<Graph>() {
+	public static final Comparator<Graph> GRAPH_SIZE_COMPARATOR = new Comparator<Graph>() {
 		@Override
 		public int compare(Graph g1, Graph g2) {
 			int nodes = Integer.compare(g1.nodes().size(), g2.nodes().size());
@@ -22,8 +22,8 @@ public class Graph {
 		}
 	};
 
-	private GraphElementSet<Node> nodes;
-	private GraphElementSet<Edge> edges;
+	protected GraphElementSet<Node> nodes;
+	protected GraphElementSet<Edge> edges;
 	
 	/**
 	 * Construct an empty graph
@@ -36,21 +36,23 @@ public class Graph {
 	/**
 	 * Construct a with the given nodes
 	 */
-	public Graph(Node... nodes) {
-		this();
+	public Graph toGraph(Node... nodes) {
+		Graph result = empty();
 		for(Node node : nodes) {
-			add(node);
+			result.add(node);
 		}
+		return result;
 	}
 	
 	/**
 	 * Construct a graph with the given edges
 	 */
-	public Graph(Edge... edges) {
-		this();
+	public Graph toGraph(Edge... edges) {
+		Graph result = empty();
 		for(Edge edge : edges) {
-			add(edge);
+			result.add(edge);
 		}
+		return result;
 	}
 	
 	/**
@@ -59,10 +61,11 @@ public class Graph {
 	 * @param nodes
 	 * @param edges
 	 */
-	public Graph(GraphElementSet<Node> nodes, GraphElementSet<Edge> edges) {
-		this();
-		addAll(nodes);
-		addAll(edges);
+	public Graph toGraph(GraphElementSet<Node> nodes, GraphElementSet<Edge> edges) {
+		Graph result = empty();
+		result.addAll(nodes);
+		result.addAll(edges);
+		return result;
 	}
 	
 	/**
@@ -70,9 +73,10 @@ public class Graph {
 	 * 
 	 * @param graphElements
 	 */
-	public Graph(GraphElementSet<? extends GraphElement> graphElements) {
-		this();
-		addAll(graphElements);
+	public Graph toGraph(GraphElementSet<? extends GraphElement> graphElements) {
+		Graph result = empty();
+		result.addAll(graphElements);
+		return result;
 	}
 	
 	/**
@@ -80,13 +84,20 @@ public class Graph {
 	 * 
 	 * @param graph
 	 */
-	public Graph(Graph... graphs) {
-		this();
+	public Graph toGraph(Graph... graphs) {
+		Graph result = empty();
 		for(Graph graph : graphs) {
-			addAll(graph.nodes());
-			addAll(graph.edges());
+			result.addAll(graph.nodes());
+			result.addAll(graph.edges());
 		}
+		return result;
 	}
+	
+	/**
+	 * Creates an empty graph
+	 * @return
+	 */
+	public abstract Graph empty();
 
 	/**
 	 * Add a graph element to the graph
@@ -239,114 +250,6 @@ public class Graph {
 	}
 	
 	/**
-	 * A convenience method for nodes(String... tags)
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Node> nodes(String... tags){
-		return nodesTaggedWithAny(tags);
-	}
-	
-	/**
-	 * Returns the set of nodes from this graph that are tagged with all of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Node> nodesTaggedWithAny(String... tags){
-		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
-			for(String tag : tags){
-				if(node.tags().contains(tag)){
-					result.add(node);
-					break;
-				}
-			}
-		}
-		return result;
-	}
-	
-	/**
-	 * Returns the set of nodes from this graph that are tagged with any of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Node> nodesTaggedWithAll(String... tags){
-		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
-			boolean add = true;
-			for(String tag : tags){
-				if(!node.tags().contains(tag)){
-					add = false;
-					break;
-				}
-			}
-			if(add){
-				result.add(node);
-			}
-		}
-		return result;
-	}
-	
-	/**
-	 * A convenience method for edges(String... tags)
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Edge> edges(String... tags){
-		return edgesTaggedWithAny(tags);
-	}
-	
-	/**
-	 * Returns the set of edges from this graph that are tagged with any of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Edge> edgesTaggedWithAny(String... tags){
-		GraphElementSet<Edge> result = new GraphElementHashSet<Edge>();
-		for(Edge edge : edges){
-			for(String tag : tags){
-				if(edge.tags().contains(tag)){
-					result.add(edge);
-					break;
-				}
-			}
-		}
-		return result;
-	}
-	
-	/**
-	 * Returns the set of edges from this graph that are tagged with all of the
-	 * given tags
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<Edge> edgesTaggedWithAll(String... tags){
-		GraphElementSet<Edge> result = new GraphElementHashSet<Edge>();
-		for(Edge edge : edges){
-			boolean add = true;
-			for(String tag : tags){
-				if(!edge.tags().contains(tag)){
-					add = false;
-					break;
-				}
-			}
-			if(add){
-				result.add(edge);
-			}
-		}
-		return result;
-	}
-	
-	/**
 	 * Gets the predecessor nodes of the given node for this graph's edges
 	 * 
 	 * @param node
@@ -465,7 +368,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph forwardStep(GraphElementSet<Node> origin){
-		Graph result = new Graph();
+		Graph result = empty();
 		for(Node node : origin){
 			GraphElementSet<Edge> outEdges = getOutEdgesFromNode(node);
 			for(Edge edge : outEdges){
@@ -516,7 +419,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph reverseStep(GraphElementSet<Node> origin){
-		Graph result = new Graph();
+		Graph result = empty();
 		for(Node node : origin){
 			GraphElementSet<Edge> inEdges = getInEdgesToNode(node);
 			for(Edge edge : inEdges){
@@ -537,7 +440,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph union(Node... nodes){
-		return union(new Graph(nodes));
+		return union(toGraph(nodes));
 	}
 	
 	/**
@@ -549,7 +452,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph union(Edge... edges){
-		return union(new Graph(edges));
+		return union(toGraph(edges));
 	}
 	
 	/**
@@ -563,12 +466,12 @@ public class Graph {
 	public Graph union(Graph... graphs){
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
 		sortedGraphs.add(this);
-		Collections.sort(sortedGraphs, graphSizeComparator.reversed());
+		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
 		if(initial.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
-		Graph union = new Graph(initial.nodes(), initial.edges());
+		Graph union = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
 			union.nodes().addAll(graph.nodes());
 			union.edges().addAll(graph.edges());
@@ -593,7 +496,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph difference(Node... nodes){
-		return difference(new Graph(nodes));
+		return difference(toGraph(nodes));
 	}
 	
 	/**
@@ -613,7 +516,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph difference(Edge... edges){
-		return difference(new Graph(edges));
+		return difference(toGraph(edges));
 	}
 	
 	/**
@@ -635,12 +538,12 @@ public class Graph {
 	public Graph difference(Graph... graphs){
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
 		sortedGraphs.add(this);
-		Collections.sort(sortedGraphs, graphSizeComparator.reversed());
+		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
 		if(initial.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
-		Graph difference = new Graph(initial.nodes(), initial.edges());
+		Graph difference = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
 			difference.nodes().removeAll(graph.nodes());
 			difference.edges().removeAll(graph.edges());
@@ -658,7 +561,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph differenceEdges(Edge... edges){
-		return differenceEdges(new Graph(edges));
+		return differenceEdges(toGraph(edges));
 	}
 	
 	/**
@@ -670,12 +573,12 @@ public class Graph {
 	public Graph differenceEdges(Graph... graphs){
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
 		sortedGraphs.add(this);
-		Collections.sort(sortedGraphs, graphSizeComparator.reversed());
+		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
 		if(initial.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
-		Graph difference = new Graph(initial.nodes(), initial.edges());
+		Graph difference = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
 			difference.edges().removeAll(graph.edges());
 			if(difference.edges().isEmpty()) {
@@ -694,7 +597,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph intersection(Node... nodes){
-		return intersection(new Graph(nodes));
+		return intersection(toGraph(nodes));
 	}
 	
 	/**
@@ -706,7 +609,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph intersection(Edge... edges){
-		return intersection(new Graph(edges));
+		return intersection(toGraph(edges));
 	}
 	
 	/**
@@ -720,12 +623,12 @@ public class Graph {
 	public Graph intersection(Graph... graphs){
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
 		sortedGraphs.add(this);
-		Collections.sort(sortedGraphs, graphSizeComparator);
+		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR);
 		Graph initial = sortedGraphs.remove(0);
 		if(initial.isEmpty()) {
-			return new Graph();
+			return empty();
 		} else {
-			Graph intersection = new Graph(initial);
+			Graph intersection = toGraph(initial);
 			for(Graph graph : graphs){
 				intersection.nodes().retainAll(graph.nodes());
 				intersection.edges().retainAll(graph.edges());
@@ -771,15 +674,15 @@ public class Graph {
 	 */
 	public Graph betweenStep(GraphElementSet<Node> from, GraphElementSet<Node> to){
 		if(from.isEmpty() || to.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
 		Graph forward = forwardStep(from);
 		if(forward.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
 		Graph reverse = reverseStep(to);
 		if(reverse.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
 		return forward.intersection(reverse);
 	}
@@ -827,15 +730,15 @@ public class Graph {
 	 */
 	public Graph between(GraphElementSet<Node> from, GraphElementSet<Node> to) {
 		if(from.isEmpty() || to.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
 		Graph forward = forward(from);
 		if(forward.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
 		Graph reverse = reverse(to);
 		if(reverse.isEmpty()) {
-			return new Graph();
+			return empty();
 		}
 		return forward.intersection(reverse);
 	}
@@ -870,7 +773,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph forward(GraphElementSet<Node> origin){
-		Graph result = new Graph();
+		Graph result = empty();
 		result.nodes().addAll(origin);
 		GraphElementSet<Node> frontier = new GraphElementHashSet<Node>(origin);
 		while(!frontier.isEmpty()){
@@ -916,7 +819,7 @@ public class Graph {
 	 * @return
 	 */
 	public Graph reverse(GraphElementSet<Node> origin){
-		Graph result = new Graph();
+		Graph result = empty();
 		result.nodes().addAll(origin);
 		GraphElementSet<Node> frontier = new GraphElementHashSet<Node>(origin);
 		while(!frontier.isEmpty()){
@@ -1001,13 +904,113 @@ public class Graph {
 	 * @return
 	 */
 	public Graph induce(GraphElementSet<Edge> edges){
-		Graph result = new Graph(this);
+		Graph result = toGraph(this);
 		for(Edge edge : edges) {
 			if(result.nodes().contains(edge.from()) && result.nodes().contains(edge.to())) {
 				result.edges().add(edge);
 			}
 		}
 		return result;
+	}
+	
+	/**
+	 * A convenience method for nodes(String... tags)
+	 * 
+	 * @param tags
+	 * @return
+	 */
+	public GraphElementSet<Node> nodes(String... tags){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Returns the set of nodes from this graph that are tagged with all of the
+	 * given tags
+	 * 
+	 * @param tags
+	 * @return
+	 */
+	public GraphElementSet<Node> nodesTaggedWithAny(String... tags){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Returns the set of nodes from this graph that are tagged with any of the
+	 * given tags
+	 * 
+	 * @param tags
+	 * @return
+	 */
+	public GraphElementSet<Node> nodesTaggedWithAll(String... tags){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * A convenience method for edges(String... tags)
+	 * 
+	 * @param tags
+	 * @return
+	 */
+	public GraphElementSet<Edge> edges(String... tags){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Returns the set of edges from this graph that are tagged with any of the
+	 * given tags
+	 * 
+	 * @param tags
+	 * @return
+	 */
+	public GraphElementSet<Edge> edgesTaggedWithAny(String... tags){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Returns the set of edges from this graph that are tagged with all of the
+	 * given tags
+	 * 
+	 * @param tags
+	 * @return
+	 */
+	public GraphElementSet<Edge> edgesTaggedWithAll(String... tags){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Select subgraph containing edges that have the given attribute key defined, with any value.
+	 * @param key
+	 * @return
+	 */
+	public GraphElementSet<Edge> selectEdges(String attribute){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Select subgraph contain edges that have the given attribute key with any value specified in the given values.
+	 * @param key
+	 * @return
+	 */
+	public GraphElementSet<Edge> selectEdges(String attribute, Object... values){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Select subgraph containing nodes that have a given key defined, with any value.
+	 * @param key
+	 * @return
+	 */
+	public GraphElementSet<Node> selectNodes(String attribute){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+	}
+	
+	/**
+	 * Select subgraph containing nodes that have a given key with any value specified in the given values.
+	 * @param key
+	 * @return
+	 */
+	public GraphElementSet<Node> selectNodes(String attribute, Object... values){
+		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
 	}
 	
 }

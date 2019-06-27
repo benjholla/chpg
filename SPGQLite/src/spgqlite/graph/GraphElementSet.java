@@ -1,6 +1,8 @@
 package spgqlite.graph;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class GraphElementSet<E extends GraphElement> extends GraphElementCollection<E> {
 
@@ -35,23 +37,13 @@ public abstract class GraphElementSet<E extends GraphElement> extends GraphEleme
 	}
 	
 	/**
-	 * A convenience method for elementsTaggedWithAny(String... tags)
-	 * 
-	 * @param tags
-	 * @return
-	 */
-	public GraphElementSet<E> elements(String... tags){
-		return elementsTaggedWithAny(tags);
-	}
-	
-	/**
 	 * Returns the set of elements from this graph that are tagged with all of the
 	 * given tags
 	 * 
 	 * @param tags
 	 * @return
 	 */
-	public GraphElementSet<E> elementsTaggedWithAny(String... tags){
+	public GraphElementSet<E> taggedWithAny(String... tags){
 		GraphElementSet<E> result = new GraphElementHashSet<E>();
 		for(E e : this){
 			for(String tag : tags){
@@ -71,7 +63,7 @@ public abstract class GraphElementSet<E extends GraphElement> extends GraphEleme
 	 * @param tags
 	 * @return
 	 */
-	public GraphElementSet<E> elementsTaggedWithAll(String... tags){
+	public GraphElementSet<E> taggedWithAll(String... tags){
 		GraphElementSet<E> result = new GraphElementHashSet<E>();
 		for(E e : this){
 			boolean add = true;
@@ -94,14 +86,34 @@ public abstract class GraphElementSet<E extends GraphElement> extends GraphEleme
 	 * @param value
 	 * @return
 	 */
-	public GraphElementSet<E> filter(String attribute, Object value){
+	public GraphElementSet<E> filter(String attribute){
 		GraphElementSet<E> result = new GraphElementHashSet<E>();
-		if(attribute != null && value != null){
+		for(E e : this){
+			if(e.hasAttr(attribute)){
+				result.add(e);
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * Returns a graph element set filtered to elements with the attribute key and any of the given values
+	 * @param attribute
+	 * @param value
+	 * @return
+	 */
+	public GraphElementSet<E> filter(String attribute, Object... values){
+		GraphElementSet<E> result = new GraphElementHashSet<E>();
+		if(attribute != null && values != null){
+			Set<Object> valueSet = new HashSet<Object>();
+			for(Object value : values) {
+				valueSet.add(value);
+			}
 			for(E e : this){
-				if(e.hasAttr(attribute) 
-					&& e.attributes().get(attribute) != null 
-					&& e.attributes().get(attribute).equals(value)){
-					result.add(e);
+				if(e.hasAttr(attribute)) {
+					if(valueSet.contains(e.getAttr(attribute))) {
+						result.add(e);
+					}
 				}
 			}
 		}
