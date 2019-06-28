@@ -10,23 +10,6 @@ public class PropertyGraph extends Graph {
 
 	private SchemaGraph schema;
 	
-	private Set<String> getInheritedTags(String... tags) {
-		Set<String> allTags = new HashSet<String>();
-		for(String explicitTag : tags) {
-			allTags.add(explicitTag);
-		}
-		if(schema != null) {
-			for(SchemaNode explicitTagNode : schema.getSchemaNodes()) {
-				if(allTags.contains(explicitTagNode.getTagName())) {
-					for(Node implicitTagNode : schema.forward(explicitTagNode).difference(explicitTagNode).nodes()) {
-						allTags.add(((SchemaNode)implicitTagNode).getTagName());
-					}
-				}
-			}
-		}
-		return allTags;
-	}
-	
 	/**
 	 * Construct an empty graph
 	 */
@@ -96,6 +79,23 @@ public class PropertyGraph extends Graph {
 	 */
 	public SchemaGraph getSchema() {
 		return schema;
+	}
+	
+	private Set<String> getInheritedTags(String... tags) {
+		Set<String> allTags = new HashSet<String>();
+		for(String explicitTag : tags) {
+			allTags.add(explicitTag);
+		}
+		if(schema != null) {
+			for(SchemaNode explicitTagNode : schema.getSchemaNodes()) {
+				if(allTags.contains(explicitTagNode.getTagName())) {
+					for(Node implicitTagNode : schema.forward(explicitTagNode).difference(explicitTagNode).nodes()) {
+						allTags.add(((SchemaNode)implicitTagNode).getTagName());
+					}
+				}
+			}
+		}
+		return allTags;
 	}
 	
 	@Override
