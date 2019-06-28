@@ -28,7 +28,7 @@ public abstract class Graph {
 	/**
 	 * Construct an empty graph
 	 */
-	public Graph() {
+	protected Graph() {
 		this.nodes = new GraphElementHashSet<Node>();
 		this.edges = new GraphElementHashSet<Edge>();
 	}
