@@ -32,10 +32,10 @@ import java.util.Set;
 import java.util.Stack;
 
 import spgqlite.graph.Edge;
-import spgqlite.graph.Graph;
 import spgqlite.graph.GraphElementHashSet;
 import spgqlite.graph.GraphElementSet;
 import spgqlite.graph.Node;
+import spgqlite.graph.PropertyGraph;
 
 
 /**
@@ -43,7 +43,7 @@ import spgqlite.graph.Node;
  * the <a href="http://en.wikipedia.org/wiki/Dominator_%28graph_theory%29">dominator
  * tree</a> of a graph.
  */
-public class DominanceGraph extends Graph {
+public class DominanceGraph extends PropertyGraph {
 	
 	/**
 	 * The immediate dominator or idom of a node n is the unique node that strictly
@@ -182,7 +182,7 @@ public class DominanceGraph extends Graph {
 	 *                    this is useful for computing post-dominance (https://en.wikipedia.org/wiki/Dominator_(graph_theory)#Postdominance)
 	 */
 	public DominanceGraph(UniqueEntryExitGraph uniqueEntryExitGraph, GraphElementSet<Node> explicitRoots, boolean invertEdges) {
-		super(uniqueEntryExitGraph.nodes());
+		super(uniqueEntryExitGraph.getSchema(), uniqueEntryExitGraph.nodes());
 		this.uniqueEntryExitGraph = uniqueEntryExitGraph;
 		this.invertEdges = invertEdges;
 		GraphElementSet<Node> roots = new GraphElementHashSet<Node>();

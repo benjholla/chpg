@@ -1,14 +1,14 @@
 package spgqlite.graph.algorithms;
 
-import spgqlite.graph.Graph;
 import spgqlite.graph.Node;
+import spgqlite.graph.PropertyGraph;
 
-public class UniqueEntryExitGraph extends Graph {
+public class UniqueEntryExitGraph extends PropertyGraph {
 
 	private Node entry;
 	private Node exit;
 	
-	public UniqueEntryExitGraph(Graph graph, Node entry, Node exit) {
+	public UniqueEntryExitGraph(PropertyGraph graph, Node entry, Node exit) {
 		super(graph);
 		if(entry == null) {
 			throw new IllegalArgumentException("Entry node cannot be null");

@@ -2,8 +2,9 @@ package spgqlite.graph.algorithms;
 
 import spgqlite.graph.Edge;
 import spgqlite.graph.Graph;
+import spgqlite.graph.PropertyGraph;
 
-public class ControlDependenceGraph extends Graph {
+public class ControlDependenceGraph extends PropertyGraph {
 
 	public static final String CONTROL_DEPENDENCE_EDGE = "control-dependence";
 	
@@ -19,7 +20,7 @@ public class ControlDependenceGraph extends Graph {
 	 * @param graph
 	 */
 	public ControlDependenceGraph(UniqueEntryExitGraph graph) {
-		super(graph.nodes());
+		super(graph.getSchema(), graph.nodes());
 		this.dominanceGraph = new DominanceGraph(graph, true);
 		// create control dependence edges
 		for(Edge postDomFrontierEdge : dominanceGraph.edges(DominanceGraph.POST_DOMINANCE_FRONTIER_EDGE)) {

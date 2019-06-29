@@ -19,6 +19,15 @@ public class PropertyGraph extends Graph {
 	}
 	
 	/**
+	 * Construct a graph that is a copy of the schema, nodes, and edges in the given graph
+	 */
+	public PropertyGraph(PropertyGraph graph) {
+		this(graph.getSchema());
+		addAll(graph.nodes());
+		addAll(graph.edges());
+	}
+	
+	/**
 	 * Construct a graph with the given nodes
 	 */
 	public PropertyGraph(SchemaGraph schema, Node... nodes) {
