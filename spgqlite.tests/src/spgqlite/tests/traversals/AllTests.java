@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestGraphForwardTraversals.class })
-public class AllTests {
-
-}
+@SuiteClasses({ TestGraphForwardTraversals.class,
+				TestQueryForwardTraversals.class
+			  })
+public class AllTests {}
