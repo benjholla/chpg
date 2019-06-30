@@ -369,6 +369,7 @@ public abstract class Graph {
 	 */
 	public Graph forwardStep(GraphElementSet<Node> origin){
 		Graph result = empty();
+		result.addAll(origin);
 		for(Node node : origin){
 			GraphElementSet<Edge> outEdges = getOutEdgesFromNode(node);
 			for(Edge edge : outEdges){
@@ -420,6 +421,7 @@ public abstract class Graph {
 	 */
 	public Graph reverseStep(GraphElementSet<Node> origin){
 		Graph result = empty();
+		result.addAll(origin);
 		for(Node node : origin){
 			GraphElementSet<Edge> inEdges = getInEdgesToNode(node);
 			for(Edge edge : inEdges){
