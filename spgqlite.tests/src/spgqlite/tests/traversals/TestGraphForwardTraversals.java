@@ -13,26 +13,31 @@ import spgqlite.graph.schema.SchemaGraph;
 
 public class TestGraphForwardTraversals {
 
-	private PropertyGraph graph;
-	private Node a;
-	private Node b;
-	private Node c;
-	private Node d;
-	private Node e;
-	private Node f;
-	private Node g;
+	protected PropertyGraph graph;
 	
-	private Edge e1;
-	private Edge e2;
-	private Edge e3;
-	private Edge e4;
-	private Edge e5;
-	private Edge e6;
+	protected Node a;
+	protected Node b;
+	protected Node c;
+	protected Node d;
+	protected Node e;
+	protected Node f;
+	protected Node g;
 	
-	private static final String NAME = "name";
+	protected Edge e1;
+	protected Edge e2;
+	protected Edge e3;
+	protected Edge e4;
+	protected Edge e5;
+	protected Edge e6;
+	
+	public static final String NAME = "name";
 	
 	@Before
 	public void setUp() throws Exception {
+		resetGraph();
+	}
+
+	private void resetGraph() {
 		graph = new PropertyGraph(new SchemaGraph());
 		
 		a = new Node();
@@ -91,7 +96,10 @@ public class TestGraphForwardTraversals {
 	@Test
 	public void testForwardATraversal() {
 		Graph result = graph.forward(a);
-		
+		inspectForwardA(result);
+	}
+
+	protected void inspectForwardA(Graph result) {
 		if(result.nodes().size() != 6){
 			fail("Forward from a should include 6 nodes");
 		}
@@ -156,7 +164,10 @@ public class TestGraphForwardTraversals {
 	@Test
 	public void testForwardBTraversal() {
 		Graph result = graph.forward(b);
-		
+		inspectForwardB(result);
+	}
+
+	protected void inspectForwardB(Graph result) {
 		if(result.nodes().size() != 5){
 			fail("Forward from b should include 5 nodes");
 		}
@@ -221,7 +232,10 @@ public class TestGraphForwardTraversals {
 	@Test
 	public void testForwardCTraversal() {
 		Graph result = graph.forward(c);
-		
+		inspectForwardC(result);
+	}
+
+	protected void inspectForwardC(Graph result) {
 		if(result.nodes().size() != 5){
 			fail("Forward from c should include 5 nodes");
 		}
@@ -286,7 +300,10 @@ public class TestGraphForwardTraversals {
 	@Test
 	public void testForwardEGTraversal() {
 		Graph result = graph.forward(e,g);
-		
+		inspectForwardEG(result);
+	}
+
+	protected void inspectForwardEG(Graph result) {
 		if(result.nodes().size() != 2){
 			fail("Forward from eg should include 2 nodes");
 		}
@@ -302,13 +319,15 @@ public class TestGraphForwardTraversals {
 		if(!result.edges().isEmpty()){
 			fail("Forward from eg should include 0 edges");
 		}
-		
 	}
 	
 	@Test
 	public void testForwardFTraversal() {
 		Graph result = graph.forward(f);
-		
+		inspectForwardF(result);
+	}
+
+	protected void inspectForwardF(Graph result) {
 		if(result.nodes().size() != 1){
 			fail("Forward from f should include 1 nodes");
 		}
@@ -320,7 +339,6 @@ public class TestGraphForwardTraversals {
 		if(!result.edges().isEmpty()){
 			fail("Forward from f should include 0 edges");
 		}
-		
 	}
 
 }
