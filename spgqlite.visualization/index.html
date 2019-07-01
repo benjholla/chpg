@@ -2,6 +2,7 @@
 <html>
 <!-- reference: https://blog.js.cytoscape.org/2016/05/24/getting-started/ -->
 <!-- reference: https://rawgit.com/iVis-at-Bilkent/cytoscape.js-expand-collapse/master/demo-undoable.html -->
+<!-- reference: http://js.cytoscape.org/#notation/compound-nodes -->
 <head>
     <title>GRAPH NAME HERE</title>
     <script src="cytoscape.min.js"></script>
@@ -28,60 +29,63 @@
 		  },
 		  elements: [
 			// nodes
-		    { data: { id: "a", name: "a" } },
-		    { data: { id: "b", name: "b" } },
-		    { data: { id: "c", name: "c" } },
-		    { data: { id: "d", name: "d" } },
-		    { data: { id: "e", name: "e" } },
-		    { data: { id: "f", name: "f" } },
-		    { data: { id: "g", name: "g" } },
+		    { data: { id: "n1", name: "MyProject" }, classes: ['container'] },
+			{ data: { id: "n2", name: "mypackage", parent: "n1" }, classes: ['container'] },
+			{ data: { id: "n3", name: "MyClass", parent: "n2" }, classes: ['container'] },
+			{ data: { id: "n4", name: "a", parent: "n3" } },
+		    { data: { id: "n5", name: "b", parent: "n3" } },
+		    { data: { id: "n6", name: "c", parent: "n3" } },
+		    { data: { id: "n7", name: "d", parent: "n3" } },
+		    { data: { id: "n8", name: "e", parent: "n3" } },
+		    { data: { id: "n9", name: "f", parent: "n3" } },
+		    { data: { id: "n10", name: "g", parent: "n3" } },
 			// edges
 		    {
 		      data: {
-		        id: "ab",
+		        id: "e1",
 				name: "call",
-		        source: "a",
-		        target: "b"
+		        source: "n4",
+		        target: "n5"
 		      }
 		    },
 		    {
 		      data: {
-		        id: "bc",
+		        id: "e2",
 				name: "call",
-		        source: "b",
-		        target: "c"
+		        source: "n5",
+		        target: "n6"
 		      }
 		    },
 		    {
 		      data: {
-		        id: "cb",
+		        id: "e3",
 				name: "call",
-		        source: "c",
-		        target: "b"
+		        source: "n6",
+		        target: "n5"
 		      }
 		    },
 		    {
 		      data: {
-		        id: "cd",
+		        id: "e4",
 				name: "call",
-		        source: "c",
-		        target: "d"
+		        source: "n6",
+		        target: "n7"
 		      }
 		    },
 		    {
 		      data: {
-		        id: "de",
+		        id: "e5",
 				name: "call",
-		        source: "d",
-		        target: "e"
+		        source: "n7",
+		        target: "n8"
 		      }
 		    },
 		    {
 		      data: {
-		        id: "dg",
+		        id: "e6",
 				name: "call",
-		        source: "d",
-		        target: "g"
+		        source: "n7",
+		        target: "n10"
 		      }
 		    }
 			],
@@ -91,18 +95,32 @@
 		            style: {
 		                label: "data(name)",
 						shape: "square",
-						"background-color": "gray",
-        				"text-opacity": 0.75,
+						"background-color": "#33aff3", // light blue
+        				"text-opacity": 1,
+						"text-wrap": "wrap",
+						"background-opacity": .25,
+						"border-width": 1,
+      				  	"border-color": "black",
         				"text-valign": "center",
         				"text-halign": "center",
-						"text-wrap": "wrap",
-						
+						//"width": 50,
+    					//"height": 50
+		            }
+		        },
+		        {
+		            selector: ":parent",
+		            style: {
+						"padding": 24,
+        				"text-valign": "top",
+        				"text-halign": "center",
+						"text-margin-y": 20, // positive moves down
+						"text-margin-x": 0, // positive moves right
 		            }
 		        },
 		        {
 		            selector: "node:selected",
 		            style: {
-						"background-color": "#33aff3" // light blue
+						"background-color": "yellow"
 		            }
 		        },
 		        {
