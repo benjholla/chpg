@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<!-- reference: https://blog.js.cytoscape.org/2016/05/24/getting-started/ -->
+<!-- reference: https://rawgit.com/iVis-at-Bilkent/cytoscape.js-expand-collapse/master/demo-undoable.html -->
+<head>
+    <title>GRAPH NAME HERE</title>
+    <script src="cytoscape.min.js"></script>
+    <script src="dagre.min.js"></script>
+    <script src="cytoscape-dagre.js"></script>
+	
+</head>
+<style>
+    #cy {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+<body>
+    <div id="cy"></div>
+	<script>
+		var cy = cytoscape({
+		  container: document.getElementById("cy"),
+		  layout: {
+		    name: "dagre"
+		  },
+		  elements: [
+			// nodes
+		    { data: { id: "a", name: "a" } },
+		    { data: { id: "b", name: "b" } },
+		    { data: { id: "c", name: "c" } },
+		    { data: { id: "d", name: "d" } },
+		    { data: { id: "e", name: "e" } },
+		    { data: { id: "f", name: "f" } },
+		    { data: { id: "g", name: "g" } },
+			// edges
+		    {
+		      data: {
+		        id: "ab",
+				name: "call",
+		        source: "a",
+		        target: "b"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "bc",
+				name: "call",
+		        source: "b",
+		        target: "c"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "cb",
+				name: "call",
+		        source: "c",
+		        target: "b"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "cd",
+				name: "call",
+		        source: "c",
+		        target: "d"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "de",
+				name: "call",
+		        source: "d",
+		        target: "e"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "dg",
+				name: "call",
+		        source: "d",
+		        target: "g"
+		      }
+		    }
+			],
+		    style: [
+		        {
+		            selector: "node",
+		            style: {
+		                label: "data(name)",
+						shape: "square",
+						"background-color": "gray",
+        				"text-opacity": 0.75,
+        				"text-valign": "center",
+        				"text-halign": "center",
+						"text-wrap": "wrap",
+						
+		            }
+		        },
+		        {
+		            selector: "node:selected",
+		            style: {
+						"background-color": "#33aff3" // light blue
+		            }
+		        },
+		        {
+		            selector: "edge",
+		            style: {
+						label: "data(name)",
+						width: 1,
+        				"curve-style": "bezier",
+        				"target-arrow-shape": "triangle",
+        				"line-color": "black",
+        				"target-arrow-color": "black",
+        				//"edge-text-rotation": "autorotate",
+						"text-margin-x": 20,
+						"text-margin-y": 0,
+						"text-wrap": "wrap"
+		            }
+		        },
+		        {
+		            selector: "edge:selected",
+		            style: {
+        				"line-color": "#33aff3", // light blue
+        				"target-arrow-color": "#33aff3" // light blue
+		            }
+		        },
+			]
+		});
+	    </script>
+</body>
+</html>
