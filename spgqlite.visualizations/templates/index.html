@@ -5,9 +5,9 @@
 <!-- reference: http://js.cytoscape.org/#notation/compound-nodes -->
 <head>
     <title>GRAPH NAME HERE</title>
-    <script src="cytoscape.min.js"></script>
-    <script src="dagre.min.js"></script>
-    <script src="cytoscape-dagre.js"></script>
+    <script src="./js/cytoscape.min.js"></script>
+    <script src="./js/dagre.min.js"></script>
+    <script src="./js/cytoscape-dagre.js"></script>
 	
 </head>
 <style>
@@ -95,10 +95,10 @@
 		            style: {
 		                label: "data(name)",
 						shape: "square",
-						"background-color": "#33aff3", // light blue
+						"background-color": "#34c2db", // light blue 1
         				"text-opacity": 1,
 						"text-wrap": "wrap",
-						"background-opacity": .25,
+						"background-opacity": 1,
 						"border-width": 1,
       				  	"border-color": "black",
         				"text-valign": "center",
@@ -110,6 +110,8 @@
 		        {
 		            selector: ":parent",
 		            style: {
+						"background-color": "#33aff3", // light blue 2
+						"background-opacity": .15,
 						"padding": 24,
         				"text-valign": "top",
         				"text-halign": "center",
@@ -141,8 +143,8 @@
 		        {
 		            selector: "edge:selected",
 		            style: {
-        				"line-color": "#33aff3", // light blue
-        				"target-arrow-color": "#33aff3" // light blue
+        				"line-color": "#33aff3", // light blue 2
+        				"target-arrow-color": "#33aff3" // light blue 2
 		            }
 		        },
 			]
