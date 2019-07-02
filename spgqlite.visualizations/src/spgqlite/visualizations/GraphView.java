@@ -12,7 +12,9 @@ public class GraphView {
 
 	public static void show(Graph graph) {
 		try {
-			Display.display(readResource("/templates/index.html"), "text/html");
+			// work around for unresolved security policies: https://stackoverflow.com/a/52338192/475329
+			Display.display("<html><iframe src='index.html' width=100%, height=600></iframe></html>", "text/html");
+//			Display.display(readResource("/templates/index.html"), "text/html");
 		} catch (Throwable t) {
 			Display.display("<html><body><h1>Error could not display graph</h1><h2>" + t.getMessage() + "</h2></body></html>", "text/html");
 		}
