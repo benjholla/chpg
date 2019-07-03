@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<!-- reference: https://blog.js.cytoscape.org/2016/05/24/getting-started/ -->
+<!-- reference: https://rawgit.com/iVis-at-Bilkent/cytoscape.js-expand-collapse/master/demo-undoable.html -->
+<!-- reference: http://js.cytoscape.org/#notation/compound-nodes -->
+<head>
+    <title>GRAPH NAME HERE</title>
+	
+	<link href="cytoscape.js-navigator.css" rel="stylesheet" type="text/css" />
+	
+    <script src="js/cytoscape.min.js"></script>
+    <script src="js/dagre.min.js"></script>
+    <script src="js/cytoscape-dagre.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="cytoscape-navigator.js"></script>
+	
+</head>
+<style>
+    #cy {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+<body>
+    <div id="cy"></div>
+	<script>
+		var cy = cytoscape({
+		  container: document.getElementById("cy"),
+		  layout: {
+		    name: "dagre"
+		  },
+		  elements: [
+			// nodes
+		    { data: { id: "n1", name: "MyProject" }, classes: ['container'] },
+			{ data: { id: "n2", name: "mypackage", parent: "n1" }, classes: ['container'] },
+			{ data: { id: "n3", name: "MyClass", parent: "n2" }, classes: ['container'] },
+			{ data: { id: "n4", name: "a", parent: "n3" } },
+		    { data: { id: "n5", name: "b", parent: "n3" } },
+		    { data: { id: "n6", name: "c", parent: "n3" } },
+		    { data: { id: "n7", name: "d", parent: "n3" } },
+		    { data: { id: "n8", name: "e", parent: "n3" } },
+		    { data: { id: "n9", name: "f", parent: "n3" } },
+		    { data: { id: "n10", name: "g", parent: "n3" } },
+			// edges
+		    {
+		      data: {
+		        id: "e1",
+				name: "call",
+		        source: "n4",
+		        target: "n5"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e2",
+				name: "call",
+		        source: "n5",
+		        target: "n6"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e3",
+				name: "call",
+		        source: "n6",
+		        target: "n5"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e4",
+				name: "call",
+		        source: "n6",
+		        target: "n7"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e5",
+				name: "call",
+		        source: "n7",
+		        target: "n8"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e6",
+				name: "call",
+		        source: "n7",
+		        target: "n10"
+		      }
+		    }
+			],
+		    style: [
+		        {
+		            selector: "node",
+		            style: {
+		                label: "data(name)",
+						shape: "square",
+						"background-color": "#34c2db", // light blue 1
+        				"text-opacity": 1,
+						"text-wrap": "wrap",
+						"background-opacity": 1,
+						"border-width": 1,
+      				  	"border-color": "black",
+        				"text-valign": "center",
+        				"text-halign": "center",
+						//"width": 50,
+    					//"height": 50
+		            }
+		        },
+		        {
+		            selector: ":parent",
+		            style: {
+						"background-color": "#33aff3", // light blue 2
+						"background-opacity": .15,
+						"padding": 24,
+        				"text-valign": "top",
+        				"text-halign": "center",
+						"text-margin-y": 20, // positive moves down
+						"text-margin-x": 0, // positive moves right
+		            }
+		        },
+		        {
+		            selector: "node:selected",
+		            style: {
+						"background-color": "yellow"
+		            }
+		        },
+		        {
+		            selector: "edge",
+		            style: {
+						label: "data(name)",
+						width: 1,
+        				"curve-style": "bezier",
+        				"target-arrow-shape": "triangle",
+        				"line-color": "black",
+        				"target-arrow-color": "black",
+        				//"edge-text-rotation": "autorotate",
+						"text-margin-x": 20,
+						"text-margin-y": 0,
+						"text-wrap": "wrap"
+		            }
+		        },
+		        {
+		            selector: "edge:selected",
+		            style: {
+        				"line-color": "#33aff3", // light blue 2
+        				"target-arrow-color": "#33aff3" // light blue 2
+		            }
+		        },
+			]
+		});
+		
+		// https://github.com/cytoscape/cytoscape.js-navigator
+		cy.navigator({
+			// options...
+		});
+		
+	    </script>
+</body>
+</html>
