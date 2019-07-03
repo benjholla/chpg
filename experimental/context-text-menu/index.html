@@ -6,14 +6,14 @@
 <head>
     <title>GRAPH NAME HERE</title>
 	
-	<link href="cytoscape-context-menus.css" rel="stylesheet" type="text/css" />
+	<link href="css/cytoscape-context-menus.css" rel="stylesheet" type="text/css" />
 	
     <script src="js/cytoscape.min.js"></script>
     <script src="js/dagre.min.js"></script>
     <script src="js/cytoscape-dagre.js"></script>
 	
 	<script src="js/jquery-2.0.3.min.js"></script>
-	<script src="cytoscape-context-menus.js"></script>
+	<script src="js/cytoscape-context-menus.js"></script>
 	
 </head>
 <style>
@@ -173,7 +173,7 @@
                     id: 'remove',
                     content: 'remove',
                     tooltipText: 'remove',
-                    image: {src : "remove.svg", width : 12, height : 12, x : 6, y : 4},
+                    image: {src : "icons/remove.svg", width : 12, height : 12, x : 6, y : 4},
                     selector: 'node, edge',
                     onClickFunction: function (event) {
                       var target = event.target || event.cyTarget;
@@ -196,7 +196,7 @@
                     id: 'add-node',
                     content: 'add node',
                     tooltipText: 'add node',
-                    image: {src : "add.svg", width : 12, height : 12, x : 6, y : 4},
+                    image: {src : "icons/add.svg", width : 12, height : 12, x : 6, y : 4},
                     coreAsWell: true,
                     onClickFunction: function (event) {
                       var data = {
@@ -218,7 +218,7 @@
                     id: 'remove-selected',
                     content: 'remove selected',
                     tooltipText: 'remove selected',
-                    image: {src : "remove.svg", width : 12, height : 12, x : 6, y : 6},
+                    image: {src : "icons/remove.svg", width : 12, height : 12, x : 6, y : 6},
                     coreAsWell: true,
                     onClickFunction: function (event) {
                       cy.$(':selected').remove();
