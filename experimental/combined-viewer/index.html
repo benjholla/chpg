@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+<head>
+    <title>GRAPH NAME HERE</title>
+	
+	<link href="font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/cytoscape-context-menus.css" rel="stylesheet" type="text/css" />
+	<link href="css/cytoscape.js-navigator.css" rel="stylesheet" type="text/css" />
+	<link href="css/cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
+	
+    <script src="js/cytoscape.min.js"></script>
+	
+    <script src="js/dagre.min.js"></script>
+    <script src="js/cytoscape-dagre.js"></script>
+	
+    <script src="js/klay.min.js"></script>
+    <script src="js/cytoscape-klay.js"></script>
+	
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/cytoscape-context-menus.js"></script>
+	<script src="js/cytoscape-cxtmenu.js"></script>
+	<script src="js/cytoscape-panzoom.js"></script>
+	<script src="js/cytoscape-navigator.js"></script>
+	
+</head>
+<style>
+    #cy {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+<body>
+    <div id="cy"></div>
+	<script>
+		var cy = cytoscape({
+		  container: document.getElementById("cy"),
+		  layout: {
+		    name: "dagre",
+			  
+			// dagre algo options, uses default value on undefined
+			nodeSep: undefined, // the separation between adjacent nodes in the same rank
+			edgeSep: undefined, // the separation between adjacent edges in the same rank
+			rankSep: undefined, // the separation between adjacent nodes in the same rank
+			rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right,
+			ranker: undefined, // Type of algorithm to assign a rank to each node in the input graph. Possible values: 'network-simplex', 'tight-tree' or 'longest-path'
+			minLen: function( edge ){ return 1; }, // number of ranks to keep between the source and target of the edge
+			edgeWeight: function( edge ){ return 1; }, // higher weight edges are generally made shorter and straighter than lower weight edges
+
+			// general layout options
+			fit: true, // whether to fit to viewport
+			padding: 30, // fit padding
+			spacingFactor: undefined, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
+			nodeDimensionsIncludeLabels: false, // whether labels should be included in determining the space used by a node
+			animate: false, // whether to transition the node positions
+			animateFilter: function( node, i ){ return true; }, // whether to animate specific nodes when animation is on; non-animated nodes immediately go to their final positions
+			animationDuration: 500, // duration of animation in ms if enabled
+			animationEasing: undefined, // easing of animation if enabled
+			boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+			transform: function( node, pos ){ return pos; }, // a function that applies a transform to the final node position
+			ready: function(){}, // on layoutready
+			stop: function(){} // on layoutstop
+		  },
+		  elements: [
+			// nodes
+		    { data: { id: "n1", name: "MyProject" }, classes: ['container'] },
+			{ data: { id: "n2", name: "mypackage", parent: "n1" }, classes: ['container'] },
+			{ data: { id: "n3", name: "MyClass", parent: "n2" }, classes: ['container'] },
+			{ data: { id: "n4", name: "a", parent: "n3" } },
+		    { data: { id: "n5", name: "b", parent: "n3" } },
+		    { data: { id: "n6", name: "c", parent: "n3" } },
+		    { data: { id: "n7", name: "d", parent: "n3" } },
+		    { data: { id: "n8", name: "e", parent: "n3" } },
+		    { data: { id: "n9", name: "f", parent: "n3" } },
+		    { data: { id: "n10", name: "g", parent: "n3" } },
+			// edges
+		    {
+		      data: {
+		        id: "e1",
+				name: "call",
+		        source: "n4",
+		        target: "n5"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e2",
+				name: "call",
+		        source: "n5",
+		        target: "n6"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e3",
+				name: "call",
+		        source: "n6",
+		        target: "n5"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e4",
+				name: "call",
+		        source: "n6",
+		        target: "n7"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e5",
+				name: "call",
+		        source: "n7",
+		        target: "n8"
+		      }
+		    },
+		    {
+		      data: {
+		        id: "e6",
+				name: "call",
+		        source: "n7",
+		        target: "n10"
+		      }
+		    }
+			],
+		    style: [
+		        {
+		            selector: "node",
+		            style: {
+		                label: "data(name)",
+						shape: "square",
+						"background-color": "#34c2db", // light blue 1
+        				"text-opacity": 1,
+						"text-wrap": "wrap",
+						"background-opacity": 1,
+						"border-width": 1,
+      				  	"border-color": "black",
+        				"text-valign": "center",
+        				"text-halign": "center",
+						//"width": 50,
+    					//"height": 50
+		            }
+		        },
+		        {
+		            selector: ":parent",
+		            style: {
+						"background-color": "#33aff3", // light blue 2
+						"background-opacity": .15,
+						"padding": 24,
+        				"text-valign": "top",
+        				"text-halign": "center",
+						"text-margin-y": 20, // positive moves down
+						"text-margin-x": 0, // positive moves right
+		            }
+		        },
+		        {
+		            selector: "node:selected",
+		            style: {
+						"background-color": "yellow"
+		            }
+		        },
+		        {
+		            selector: "edge",
+		            style: {
+						label: "data(name)",
+						width: 1,
+        				"curve-style": "bezier",
+        				"target-arrow-shape": "triangle",
+        				"line-color": "black",
+        				"target-arrow-color": "black",
+        				//"edge-text-rotation": "autorotate",
+						"text-margin-x": 20,
+						"text-margin-y": 0,
+						"text-wrap": "wrap"
+		            }
+		        },
+		        {
+		            selector: "edge:selected",
+		            style: {
+        				"line-color": "#33aff3", // light blue 2
+        				"target-arrow-color": "#33aff3" // light blue 2
+		            }
+		        },
+			]
+		});
+		
+		// https://github.com/cytoscape/cytoscape.js-panzoom
+		cy.panzoom({
+			// options here...
+		});
+		
+		// https://github.com/cytoscape/cytoscape.js-navigator
+		cy.navigator({
+			// options...
+		});
+
+		// https://github.com/iVis-at-Bilkent/cytoscape.js-context-menus
+		/*
+        var selectAllOfTheSameType = function(ele) {
+            cy.elements().unselect();
+            if(ele.isNode()) {
+                cy.nodes().select();
+            }
+            else if(ele.isEdge()) {
+                cy.edges().select();
+            }
+        };
+		
+		cy.contextMenus({
+            menuItems: [
+                {
+                    id: 'remove',
+                    content: 'remove',
+                    tooltipText: 'remove',
+                    image: {src : "icons/remove.svg", width : 12, height : 12, x : 6, y : 4},
+                    selector: 'node, edge',
+                    onClickFunction: function (event) {
+                      var target = event.target || event.cyTarget;
+                      target.remove();
+                    },
+                    hasTrailingDivider: true
+                  },
+                  {
+                    id: 'hide',
+                    content: 'hide',
+                    tooltipText: 'hide',
+                    selector: '*',
+                    onClickFunction: function (event) {
+                      var target = event.target || event.cyTarget;
+                      target.hide();
+                    },
+                    disabled: false
+                  },
+                  {
+                    id: 'add-node',
+                    content: 'add node',
+                    tooltipText: 'add node',
+                    image: {src : "icons/add.svg", width : 12, height : 12, x : 6, y : 4},
+                    coreAsWell: true,
+                    onClickFunction: function (event) {
+                      var data = {
+                          group: 'nodes'
+                      };
+                  
+                      var pos = event.position || event.cyPosition;
+                  
+                      cy.add({
+                          data: data,
+                          position: {
+                              x: pos.x,
+                              y: pos.y
+                          }
+                      });
+                    }
+                  },
+                  {
+                    id: 'remove-selected',
+                    content: 'remove selected',
+                    tooltipText: 'remove selected',
+                    image: {src : "icons/remove.svg", width : 12, height : 12, x : 6, y : 6},
+                    coreAsWell: true,
+                    onClickFunction: function (event) {
+                      cy.$(':selected').remove();
+                    }
+                  },
+                  {
+                    id: 'select-all-nodes',
+                    content: 'select all nodes',
+                    tooltipText: 'select all nodes',
+                    selector: 'node',
+                    onClickFunction: function (event) {
+                      selectAllOfTheSameType(event.target || event.cyTarget);
+                    }
+                  },
+                  {
+                    id: 'select-all-edges',
+                    content: 'select all edges',
+                    tooltipText: 'select all edges',
+                    selector: 'edge',
+                    onClickFunction: function (event) {
+                      selectAllOfTheSameType(event.target || event.cyTarget);
+                    }
+                  }
+                ]
+              });
+			*/
+		
+	  		// https://github.com/cytoscape/cytoscape.js-cxtmenu
+	  		cy.cxtmenu({
+	  			selector: 'node, edge',
+
+	  			commands: [
+	  				{
+	  					content: '<span class="fa fa-flash fa-2x"></span>',
+	  					select: function(ele){
+	  						console.log( ele.id() );
+	  					}
+	  				},
+
+	  				{
+	  					content: '<span class="fa fa-star fa-2x"></span>',
+	  					select: function(ele){
+	  						console.log( ele.data('name') );
+	  					},
+	  					enabled: false
+	  				},
+
+	  				{
+	  					content: 'Text',
+	  					select: function(ele){
+	  						console.log( ele.position() );
+	  					}
+	  				}
+	  			]
+	  		});
+
+	  		cy.cxtmenu({
+	  			selector: 'core',
+
+	  			commands: [
+	  				{
+	  					content: 'bg1',
+	  					select: function(){
+	  						console.log( 'bg1' );
+	  					}
+	  				},
+
+	  				{
+	  					content: 'bg2',
+	  					select: function(){
+	  						console.log( 'bg2' );
+	  					}
+	  				}
+	  			]
+	  		});
+		
+	    </script>
+</body>
+</html>
