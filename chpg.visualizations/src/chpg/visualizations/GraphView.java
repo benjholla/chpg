@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import chpg.graph.Edge;
 import chpg.graph.Graph;
 import chpg.graph.Node;
+import chpg.graph.schema.SchemaGraph;
 import io.github.spencerpark.ijava.runtime.Display;
 
 public class GraphView {
@@ -38,28 +39,33 @@ public class GraphView {
 	}
 
 	public static void show(Graph graph) {
-		show(graph, "");
-	}
-	
-	public static void show(Graph graph, int verticalSize) {
-		show(graph, "", verticalSize);
+		show(graph, "", DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED, Navigator.DEFAULT);
 	}
 	
 	public static void show(Graph graph, String name) {
-		show(graph, name, DEFAULT_VERTICAL_SIZE, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED, Navigator.DEFAULT);
+		show(graph, name, DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED, Navigator.DEFAULT);
 	}
 	
-	public static void show(Graph graph, String name, int verticalSize) {
-		show(graph, name, verticalSize, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED, Navigator.DEFAULT);
+	public static void show(Graph graph, String name, boolean extend) {
+		show(graph, name, DEFAULT_VERTICAL_SIZE, extend, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED, Navigator.DEFAULT);
 	}
 	
-	public static void show(Graph graph, String name, int verticalSize, Layout layout, Menu menu, PanZoom panzoom, Navigator navigator) {
+	public static void show(Graph graph, String name, boolean extend, int verticalSize) {
+		show(graph, name, verticalSize, extend, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED, Navigator.DEFAULT);
+	}
+	
+	public static void show(Graph graph, String name, int verticalSize, boolean extend, Layout layout, Menu menu, PanZoom panzoom, Navigator navigator) {
 		try {
 			if(graph.isEmpty()) {
 				Display.display("<html><style></style><body><h1>Empty graph</h1></body></html>", "text/html");
 			} else {
 				if(name == null) {
 					name = "";
+				}
+				Graph containsGraph = graph.toGraph(graph.edges(SchemaGraph.Contains));
+				containsGraph = graph.toGraph(graph.nodes()).induce(containsGraph);
+				if(extend) {
+					graph = graph.union(containsGraph.reverse(graph));
 				}
 				File graphViewerDirectory = Files.createTempDirectory("graph-viewer").toFile();
 //				System.out.println("DEBUG: " + graphViewerDirectory.getAbsolutePath());
@@ -80,7 +86,12 @@ public class GraphView {
 								nodeList.append(",");
 							}
 							String nodeName = "n" + node.getName();
-							nodeList.append("{ data: { id: \"" + "n" + node.getAddress() + "\", name: \"" + nodeName + "\" } }");
+							Node parentNode = containsGraph.predecessors(node).one();
+							if(!extend || parentNode == null) {
+								nodeList.append("{ data: { id: \"" + "n" + node.getAddress() + "\", name: \"" + nodeName + "\" } }");
+							} else {
+								nodeList.append("{ data: { id: \"" + "n" + node.getAddress() + "\", name: \"" + nodeName + "\" }, parent: \"" + "n" + parentNode.getAddress() + "\" }, classes: ['container'] }");
+							}
 						}
 						index = index.replace("TEMPLATE_NODES", nodeList.toString());
 						
