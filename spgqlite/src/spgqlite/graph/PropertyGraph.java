@@ -19,6 +19,13 @@ public class PropertyGraph extends Graph {
 	}
 	
 	/**
+	 * Construct an empty graph with an empty schema
+	 */
+	public PropertyGraph() {
+		this(new SchemaGraph());
+	}
+	
+	/**
 	 * Construct a graph that is a copy of the schema, nodes, and edges in the given graph
 	 */
 	public PropertyGraph(PropertyGraph graph) {
