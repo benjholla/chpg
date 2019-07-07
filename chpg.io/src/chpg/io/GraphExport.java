@@ -18,22 +18,22 @@ import chpg.io.support.GraphSerialization;
 // see https://developers.google.com/protocol-buffers/docs/techniques
 public class GraphExport {
 	
-	public static void export(Graph graph, File output) throws IOException {
+	public static void exportGraph(Graph graph, File output) throws IOException {
 		if(graph instanceof PropertyGraph) {
-			export((PropertyGraph) graph, output);
+			exportGraph((PropertyGraph) graph, output);
 		} else {
 			throw new IllegalArgumentException("Unsupported graph type - export only supports Property Graph types.");
 		}
 	}
 
-	public static void export(PropertyGraph graph, File output) throws IOException {
+	public static void exportGraph(PropertyGraph graph, File output) throws IOException {
 		GraphSerialization.Graph.Builder graphBuilder = GraphSerialization.Graph.newBuilder();
 
 		SchemaGraph schemaGraph = graph.getSchema();
 		for(SchemaNode schemaNode : schemaGraph.getSchemaNodes()) {
 			graphBuilder.addSchemaNode(
 				GraphSerialization.Graph.SchemaNode.newBuilder()
-					.setId(schemaNode.getAddress())
+					.setAddress(schemaNode.getAddress())
 					.setTag(schemaNode.getTagName())
 					.build()
 			);
@@ -42,7 +42,7 @@ public class GraphExport {
 		for(SchemaEdge schemaEdge : schemaGraph.getSchemaEdges()) {
 			graphBuilder.addSchemaEdge(
 				GraphSerialization.Graph.SchemaEdge.newBuilder()
-					.setId(schemaEdge.getAddress())
+					.setAddress(schemaEdge.getAddress())
 					.setFrom(schemaEdge.from().getAddress())
 					.setTo(schemaEdge.to().getAddress())
 					.build()
@@ -52,7 +52,7 @@ public class GraphExport {
 		for(Node node : graph.nodes()) {
 			GraphSerialization.Graph.Node.Builder nodeBuilder = GraphSerialization.Graph.Node.newBuilder();
 			
-			nodeBuilder.setId(node.getAddress());
+			nodeBuilder.setAddress(node.getAddress());
 			
 			if(node.getName() != null) {
 				nodeBuilder.setName(node.getName());
@@ -81,7 +81,7 @@ public class GraphExport {
 		for(Edge edge : graph.edges()) {
 			GraphSerialization.Graph.Edge.Builder edgeBuilder = GraphSerialization.Graph.Edge.newBuilder();
 			
-			edgeBuilder.setId(edge.getAddress());
+			edgeBuilder.setAddress(edge.getAddress());
 			
 			if(edge.getName() != null) {
 				edgeBuilder.setName(edge.getName());

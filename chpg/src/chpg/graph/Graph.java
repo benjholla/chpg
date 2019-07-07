@@ -94,6 +94,53 @@ public abstract class Graph {
 	}
 	
 	/**
+	 * Returns the graph element denoted by the given address or null if no graph element corresponds to address
+	 * @param address
+	 * @return
+	 */
+	public GraphElement getGraphElementByAddress(int address) {
+		for(Node node : nodes()) {
+			if(node.getAddress() == address) {
+				return node;
+			}
+		}
+		for(Edge edge : edges()) {
+			if(edge.getAddress() == address) {
+				return edge;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the node denoted by the given address or null if no node corresponds to address
+	 * @param address
+	 * @return
+	 */
+	public Node getNodeByAddress(int address) {
+		for(Node node : nodes()) {
+			if(node.getAddress() == address) {
+				return node;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the edge denoted by the given address or null if no edge corresponds to address
+	 * @param address
+	 * @return
+	 */
+	public Edge getEdgeByAddress(int address) {
+		for(Edge edge : edges()) {
+			if(edge.getAddress() == address) {
+				return edge;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Creates an empty graph
 	 * @return
 	 */

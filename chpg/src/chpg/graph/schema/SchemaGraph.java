@@ -72,6 +72,38 @@ public class SchemaGraph extends Graph {
 		}
 	}
 	
+	/**
+	 * Returns the schema node denoted by the given address or null if no node corresponds to address
+	 * @param address
+	 * @return
+	 */
+	public SchemaNode getSchemaNodeByAddress(int address) {
+		for(Node node : nodes()) {
+			if(node instanceof SchemaNode) {
+				if(node.getAddress() == address) {
+					return (SchemaNode) node;
+				}
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the schema edge denoted by the given address or null if no edge corresponds to address
+	 * @param address
+	 * @return
+	 */
+	public SchemaEdge getSchemaEdgeByAddress(int address) {
+		for(Edge edge : edges()) {
+			if(edge instanceof SchemaEdge) {
+				if(edge.getAddress() == address) {
+					return (SchemaEdge) edge;
+				}
+			}
+		}
+		return null;
+	}
+	
 	public GraphElementSet<SchemaEdge> getSchemaEdges(){
 		GraphElementSet<SchemaEdge> schemaEdges = new GraphElementHashSet<SchemaEdge>();
 		for(Edge edge : edges) {

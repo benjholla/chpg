@@ -19,25 +19,25 @@ message Tag {
 message Graph {
   
   message SchemaNode {
-    required int32 id = 1;
+    required int32 address = 1;
     required string tag = 2;
   }
   
   message SchemaEdge {
-    required int32 id = 1;
+    required int32 address = 1;
 	required int32 from = 2;
 	required int32 to = 3;
   }
   
   message Node {
-    required int32 id = 1;
+    required int32 address = 1;
     optional string name = 2;
 	repeated Attribute attribute = 3;
 	repeated Tag tag = 4;
   }
   
   message Edge {
-    required int32 id = 1;
+    required int32 address = 1;
 	required int32 from = 2;
 	required int32 to = 3;
     optional string name = 4;

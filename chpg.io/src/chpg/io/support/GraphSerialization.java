@@ -1613,13 +1613,13 @@ public final class GraphSerialization {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      boolean hasId();
+      boolean hasAddress();
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      int getId();
+      int getAddress();
 
       /**
        * <code>required string tag = 2;</code>
@@ -1684,7 +1684,7 @@ public final class GraphSerialization {
                 break;
               case 8: {
                 bitField0_ |= 0x00000001;
-                id_ = input.readInt32();
+                address_ = input.readInt32();
                 break;
               }
               case 18: {
@@ -1726,19 +1726,19 @@ public final class GraphSerialization {
       }
 
       private int bitField0_;
-      public static final int ID_FIELD_NUMBER = 1;
-      private int id_;
+      public static final int ADDRESS_FIELD_NUMBER = 1;
+      private int address_;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasAddress() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getAddress() {
+        return address_;
       }
 
       public static final int TAG_FIELD_NUMBER = 2;
@@ -1790,7 +1790,7 @@ public final class GraphSerialization {
         if (isInitialized == 1) return true;
         if (isInitialized == 0) return false;
 
-        if (!hasId()) {
+        if (!hasAddress()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -1806,7 +1806,7 @@ public final class GraphSerialization {
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         if (((bitField0_ & 0x00000001) != 0)) {
-          output.writeInt32(1, id_);
+          output.writeInt32(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tag_);
@@ -1822,7 +1822,7 @@ public final class GraphSerialization {
         size = 0;
         if (((bitField0_ & 0x00000001) != 0)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, id_);
+            .computeInt32Size(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tag_);
@@ -1842,10 +1842,10 @@ public final class GraphSerialization {
         }
         chpg.io.support.GraphSerialization.Graph.SchemaNode other = (chpg.io.support.GraphSerialization.Graph.SchemaNode) obj;
 
-        if (hasId() != other.hasId()) return false;
-        if (hasId()) {
-          if (getId()
-              != other.getId()) return false;
+        if (hasAddress() != other.hasAddress()) return false;
+        if (hasAddress()) {
+          if (getAddress()
+              != other.getAddress()) return false;
         }
         if (hasTag() != other.hasTag()) return false;
         if (hasTag()) {
@@ -1863,9 +1863,9 @@ public final class GraphSerialization {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasId()) {
-          hash = (37 * hash) + ID_FIELD_NUMBER;
-          hash = (53 * hash) + getId();
+        if (hasAddress()) {
+          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getAddress();
         }
         if (hasTag()) {
           hash = (37 * hash) + TAG_FIELD_NUMBER;
@@ -2004,7 +2004,7 @@ public final class GraphSerialization {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          id_ = 0;
+          address_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
           tag_ = "";
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -2037,7 +2037,7 @@ public final class GraphSerialization {
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.id_ = id_;
+            result.address_ = address_;
             to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
@@ -2093,8 +2093,8 @@ public final class GraphSerialization {
 
         public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.SchemaNode other) {
           if (other == chpg.io.support.GraphSerialization.Graph.SchemaNode.getDefaultInstance()) return this;
-          if (other.hasId()) {
-            setId(other.getId());
+          if (other.hasAddress()) {
+            setAddress(other.getAddress());
           }
           if (other.hasTag()) {
             bitField0_ |= 0x00000002;
@@ -2108,7 +2108,7 @@ public final class GraphSerialization {
 
         @java.lang.Override
         public final boolean isInitialized() {
-          if (!hasId()) {
+          if (!hasAddress()) {
             return false;
           }
           if (!hasTag()) {
@@ -2137,34 +2137,34 @@ public final class GraphSerialization {
         }
         private int bitField0_;
 
-        private int id_ ;
+        private int address_ ;
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public boolean hasId() {
+        public boolean hasAddress() {
           return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public int getId() {
-          return id_;
+        public int getAddress() {
+          return address_;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder setId(int value) {
+        public Builder setAddress(int value) {
           bitField0_ |= 0x00000001;
-          id_ = value;
+          address_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder clearId() {
+        public Builder clearAddress() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          id_ = 0;
+          address_ = 0;
           onChanged();
           return this;
         }
@@ -2302,13 +2302,13 @@ public final class GraphSerialization {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      boolean hasId();
+      boolean hasAddress();
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      int getId();
+      int getAddress();
 
       /**
        * <code>required int32 from = 2;</code>
@@ -2376,7 +2376,7 @@ public final class GraphSerialization {
                 break;
               case 8: {
                 bitField0_ |= 0x00000001;
-                id_ = input.readInt32();
+                address_ = input.readInt32();
                 break;
               }
               case 16: {
@@ -2422,19 +2422,19 @@ public final class GraphSerialization {
       }
 
       private int bitField0_;
-      public static final int ID_FIELD_NUMBER = 1;
-      private int id_;
+      public static final int ADDRESS_FIELD_NUMBER = 1;
+      private int address_;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasAddress() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getAddress() {
+        return address_;
       }
 
       public static final int FROM_FIELD_NUMBER = 2;
@@ -2474,7 +2474,7 @@ public final class GraphSerialization {
         if (isInitialized == 1) return true;
         if (isInitialized == 0) return false;
 
-        if (!hasId()) {
+        if (!hasAddress()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -2494,7 +2494,7 @@ public final class GraphSerialization {
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         if (((bitField0_ & 0x00000001) != 0)) {
-          output.writeInt32(1, id_);
+          output.writeInt32(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           output.writeInt32(2, from_);
@@ -2513,7 +2513,7 @@ public final class GraphSerialization {
         size = 0;
         if (((bitField0_ & 0x00000001) != 0)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, id_);
+            .computeInt32Size(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           size += com.google.protobuf.CodedOutputStream
@@ -2538,10 +2538,10 @@ public final class GraphSerialization {
         }
         chpg.io.support.GraphSerialization.Graph.SchemaEdge other = (chpg.io.support.GraphSerialization.Graph.SchemaEdge) obj;
 
-        if (hasId() != other.hasId()) return false;
-        if (hasId()) {
-          if (getId()
-              != other.getId()) return false;
+        if (hasAddress() != other.hasAddress()) return false;
+        if (hasAddress()) {
+          if (getAddress()
+              != other.getAddress()) return false;
         }
         if (hasFrom() != other.hasFrom()) return false;
         if (hasFrom()) {
@@ -2564,9 +2564,9 @@ public final class GraphSerialization {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasId()) {
-          hash = (37 * hash) + ID_FIELD_NUMBER;
-          hash = (53 * hash) + getId();
+        if (hasAddress()) {
+          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getAddress();
         }
         if (hasFrom()) {
           hash = (37 * hash) + FROM_FIELD_NUMBER;
@@ -2709,7 +2709,7 @@ public final class GraphSerialization {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          id_ = 0;
+          address_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
           from_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -2744,7 +2744,7 @@ public final class GraphSerialization {
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.id_ = id_;
+            result.address_ = address_;
             to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
@@ -2804,8 +2804,8 @@ public final class GraphSerialization {
 
         public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.SchemaEdge other) {
           if (other == chpg.io.support.GraphSerialization.Graph.SchemaEdge.getDefaultInstance()) return this;
-          if (other.hasId()) {
-            setId(other.getId());
+          if (other.hasAddress()) {
+            setAddress(other.getAddress());
           }
           if (other.hasFrom()) {
             setFrom(other.getFrom());
@@ -2820,7 +2820,7 @@ public final class GraphSerialization {
 
         @java.lang.Override
         public final boolean isInitialized() {
-          if (!hasId()) {
+          if (!hasAddress()) {
             return false;
           }
           if (!hasFrom()) {
@@ -2852,34 +2852,34 @@ public final class GraphSerialization {
         }
         private int bitField0_;
 
-        private int id_ ;
+        private int address_ ;
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public boolean hasId() {
+        public boolean hasAddress() {
           return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public int getId() {
-          return id_;
+        public int getAddress() {
+          return address_;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder setId(int value) {
+        public Builder setAddress(int value) {
           bitField0_ |= 0x00000001;
-          id_ = value;
+          address_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder clearId() {
+        public Builder clearAddress() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          id_ = 0;
+          address_ = 0;
           onChanged();
           return this;
         }
@@ -3005,13 +3005,13 @@ public final class GraphSerialization {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      boolean hasId();
+      boolean hasAddress();
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      int getId();
+      int getAddress();
 
       /**
        * <code>optional string name = 2;</code>
@@ -3126,7 +3126,7 @@ public final class GraphSerialization {
                 break;
               case 8: {
                 bitField0_ |= 0x00000001;
-                id_ = input.readInt32();
+                address_ = input.readInt32();
                 break;
               }
               case 18: {
@@ -3192,19 +3192,19 @@ public final class GraphSerialization {
       }
 
       private int bitField0_;
-      public static final int ID_FIELD_NUMBER = 1;
-      private int id_;
+      public static final int ADDRESS_FIELD_NUMBER = 1;
+      private int address_;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasAddress() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getAddress() {
+        return address_;
       }
 
       public static final int NAME_FIELD_NUMBER = 2;
@@ -3326,7 +3326,7 @@ public final class GraphSerialization {
         if (isInitialized == 1) return true;
         if (isInitialized == 0) return false;
 
-        if (!hasId()) {
+        if (!hasAddress()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -3350,7 +3350,7 @@ public final class GraphSerialization {
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         if (((bitField0_ & 0x00000001) != 0)) {
-          output.writeInt32(1, id_);
+          output.writeInt32(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -3372,7 +3372,7 @@ public final class GraphSerialization {
         size = 0;
         if (((bitField0_ & 0x00000001) != 0)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, id_);
+            .computeInt32Size(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -3400,10 +3400,10 @@ public final class GraphSerialization {
         }
         chpg.io.support.GraphSerialization.Graph.Node other = (chpg.io.support.GraphSerialization.Graph.Node) obj;
 
-        if (hasId() != other.hasId()) return false;
-        if (hasId()) {
-          if (getId()
-              != other.getId()) return false;
+        if (hasAddress() != other.hasAddress()) return false;
+        if (hasAddress()) {
+          if (getAddress()
+              != other.getAddress()) return false;
         }
         if (hasName() != other.hasName()) return false;
         if (hasName()) {
@@ -3425,9 +3425,9 @@ public final class GraphSerialization {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasId()) {
-          hash = (37 * hash) + ID_FIELD_NUMBER;
-          hash = (53 * hash) + getId();
+        if (hasAddress()) {
+          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getAddress();
         }
         if (hasName()) {
           hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -3576,7 +3576,7 @@ public final class GraphSerialization {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          id_ = 0;
+          address_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
           name_ = "";
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -3621,7 +3621,7 @@ public final class GraphSerialization {
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.id_ = id_;
+            result.address_ = address_;
             to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
@@ -3695,8 +3695,8 @@ public final class GraphSerialization {
 
         public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.Node other) {
           if (other == chpg.io.support.GraphSerialization.Graph.Node.getDefaultInstance()) return this;
-          if (other.hasId()) {
-            setId(other.getId());
+          if (other.hasAddress()) {
+            setAddress(other.getAddress());
           }
           if (other.hasName()) {
             bitField0_ |= 0x00000002;
@@ -3762,7 +3762,7 @@ public final class GraphSerialization {
 
         @java.lang.Override
         public final boolean isInitialized() {
-          if (!hasId()) {
+          if (!hasAddress()) {
             return false;
           }
           for (int i = 0; i < getAttributeCount(); i++) {
@@ -3798,34 +3798,34 @@ public final class GraphSerialization {
         }
         private int bitField0_;
 
-        private int id_ ;
+        private int address_ ;
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public boolean hasId() {
+        public boolean hasAddress() {
           return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public int getId() {
-          return id_;
+        public int getAddress() {
+          return address_;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder setId(int value) {
+        public Builder setAddress(int value) {
           bitField0_ |= 0x00000001;
-          id_ = value;
+          address_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder clearId() {
+        public Builder clearAddress() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          id_ = 0;
+          address_ = 0;
           onChanged();
           return this;
         }
@@ -4443,13 +4443,13 @@ public final class GraphSerialization {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      boolean hasId();
+      boolean hasAddress();
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      int getId();
+      int getAddress();
 
       /**
        * <code>required int32 from = 2;</code>
@@ -4582,7 +4582,7 @@ public final class GraphSerialization {
                 break;
               case 8: {
                 bitField0_ |= 0x00000001;
-                id_ = input.readInt32();
+                address_ = input.readInt32();
                 break;
               }
               case 16: {
@@ -4658,19 +4658,19 @@ public final class GraphSerialization {
       }
 
       private int bitField0_;
-      public static final int ID_FIELD_NUMBER = 1;
-      private int id_;
+      public static final int ADDRESS_FIELD_NUMBER = 1;
+      private int address_;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasAddress() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>required int32 address = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getAddress() {
+        return address_;
       }
 
       public static final int FROM_FIELD_NUMBER = 2;
@@ -4822,7 +4822,7 @@ public final class GraphSerialization {
         if (isInitialized == 1) return true;
         if (isInitialized == 0) return false;
 
-        if (!hasId()) {
+        if (!hasAddress()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -4854,7 +4854,7 @@ public final class GraphSerialization {
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         if (((bitField0_ & 0x00000001) != 0)) {
-          output.writeInt32(1, id_);
+          output.writeInt32(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           output.writeInt32(2, from_);
@@ -4882,7 +4882,7 @@ public final class GraphSerialization {
         size = 0;
         if (((bitField0_ & 0x00000001) != 0)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, id_);
+            .computeInt32Size(1, address_);
         }
         if (((bitField0_ & 0x00000002) != 0)) {
           size += com.google.protobuf.CodedOutputStream
@@ -4918,10 +4918,10 @@ public final class GraphSerialization {
         }
         chpg.io.support.GraphSerialization.Graph.Edge other = (chpg.io.support.GraphSerialization.Graph.Edge) obj;
 
-        if (hasId() != other.hasId()) return false;
-        if (hasId()) {
-          if (getId()
-              != other.getId()) return false;
+        if (hasAddress() != other.hasAddress()) return false;
+        if (hasAddress()) {
+          if (getAddress()
+              != other.getAddress()) return false;
         }
         if (hasFrom() != other.hasFrom()) return false;
         if (hasFrom()) {
@@ -4953,9 +4953,9 @@ public final class GraphSerialization {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasId()) {
-          hash = (37 * hash) + ID_FIELD_NUMBER;
-          hash = (53 * hash) + getId();
+        if (hasAddress()) {
+          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getAddress();
         }
         if (hasFrom()) {
           hash = (37 * hash) + FROM_FIELD_NUMBER;
@@ -5112,7 +5112,7 @@ public final class GraphSerialization {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          id_ = 0;
+          address_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
           from_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -5161,7 +5161,7 @@ public final class GraphSerialization {
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.id_ = id_;
+            result.address_ = address_;
             to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
@@ -5243,8 +5243,8 @@ public final class GraphSerialization {
 
         public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.Edge other) {
           if (other == chpg.io.support.GraphSerialization.Graph.Edge.getDefaultInstance()) return this;
-          if (other.hasId()) {
-            setId(other.getId());
+          if (other.hasAddress()) {
+            setAddress(other.getAddress());
           }
           if (other.hasFrom()) {
             setFrom(other.getFrom());
@@ -5316,7 +5316,7 @@ public final class GraphSerialization {
 
         @java.lang.Override
         public final boolean isInitialized() {
-          if (!hasId()) {
+          if (!hasAddress()) {
             return false;
           }
           if (!hasFrom()) {
@@ -5358,34 +5358,34 @@ public final class GraphSerialization {
         }
         private int bitField0_;
 
-        private int id_ ;
+        private int address_ ;
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public boolean hasId() {
+        public boolean hasAddress() {
           return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public int getId() {
-          return id_;
+        public int getAddress() {
+          return address_;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder setId(int value) {
+        public Builder setAddress(int value) {
           bitField0_ |= 0x00000001;
-          id_ = value;
+          address_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required int32 id = 1;</code>
+         * <code>required int32 address = 1;</code>
          */
-        public Builder clearId() {
+        public Builder clearAddress() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          id_ = 0;
+          address_ = 0;
           onChanged();
           return this;
         }
@@ -7811,19 +7811,20 @@ public final class GraphSerialization {
     java.lang.String[] descriptorData = {
       "\n\013graph.proto\022\004chpg\"(\n\tAttribute\022\014\n\004name" +
       "\030\001 \002(\t\022\r\n\005value\030\002 \002(\t\"\023\n\003Tag\022\014\n\004name\030\001 \002" +
-      "(\t\"\320\003\n\005Graph\022*\n\nschemaNode\030\001 \003(\0132\026.chpg." +
+      "(\t\"\344\003\n\005Graph\022*\n\nschemaNode\030\001 \003(\0132\026.chpg." +
       "Graph.SchemaNode\022*\n\nschemaEdge\030\002 \003(\0132\026.c" +
       "hpg.Graph.SchemaEdge\022\036\n\004node\030\003 \003(\0132\020.chp" +
       "g.Graph.Node\022\036\n\004edge\030\004 \003(\0132\020.chpg.Graph." +
-      "Edge\032%\n\nSchemaNode\022\n\n\002id\030\001 \002(\005\022\013\n\003tag\030\002 " +
-      "\002(\t\0322\n\nSchemaEdge\022\n\n\002id\030\001 \002(\005\022\014\n\004from\030\002 " +
-      "\002(\005\022\n\n\002to\030\003 \002(\005\032\\\n\004Node\022\n\n\002id\030\001 \002(\005\022\014\n\004n" +
-      "ame\030\002 \001(\t\022\"\n\tattribute\030\003 \003(\0132\017.chpg.Attr" +
-      "ibute\022\026\n\003tag\030\004 \003(\0132\t.chpg.Tag\032v\n\004Edge\022\n\n" +
-      "\002id\030\001 \002(\005\022\014\n\004from\030\002 \002(\005\022\n\n\002to\030\003 \002(\005\022\014\n\004n" +
-      "ame\030\004 \001(\t\022\"\n\tattribute\030\005 \003(\0132\017.chpg.Attr" +
-      "ibute\022\026\n\003tag\030\006 \003(\0132\t.chpg.TagB%\n\017chpg.io" +
-      ".supportB\022GraphSerialization"
+      "Edge\032*\n\nSchemaNode\022\017\n\007address\030\001 \002(\005\022\013\n\003t" +
+      "ag\030\002 \002(\t\0327\n\nSchemaEdge\022\017\n\007address\030\001 \002(\005\022" +
+      "\014\n\004from\030\002 \002(\005\022\n\n\002to\030\003 \002(\005\032a\n\004Node\022\017\n\007add" +
+      "ress\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\"\n\tattribute\030\003 " +
+      "\003(\0132\017.chpg.Attribute\022\026\n\003tag\030\004 \003(\0132\t.chpg" +
+      ".Tag\032{\n\004Edge\022\017\n\007address\030\001 \002(\005\022\014\n\004from\030\002 " +
+      "\002(\005\022\n\n\002to\030\003 \002(\005\022\014\n\004name\030\004 \001(\t\022\"\n\tattribu" +
+      "te\030\005 \003(\0132\017.chpg.Attribute\022\026\n\003tag\030\006 \003(\0132\t" +
+      ".chpg.TagB%\n\017chpg.io.supportB\022GraphSeria" +
+      "lization"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7852,25 +7853,25 @@ public final class GraphSerialization {
     internal_static_chpg_Graph_SchemaNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_chpg_Graph_SchemaNode_descriptor,
-        new java.lang.String[] { "Id", "Tag", });
+        new java.lang.String[] { "Address", "Tag", });
     internal_static_chpg_Graph_SchemaEdge_descriptor =
       internal_static_chpg_Graph_descriptor.getNestedTypes().get(1);
     internal_static_chpg_Graph_SchemaEdge_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_chpg_Graph_SchemaEdge_descriptor,
-        new java.lang.String[] { "Id", "From", "To", });
+        new java.lang.String[] { "Address", "From", "To", });
     internal_static_chpg_Graph_Node_descriptor =
       internal_static_chpg_Graph_descriptor.getNestedTypes().get(2);
     internal_static_chpg_Graph_Node_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_chpg_Graph_Node_descriptor,
-        new java.lang.String[] { "Id", "Name", "Attribute", "Tag", });
+        new java.lang.String[] { "Address", "Name", "Attribute", "Tag", });
     internal_static_chpg_Graph_Edge_descriptor =
       internal_static_chpg_Graph_descriptor.getNestedTypes().get(3);
     internal_static_chpg_Graph_Edge_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_chpg_Graph_Edge_descriptor,
-        new java.lang.String[] { "Id", "From", "To", "Name", "Attribute", "Tag", });
+        new java.lang.String[] { "Address", "From", "To", "Name", "Attribute", "Tag", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
