@@ -27,7 +27,7 @@ public class Edge extends GraphElement {
 
 	@Override
 	public String toString() {
-		return "Edge [\n\tFrom " + from + "\n\tTo " + to + "\n\tAttributes: " + this.attributes().toString() + ", Tags: " + this.tags().toString() + "\n]";
+		return "Edge [\n\tName: " + getName() + "\n\tFrom " + from + "\n\tTo " + to + "\n\tAttributes: " + this.attributes().toString() + ", Tags: " + this.tags().toString() + "\n]";
 	}
 	
 }

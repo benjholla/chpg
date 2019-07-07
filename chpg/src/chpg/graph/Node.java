@@ -16,7 +16,7 @@ public class Node extends GraphElement {
 
 	@Override
 	public String toString() {
-		return "Node [Attributes: " + this.attributes().toString() + ", Tags: " + this.tags().toString() + "]";
+		return "Node [Name: " + getName() + ", Attributes: " + this.attributes().toString() + ", Tags: " + this.tags().toString() + "]";
 	}
 	
 }

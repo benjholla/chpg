@@ -106,7 +106,7 @@ public class SchemaGraph extends Graph {
 	
 	public GraphElementSet<SchemaEdge> getSchemaEdges(){
 		GraphElementSet<SchemaEdge> schemaEdges = new GraphElementHashSet<SchemaEdge>();
-		for(Edge edge : edges) {
+		for(Edge edge : edges()) {
 			if(edge instanceof SchemaEdge) {
 				schemaEdges.add((SchemaEdge) edge);
 			}
@@ -116,7 +116,7 @@ public class SchemaGraph extends Graph {
 	
 	public GraphElementSet<SchemaNode> getSchemaNodes(){
 		GraphElementSet<SchemaNode> schemaNodes = new GraphElementHashSet<SchemaNode>();
-		for(Node node : nodes) {
+		for(Node node : nodes()) {
 			if(node instanceof SchemaNode) {
 				schemaNodes.add((SchemaNode) node);
 			}

@@ -14,6 +14,7 @@ public class PropertyGraph extends Graph {
 	 * Construct an empty graph
 	 */
 	public PropertyGraph(SchemaGraph schema) {
+		this.schema = schema;
 		this.nodes = new GraphElementHashSet<Node>();
 		this.edges = new GraphElementHashSet<Edge>();
 	}

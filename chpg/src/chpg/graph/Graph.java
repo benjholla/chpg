@@ -245,7 +245,7 @@ public abstract class Graph {
 	 */
 	public GraphElementSet<Edge> edges(Node node, NodeDirection direction){
 		GraphElementSet<Edge> result = new GraphElementHashSet<Edge>();
-		for(Edge edge : edges){
+		for(Edge edge : edges()){
 			if(direction == NodeDirection.IN){
 				if(edge.to().equals(node)){
 					result.add(edge);
@@ -267,7 +267,7 @@ public abstract class Graph {
 	 */
 	public GraphElementSet<Node> limit(NodeDirection direction){
 		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
+		for(Node node : nodes()){
 			GraphElementSet<Edge> connections = edges(node, direction);
 			if(connections.isEmpty()){
 				result.add(node);

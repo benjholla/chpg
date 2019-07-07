@@ -25,14 +25,15 @@ public class GraphImport {
 		Map<Integer,Integer> oldToNewGraphElementAddressMap = new HashMap<Integer,Integer>();
 		
 		SchemaGraph schema = new SchemaGraph();
+		
 		for(GraphSerialization.Graph.SchemaNode deserializedSchemaNode : deserializedGraph.getSchemaNodeList()) {
 			SchemaNode schemaNode = new SchemaNode(deserializedSchemaNode.getTag());
 			oldToNewGraphElementAddressMap.put(deserializedSchemaNode.getAddress(), schemaNode.getAddress());
 			schema.add(schemaNode);
 		}
 		for(GraphSerialization.Graph.SchemaEdge deserializedSchemaEdge : deserializedGraph.getSchemaEdgeList()) {
-			SchemaNode from = schema.getSchemaNodeByAddress(deserializedSchemaEdge.getFrom());
-			SchemaNode to = schema.getSchemaNodeByAddress(deserializedSchemaEdge.getTo());
+			SchemaNode from = schema.getSchemaNodeByAddress(oldToNewGraphElementAddressMap.get(deserializedSchemaEdge.getFrom()));
+			SchemaNode to = schema.getSchemaNodeByAddress(oldToNewGraphElementAddressMap.get(deserializedSchemaEdge.getTo()));
 			SchemaEdge schemaEdge = new SchemaEdge(from, to);
 			oldToNewGraphElementAddressMap.put(deserializedSchemaEdge.getAddress(), schemaEdge.getAddress());
 			schema.add(schemaEdge);
@@ -56,8 +57,8 @@ public class GraphImport {
 			graph.add(node);
 		}
 		for(GraphSerialization.Graph.Edge deserializedEdge : deserializedGraph.getEdgeList()) {
-			Node from = graph.getNodeByAddress(deserializedEdge.getFrom());
-			Node to = schema.getNodeByAddress(deserializedEdge.getTo());
+			Node from = graph.getNodeByAddress(oldToNewGraphElementAddressMap.get(deserializedEdge.getFrom()));
+			Node to = graph.getNodeByAddress(oldToNewGraphElementAddressMap.get(deserializedEdge.getTo()));
 			Edge edge = new Edge(from, to);
 			if(deserializedEdge.hasName()) {
 				edge.setName(deserializedEdge.getName());
