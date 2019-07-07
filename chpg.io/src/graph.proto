@@ -1,0 +1,53 @@
+// compile with: protoc -I=. --java_out=. graph.proto
+
+syntax = "proto2";
+
+package chpg;
+
+option java_package = "chpg.io.support";
+option java_outer_classname = "GraphSerialization";
+
+message Attribute {
+  required string name = 1;
+  required string value = 2;
+}
+
+message Tag {
+  required string name = 1;
+}
+
+message Graph {
+  
+  message SchemaNode {
+    required int32 id = 1;
+    required string tag = 2;
+  }
+  
+  message SchemaEdge {
+    required int32 id = 1;
+	required int32 from = 2;
+	required int32 to = 3;
+  }
+  
+  message Node {
+    required int32 id = 1;
+    optional string name = 2;
+	repeated Attribute attribute = 3;
+	repeated Tag tag = 4;
+  }
+  
+  message Edge {
+    required int32 id = 1;
+	required int32 from = 2;
+	required int32 to = 3;
+    optional string name = 4;
+	repeated Attribute attribute = 5;
+	repeated Tag tag = 6;
+  }
+
+  repeated SchemaNode schemaNode = 1;
+  repeated SchemaEdge schemaEdge = 2;
+
+  repeated Node node = 3;
+  repeated Edge edge = 4;
+}
