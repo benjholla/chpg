@@ -129,7 +129,7 @@ public class PropertyGraph extends Graph {
 	public GraphElementSet<Node> nodesTaggedWithAny(String... tags){
 		Set<String> allTags = getInheritedTags(tags);
 		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
+		for(Node node : nodes()){
 			for(String tag : allTags){
 				if(node.tags().contains(tag)){
 					result.add(node);
@@ -144,7 +144,7 @@ public class PropertyGraph extends Graph {
 	public GraphElementSet<Node> nodesTaggedWithAll(String... tags){
 		Set<String> allTags = getInheritedTags(tags);
 		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-		for(Node node : nodes){
+		for(Node node : nodes()){
 			boolean add = true;
 			for(String tag : allTags){
 				if(!node.tags().contains(tag)){
@@ -217,5 +217,31 @@ public class PropertyGraph extends Graph {
 	public GraphElementSet<Node> selectNodes(String attribute, Object... values){
 		return nodes.filter(attribute, values);
 	}
+	
+	// TODO: how to implement without a single underlying universal graph?
+	
+//	@Override
+//	public GraphElementSet<Node> children(){
+//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
+//		return result;
+//	}
+//	
+//	@Override
+//	public GraphElementSet<Node> parent(){
+//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
+//		return result;
+//	}
+//	
+//	@Override
+//	public GraphElementSet<Node> contained(){
+//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
+//		return result;
+//	}
+//	
+//	@Override
+//	public GraphElementSet<Node> containers(){
+//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
+//		return result;
+//	}
 	
 }

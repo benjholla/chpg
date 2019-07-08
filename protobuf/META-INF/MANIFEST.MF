@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Google Protobuf
+Bundle-SymbolicName: protobuf
+Bundle-Version: 3.8.0
+Bundle-Vendor: Google
+Automatic-Module-Name: protobuf
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.google.protobuf

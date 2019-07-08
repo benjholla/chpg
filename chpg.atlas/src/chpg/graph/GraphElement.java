@@ -32,15 +32,19 @@ public abstract class GraphElement {
 	}
 	
 	/**
-	 * Returns the graph element name or address if a name is not defined
+	 * Returns true if a name is assigned to the graph element
+	 * @return
+	 */
+	public boolean hasName() {
+		return name != null;
+	}
+	
+	/**
+	 * Returns the graph element name or null if a name is not defined
 	 * @return
 	 */
 	public String getName() {
-		if(name == null) {
-			return address.toString();
-		} else {
-			return name;
-		}
+		return name;
 	}
 
 	public void setName(String name) {

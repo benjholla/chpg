@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import chpg.graph.Node.NodeDirection;
 
@@ -1027,6 +1029,52 @@ public abstract class Graph {
 	}
 	
 	/**
+	 * Select subgraph containing edges that have any of the given names defined
+	 * @param name
+	 * @return
+	 */
+	public GraphElementSet<Edge> selectEdgesByName(String... names){
+		GraphElementSet<Edge> result = new GraphElementHashSet<Edge>();
+		if(names != null) {
+			Set<String> nameSet = new HashSet<String>();
+			for(String name : names) {
+				nameSet.add(name);
+			}
+			for(Edge edge : edges()) {
+				if(edge.hasName()) {
+					if(nameSet.contains(edge.getName())) {
+						result.add(edge);
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * Select subgraph containing nodes that have any of the given names defined
+	 * @param name
+	 * @return
+	 */
+	public GraphElementSet<Node> selectNodesByName(String... names){
+		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
+		if(names != null) {
+			Set<String> nameSet = new HashSet<String>();
+			for(String name : names) {
+				nameSet.add(name);
+			}
+			for(Node node : nodes()) {
+				if(node.hasName()) {
+					if(nameSet.contains(node.getName())) {
+						result.add(node);
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
+	/**
 	 * Select subgraph containing edges that have the given attribute key defined, with any value.
 	 * @param key
 	 * @return
@@ -1061,5 +1109,39 @@ public abstract class Graph {
 	public GraphElementSet<Node> selectNodes(String attribute, Object... values){
 		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
 	}
+	
+	// TODO: how to implement without a single underlying universal graph?
+	
+//	/**
+//	 * For each node in this graph, select the nodes that are successors along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+//	 * @return
+//	 */
+//	public GraphElementSet<Node> children(){
+//		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+//	}
+//	
+//	/**
+//	 * For each node in this graph, select the nodes that are predecessor along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+//	 * @return
+//	 */
+//	public GraphElementSet<Node> parent(){
+//		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+//	}
+//	
+//	/**
+//	 * Selects the nodes that are descendants along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+//	 * @return
+//	 */
+//	public GraphElementSet<Node> contained(){
+//		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+//	}
+//	
+//	/**
+//	 * Selects the nodes that are ancestors along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+//	 * @return
+//	 */
+//	public GraphElementSet<Node> containers(){
+//		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+//	}
 	
 }

@@ -70,9 +70,6 @@ public class GraphView {
 				}
 				Graph containsGraph = graph.toGraph(graph.edges(SchemaGraph.Contains));
 				containsGraph = graph.toGraph(graph.nodes()).induce(containsGraph);
-				if(extend) {
-					graph = graph.union(containsGraph.reverse(graph));
-				}
 				File graphViewerDirectory = Files.createTempDirectory("graph-viewer").toFile();
 				if(debug) {
 					System.out.println("DEBUG: " + graphViewerDirectory.getAbsolutePath());
@@ -93,7 +90,7 @@ public class GraphView {
 							if(nodeList.length() != 0) {
 								nodeList.append(",");
 							}
-							String nodeName = node.getName();
+							String nodeName = node.hasName() ? node.getName() : "";
 							// TODO: better escaping (probably use a json library)
 							nodeName = nodeName.replace("\\", "\\\\");
 							nodeName = nodeName.replace("\"", "\\\"");
@@ -114,23 +111,25 @@ public class GraphView {
 						// edges
 						StringBuilder edgeList = new StringBuilder();
 						for(Edge edge : graph.edges()) {
-							String edgeName = edge.getName();
-							// TODO: better escaping (probably use a json library)
-							edgeName = edgeName.replace("\\", "\\\\");
-							edgeName = edgeName.replace("\"", "\\\"");
-							edgeName = edgeName.replace("\b", "\\b");
-							edgeName = edgeName.replace("\f", "\\f");
-							edgeName = edgeName.replace("\n", "\\n");
-							edgeName = edgeName.replace("\r", "\\r");
-							edgeName = edgeName.replace("\t", "\\t");
-							edgeList.append(",{");
-						    edgeList.append("data: {");
-						    edgeList.append("id: \"" + edge.getAddress() + "\",");
-						    edgeList.append("name: \"" + edgeName + "\",");
-						    edgeList.append("source: \"" + "n" + edge.from().getAddress() + "\",");
-						    edgeList.append("target: \"" + "n" + edge.to().getAddress() + "\"");
-						    edgeList.append("}");
-						    edgeList.append("}");
+							if(!containsGraph.edges().contains(edge)) {
+								String edgeName = edge.hasName() ? edge.getName() : "";
+								// TODO: better escaping (probably use a json library)
+								edgeName = edgeName.replace("\\", "\\\\");
+								edgeName = edgeName.replace("\"", "\\\"");
+								edgeName = edgeName.replace("\b", "\\b");
+								edgeName = edgeName.replace("\f", "\\f");
+								edgeName = edgeName.replace("\n", "\\n");
+								edgeName = edgeName.replace("\r", "\\r");
+								edgeName = edgeName.replace("\t", "\\t");
+								edgeList.append(",{");
+							    edgeList.append("data: {");
+							    edgeList.append("id: \"" + edge.getAddress() + "\",");
+							    edgeList.append("name: \"" + edgeName + "\",");
+							    edgeList.append("source: \"" + "n" + edge.from().getAddress() + "\",");
+							    edgeList.append("target: \"" + "n" + edge.to().getAddress() + "\"");
+							    edgeList.append("}");
+							    edgeList.append("}");
+							}
 						}
 						index = index.replace("TEMPLATE_EDGES", edgeList.toString());
 						

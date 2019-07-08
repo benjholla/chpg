@@ -14,8 +14,8 @@ public final class GraphSerialization {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface AttributeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:chpg.Attribute)
+  public interface SerializedAttributeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:chpg.SerializedAttribute)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -47,18 +47,18 @@ public final class GraphSerialization {
         getValueBytes();
   }
   /**
-   * Protobuf type {@code chpg.Attribute}
+   * Protobuf type {@code chpg.SerializedAttribute}
    */
-  public  static final class Attribute extends
+  public  static final class SerializedAttribute extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:chpg.Attribute)
-      AttributeOrBuilder {
+      // @@protoc_insertion_point(message_implements:chpg.SerializedAttribute)
+      SerializedAttributeOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Attribute.newBuilder() to construct.
-    private Attribute(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SerializedAttribute.newBuilder() to construct.
+    private SerializedAttribute(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Attribute() {
+    private SerializedAttribute() {
       name_ = "";
       value_ = "";
     }
@@ -67,7 +67,7 @@ public final class GraphSerialization {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Attribute();
+      return new SerializedAttribute();
     }
 
     @java.lang.Override
@@ -75,7 +75,7 @@ public final class GraphSerialization {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Attribute(
+    private SerializedAttribute(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -127,15 +127,15 @@ public final class GraphSerialization {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return chpg.io.support.GraphSerialization.internal_static_chpg_Attribute_descriptor;
+      return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedAttribute_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return chpg.io.support.GraphSerialization.internal_static_chpg_Attribute_fieldAccessorTable
+      return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedAttribute_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              chpg.io.support.GraphSerialization.Attribute.class, chpg.io.support.GraphSerialization.Attribute.Builder.class);
+              chpg.io.support.GraphSerialization.SerializedAttribute.class, chpg.io.support.GraphSerialization.SerializedAttribute.Builder.class);
     }
 
     private int bitField0_;
@@ -276,10 +276,10 @@ public final class GraphSerialization {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof chpg.io.support.GraphSerialization.Attribute)) {
+      if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedAttribute)) {
         return super.equals(obj);
       }
-      chpg.io.support.GraphSerialization.Attribute other = (chpg.io.support.GraphSerialization.Attribute) obj;
+      chpg.io.support.GraphSerialization.SerializedAttribute other = (chpg.io.support.GraphSerialization.SerializedAttribute) obj;
 
       if (hasName() != other.hasName()) return false;
       if (hasName()) {
@@ -315,69 +315,69 @@ public final class GraphSerialization {
       return hash;
     }
 
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(byte[] data)
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(java.io.InputStream input)
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseDelimitedFrom(java.io.InputStream input)
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseDelimitedFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Attribute parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedAttribute parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -390,7 +390,7 @@ public final class GraphSerialization {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(chpg.io.support.GraphSerialization.Attribute prototype) {
+    public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedAttribute prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -406,26 +406,26 @@ public final class GraphSerialization {
       return builder;
     }
     /**
-     * Protobuf type {@code chpg.Attribute}
+     * Protobuf type {@code chpg.SerializedAttribute}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:chpg.Attribute)
-        chpg.io.support.GraphSerialization.AttributeOrBuilder {
+        // @@protoc_insertion_point(builder_implements:chpg.SerializedAttribute)
+        chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Attribute_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedAttribute_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Attribute_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedAttribute_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Attribute.class, chpg.io.support.GraphSerialization.Attribute.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedAttribute.class, chpg.io.support.GraphSerialization.SerializedAttribute.Builder.class);
       }
 
-      // Construct using chpg.io.support.GraphSerialization.Attribute.newBuilder()
+      // Construct using chpg.io.support.GraphSerialization.SerializedAttribute.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -453,17 +453,17 @@ public final class GraphSerialization {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Attribute_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedAttribute_descriptor;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Attribute getDefaultInstanceForType() {
-        return chpg.io.support.GraphSerialization.Attribute.getDefaultInstance();
+      public chpg.io.support.GraphSerialization.SerializedAttribute getDefaultInstanceForType() {
+        return chpg.io.support.GraphSerialization.SerializedAttribute.getDefaultInstance();
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Attribute build() {
-        chpg.io.support.GraphSerialization.Attribute result = buildPartial();
+      public chpg.io.support.GraphSerialization.SerializedAttribute build() {
+        chpg.io.support.GraphSerialization.SerializedAttribute result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -471,8 +471,8 @@ public final class GraphSerialization {
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Attribute buildPartial() {
-        chpg.io.support.GraphSerialization.Attribute result = new chpg.io.support.GraphSerialization.Attribute(this);
+      public chpg.io.support.GraphSerialization.SerializedAttribute buildPartial() {
+        chpg.io.support.GraphSerialization.SerializedAttribute result = new chpg.io.support.GraphSerialization.SerializedAttribute(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -522,16 +522,16 @@ public final class GraphSerialization {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof chpg.io.support.GraphSerialization.Attribute) {
-          return mergeFrom((chpg.io.support.GraphSerialization.Attribute)other);
+        if (other instanceof chpg.io.support.GraphSerialization.SerializedAttribute) {
+          return mergeFrom((chpg.io.support.GraphSerialization.SerializedAttribute)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(chpg.io.support.GraphSerialization.Attribute other) {
-        if (other == chpg.io.support.GraphSerialization.Attribute.getDefaultInstance()) return this;
+      public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedAttribute other) {
+        if (other == chpg.io.support.GraphSerialization.SerializedAttribute.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -563,11 +563,11 @@ public final class GraphSerialization {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        chpg.io.support.GraphSerialization.Attribute parsedMessage = null;
+        chpg.io.support.GraphSerialization.SerializedAttribute parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (chpg.io.support.GraphSerialization.Attribute) e.getUnfinishedMessage();
+          parsedMessage = (chpg.io.support.GraphSerialization.SerializedAttribute) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -742,48 +742,48 @@ public final class GraphSerialization {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:chpg.Attribute)
+      // @@protoc_insertion_point(builder_scope:chpg.SerializedAttribute)
     }
 
-    // @@protoc_insertion_point(class_scope:chpg.Attribute)
-    private static final chpg.io.support.GraphSerialization.Attribute DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:chpg.SerializedAttribute)
+    private static final chpg.io.support.GraphSerialization.SerializedAttribute DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Attribute();
+      DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedAttribute();
     }
 
-    public static chpg.io.support.GraphSerialization.Attribute getDefaultInstance() {
+    public static chpg.io.support.GraphSerialization.SerializedAttribute getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Attribute>
-        PARSER = new com.google.protobuf.AbstractParser<Attribute>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedAttribute>
+        PARSER = new com.google.protobuf.AbstractParser<SerializedAttribute>() {
       @java.lang.Override
-      public Attribute parsePartialFrom(
+      public SerializedAttribute parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Attribute(input, extensionRegistry);
+        return new SerializedAttribute(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Attribute> parser() {
+    public static com.google.protobuf.Parser<SerializedAttribute> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Attribute> getParserForType() {
+    public com.google.protobuf.Parser<SerializedAttribute> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public chpg.io.support.GraphSerialization.Attribute getDefaultInstanceForType() {
+    public chpg.io.support.GraphSerialization.SerializedAttribute getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface TagOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:chpg.Tag)
+  public interface SerializedTagOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:chpg.SerializedTag)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -801,18 +801,18 @@ public final class GraphSerialization {
         getNameBytes();
   }
   /**
-   * Protobuf type {@code chpg.Tag}
+   * Protobuf type {@code chpg.SerializedTag}
    */
-  public  static final class Tag extends
+  public  static final class SerializedTag extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:chpg.Tag)
-      TagOrBuilder {
+      // @@protoc_insertion_point(message_implements:chpg.SerializedTag)
+      SerializedTagOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Tag.newBuilder() to construct.
-    private Tag(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SerializedTag.newBuilder() to construct.
+    private SerializedTag(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Tag() {
+    private SerializedTag() {
       name_ = "";
     }
 
@@ -820,7 +820,7 @@ public final class GraphSerialization {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Tag();
+      return new SerializedTag();
     }
 
     @java.lang.Override
@@ -828,7 +828,7 @@ public final class GraphSerialization {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Tag(
+    private SerializedTag(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -874,15 +874,15 @@ public final class GraphSerialization {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return chpg.io.support.GraphSerialization.internal_static_chpg_Tag_descriptor;
+      return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedTag_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return chpg.io.support.GraphSerialization.internal_static_chpg_Tag_fieldAccessorTable
+      return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedTag_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              chpg.io.support.GraphSerialization.Tag.class, chpg.io.support.GraphSerialization.Tag.Builder.class);
+              chpg.io.support.GraphSerialization.SerializedTag.class, chpg.io.support.GraphSerialization.SerializedTag.Builder.class);
     }
 
     private int bitField0_;
@@ -971,10 +971,10 @@ public final class GraphSerialization {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof chpg.io.support.GraphSerialization.Tag)) {
+      if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedTag)) {
         return super.equals(obj);
       }
-      chpg.io.support.GraphSerialization.Tag other = (chpg.io.support.GraphSerialization.Tag) obj;
+      chpg.io.support.GraphSerialization.SerializedTag other = (chpg.io.support.GraphSerialization.SerializedTag) obj;
 
       if (hasName() != other.hasName()) return false;
       if (hasName()) {
@@ -1001,69 +1001,69 @@ public final class GraphSerialization {
       return hash;
     }
 
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(byte[] data)
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(java.io.InputStream input)
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseDelimitedFrom(java.io.InputStream input)
+    public static chpg.io.support.GraphSerialization.SerializedTag parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseDelimitedFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Tag parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedTag parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1076,7 +1076,7 @@ public final class GraphSerialization {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(chpg.io.support.GraphSerialization.Tag prototype) {
+    public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedTag prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1092,26 +1092,26 @@ public final class GraphSerialization {
       return builder;
     }
     /**
-     * Protobuf type {@code chpg.Tag}
+     * Protobuf type {@code chpg.SerializedTag}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:chpg.Tag)
-        chpg.io.support.GraphSerialization.TagOrBuilder {
+        // @@protoc_insertion_point(builder_implements:chpg.SerializedTag)
+        chpg.io.support.GraphSerialization.SerializedTagOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Tag_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedTag_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Tag_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedTag_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Tag.class, chpg.io.support.GraphSerialization.Tag.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedTag.class, chpg.io.support.GraphSerialization.SerializedTag.Builder.class);
       }
 
-      // Construct using chpg.io.support.GraphSerialization.Tag.newBuilder()
+      // Construct using chpg.io.support.GraphSerialization.SerializedTag.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1137,17 +1137,17 @@ public final class GraphSerialization {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Tag_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedTag_descriptor;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Tag getDefaultInstanceForType() {
-        return chpg.io.support.GraphSerialization.Tag.getDefaultInstance();
+      public chpg.io.support.GraphSerialization.SerializedTag getDefaultInstanceForType() {
+        return chpg.io.support.GraphSerialization.SerializedTag.getDefaultInstance();
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Tag build() {
-        chpg.io.support.GraphSerialization.Tag result = buildPartial();
+      public chpg.io.support.GraphSerialization.SerializedTag build() {
+        chpg.io.support.GraphSerialization.SerializedTag result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1155,8 +1155,8 @@ public final class GraphSerialization {
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Tag buildPartial() {
-        chpg.io.support.GraphSerialization.Tag result = new chpg.io.support.GraphSerialization.Tag(this);
+      public chpg.io.support.GraphSerialization.SerializedTag buildPartial() {
+        chpg.io.support.GraphSerialization.SerializedTag result = new chpg.io.support.GraphSerialization.SerializedTag(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -1202,16 +1202,16 @@ public final class GraphSerialization {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof chpg.io.support.GraphSerialization.Tag) {
-          return mergeFrom((chpg.io.support.GraphSerialization.Tag)other);
+        if (other instanceof chpg.io.support.GraphSerialization.SerializedTag) {
+          return mergeFrom((chpg.io.support.GraphSerialization.SerializedTag)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(chpg.io.support.GraphSerialization.Tag other) {
-        if (other == chpg.io.support.GraphSerialization.Tag.getDefaultInstance()) return this;
+      public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedTag other) {
+        if (other == chpg.io.support.GraphSerialization.SerializedTag.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -1235,11 +1235,11 @@ public final class GraphSerialization {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        chpg.io.support.GraphSerialization.Tag parsedMessage = null;
+        chpg.io.support.GraphSerialization.SerializedTag parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (chpg.io.support.GraphSerialization.Tag) e.getUnfinishedMessage();
+          parsedMessage = (chpg.io.support.GraphSerialization.SerializedTag) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1338,159 +1338,159 @@ public final class GraphSerialization {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:chpg.Tag)
+      // @@protoc_insertion_point(builder_scope:chpg.SerializedTag)
     }
 
-    // @@protoc_insertion_point(class_scope:chpg.Tag)
-    private static final chpg.io.support.GraphSerialization.Tag DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:chpg.SerializedTag)
+    private static final chpg.io.support.GraphSerialization.SerializedTag DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Tag();
+      DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedTag();
     }
 
-    public static chpg.io.support.GraphSerialization.Tag getDefaultInstance() {
+    public static chpg.io.support.GraphSerialization.SerializedTag getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Tag>
-        PARSER = new com.google.protobuf.AbstractParser<Tag>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedTag>
+        PARSER = new com.google.protobuf.AbstractParser<SerializedTag>() {
       @java.lang.Override
-      public Tag parsePartialFrom(
+      public SerializedTag parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Tag(input, extensionRegistry);
+        return new SerializedTag(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Tag> parser() {
+    public static com.google.protobuf.Parser<SerializedTag> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Tag> getParserForType() {
+    public com.google.protobuf.Parser<SerializedTag> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public chpg.io.support.GraphSerialization.Tag getDefaultInstanceForType() {
+    public chpg.io.support.GraphSerialization.SerializedTag getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface GraphOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:chpg.Graph)
+  public interface SerializedGraphOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:chpg.SerializedGraph)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaNode> 
+    java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode> 
         getSchemaNodeList();
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.SchemaNode getSchemaNode(int index);
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode getSchemaNode(int index);
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
     int getSchemaNodeCount();
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    java.util.List<? extends chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder> 
+    java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder> 
         getSchemaNodeOrBuilderList();
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder getSchemaNodeOrBuilder(
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder getSchemaNodeOrBuilder(
         int index);
 
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaEdge> 
+    java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge> 
         getSchemaEdgeList();
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.SchemaEdge getSchemaEdge(int index);
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge getSchemaEdge(int index);
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
     int getSchemaEdgeCount();
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    java.util.List<? extends chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder> 
+    java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder> 
         getSchemaEdgeOrBuilderList();
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder getSchemaEdgeOrBuilder(
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder getSchemaEdgeOrBuilder(
         int index);
 
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    java.util.List<chpg.io.support.GraphSerialization.Graph.Node> 
+    java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode> 
         getNodeList();
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.Node getNode(int index);
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode getNode(int index);
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
     int getNodeCount();
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    java.util.List<? extends chpg.io.support.GraphSerialization.Graph.NodeOrBuilder> 
+    java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder> 
         getNodeOrBuilderList();
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.NodeOrBuilder getNodeOrBuilder(
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder getNodeOrBuilder(
         int index);
 
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    java.util.List<chpg.io.support.GraphSerialization.Graph.Edge> 
+    java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge> 
         getEdgeList();
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.Edge getEdge(int index);
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge getEdge(int index);
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
     int getEdgeCount();
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    java.util.List<? extends chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder> 
+    java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder> 
         getEdgeOrBuilderList();
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder getEdgeOrBuilder(
+    chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder getEdgeOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code chpg.Graph}
+   * Protobuf type {@code chpg.SerializedGraph}
    */
-  public  static final class Graph extends
+  public  static final class SerializedGraph extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:chpg.Graph)
-      GraphOrBuilder {
+      // @@protoc_insertion_point(message_implements:chpg.SerializedGraph)
+      SerializedGraphOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Graph.newBuilder() to construct.
-    private Graph(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SerializedGraph.newBuilder() to construct.
+    private SerializedGraph(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Graph() {
+    private SerializedGraph() {
       schemaNode_ = java.util.Collections.emptyList();
       schemaEdge_ = java.util.Collections.emptyList();
       node_ = java.util.Collections.emptyList();
@@ -1501,7 +1501,7 @@ public final class GraphSerialization {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Graph();
+      return new SerializedGraph();
     }
 
     @java.lang.Override
@@ -1509,7 +1509,7 @@ public final class GraphSerialization {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Graph(
+    private SerializedGraph(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1530,38 +1530,38 @@ public final class GraphSerialization {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                schemaNode_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.SchemaNode>();
+                schemaNode_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode>();
                 mutable_bitField0_ |= 0x00000001;
               }
               schemaNode_.add(
-                  input.readMessage(chpg.io.support.GraphSerialization.Graph.SchemaNode.PARSER, extensionRegistry));
+                  input.readMessage(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.PARSER, extensionRegistry));
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                schemaEdge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.SchemaEdge>();
+                schemaEdge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge>();
                 mutable_bitField0_ |= 0x00000002;
               }
               schemaEdge_.add(
-                  input.readMessage(chpg.io.support.GraphSerialization.Graph.SchemaEdge.PARSER, extensionRegistry));
+                  input.readMessage(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.PARSER, extensionRegistry));
               break;
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                node_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.Node>();
+                node_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode>();
                 mutable_bitField0_ |= 0x00000004;
               }
               node_.add(
-                  input.readMessage(chpg.io.support.GraphSerialization.Graph.Node.PARSER, extensionRegistry));
+                  input.readMessage(chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.PARSER, extensionRegistry));
               break;
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                edge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.Edge>();
+                edge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge>();
                 mutable_bitField0_ |= 0x00000008;
               }
               edge_.add(
-                  input.readMessage(chpg.io.support.GraphSerialization.Graph.Edge.PARSER, extensionRegistry));
+                  input.readMessage(chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.PARSER, extensionRegistry));
               break;
             }
             default: {
@@ -1597,19 +1597,19 @@ public final class GraphSerialization {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_descriptor;
+      return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_fieldAccessorTable
+      return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              chpg.io.support.GraphSerialization.Graph.class, chpg.io.support.GraphSerialization.Graph.Builder.class);
+              chpg.io.support.GraphSerialization.SerializedGraph.class, chpg.io.support.GraphSerialization.SerializedGraph.Builder.class);
     }
 
-    public interface SchemaNodeOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:chpg.Graph.SchemaNode)
+    public interface SerializedSchemaNodeOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:chpg.SerializedGraph.SerializedSchemaNode)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -1636,18 +1636,18 @@ public final class GraphSerialization {
           getTagBytes();
     }
     /**
-     * Protobuf type {@code chpg.Graph.SchemaNode}
+     * Protobuf type {@code chpg.SerializedGraph.SerializedSchemaNode}
      */
-    public  static final class SchemaNode extends
+    public  static final class SerializedSchemaNode extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:chpg.Graph.SchemaNode)
-        SchemaNodeOrBuilder {
+        // @@protoc_insertion_point(message_implements:chpg.SerializedGraph.SerializedSchemaNode)
+        SerializedSchemaNodeOrBuilder {
     private static final long serialVersionUID = 0L;
-      // Use SchemaNode.newBuilder() to construct.
-      private SchemaNode(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // Use SerializedSchemaNode.newBuilder() to construct.
+      private SerializedSchemaNode(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-      private SchemaNode() {
+      private SerializedSchemaNode() {
         tag_ = "";
       }
 
@@ -1655,7 +1655,7 @@ public final class GraphSerialization {
       @SuppressWarnings({"unused"})
       protected java.lang.Object newInstance(
           UnusedPrivateParameter unused) {
-        return new SchemaNode();
+        return new SerializedSchemaNode();
       }
 
       @java.lang.Override
@@ -1663,7 +1663,7 @@ public final class GraphSerialization {
       getUnknownFields() {
         return this.unknownFields;
       }
-      private SchemaNode(
+      private SerializedSchemaNode(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1714,15 +1714,15 @@ public final class GraphSerialization {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaNode_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaNode_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaNode_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaNode_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Graph.SchemaNode.class, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder.class);
       }
 
       private int bitField0_;
@@ -1837,10 +1837,10 @@ public final class GraphSerialization {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof chpg.io.support.GraphSerialization.Graph.SchemaNode)) {
+        if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode)) {
           return super.equals(obj);
         }
-        chpg.io.support.GraphSerialization.Graph.SchemaNode other = (chpg.io.support.GraphSerialization.Graph.SchemaNode) obj;
+        chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode other = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode) obj;
 
         if (hasAddress() != other.hasAddress()) return false;
         if (hasAddress()) {
@@ -1876,69 +1876,69 @@ public final class GraphSerialization {
         return hash;
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(byte[] data)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseDelimitedFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseDelimitedFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1951,7 +1951,7 @@ public final class GraphSerialization {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(chpg.io.support.GraphSerialization.Graph.SchemaNode prototype) {
+      public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -1967,26 +1967,26 @@ public final class GraphSerialization {
         return builder;
       }
       /**
-       * Protobuf type {@code chpg.Graph.SchemaNode}
+       * Protobuf type {@code chpg.SerializedGraph.SerializedSchemaNode}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:chpg.Graph.SchemaNode)
-          chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder {
+          // @@protoc_insertion_point(builder_implements:chpg.SerializedGraph.SerializedSchemaNode)
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaNode_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaNode_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaNode_fieldAccessorTable
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaNode_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  chpg.io.support.GraphSerialization.Graph.SchemaNode.class, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder.class);
+                  chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder.class);
         }
 
-        // Construct using chpg.io.support.GraphSerialization.Graph.SchemaNode.newBuilder()
+        // Construct using chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -2014,17 +2014,17 @@ public final class GraphSerialization {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaNode_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaNode_descriptor;
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.SchemaNode getDefaultInstanceForType() {
-          return chpg.io.support.GraphSerialization.Graph.SchemaNode.getDefaultInstance();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode getDefaultInstanceForType() {
+          return chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.getDefaultInstance();
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.SchemaNode build() {
-          chpg.io.support.GraphSerialization.Graph.SchemaNode result = buildPartial();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode build() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -2032,8 +2032,8 @@ public final class GraphSerialization {
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.SchemaNode buildPartial() {
-          chpg.io.support.GraphSerialization.Graph.SchemaNode result = new chpg.io.support.GraphSerialization.Graph.SchemaNode(this);
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode buildPartial() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode result = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -2083,16 +2083,16 @@ public final class GraphSerialization {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof chpg.io.support.GraphSerialization.Graph.SchemaNode) {
-            return mergeFrom((chpg.io.support.GraphSerialization.Graph.SchemaNode)other);
+          if (other instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode) {
+            return mergeFrom((chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.SchemaNode other) {
-          if (other == chpg.io.support.GraphSerialization.Graph.SchemaNode.getDefaultInstance()) return this;
+        public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode other) {
+          if (other == chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.getDefaultInstance()) return this;
           if (other.hasAddress()) {
             setAddress(other.getAddress());
           }
@@ -2122,11 +2122,11 @@ public final class GraphSerialization {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          chpg.io.support.GraphSerialization.Graph.SchemaNode parsedMessage = null;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (chpg.io.support.GraphSerialization.Graph.SchemaNode) e.getUnfinishedMessage();
+            parsedMessage = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -2257,48 +2257,48 @@ public final class GraphSerialization {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:chpg.Graph.SchemaNode)
+        // @@protoc_insertion_point(builder_scope:chpg.SerializedGraph.SerializedSchemaNode)
       }
 
-      // @@protoc_insertion_point(class_scope:chpg.Graph.SchemaNode)
-      private static final chpg.io.support.GraphSerialization.Graph.SchemaNode DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:chpg.SerializedGraph.SerializedSchemaNode)
+      private static final chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Graph.SchemaNode();
+        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode();
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.SchemaNode getDefaultInstance() {
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated public static final com.google.protobuf.Parser<SchemaNode>
-          PARSER = new com.google.protobuf.AbstractParser<SchemaNode>() {
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedSchemaNode>
+          PARSER = new com.google.protobuf.AbstractParser<SerializedSchemaNode>() {
         @java.lang.Override
-        public SchemaNode parsePartialFrom(
+        public SerializedSchemaNode parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new SchemaNode(input, extensionRegistry);
+          return new SerializedSchemaNode(input, extensionRegistry);
         }
       };
 
-      public static com.google.protobuf.Parser<SchemaNode> parser() {
+      public static com.google.protobuf.Parser<SerializedSchemaNode> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<SchemaNode> getParserForType() {
+      public com.google.protobuf.Parser<SerializedSchemaNode> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph.SchemaNode getDefaultInstanceForType() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
-    public interface SchemaEdgeOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:chpg.Graph.SchemaEdge)
+    public interface SerializedSchemaEdgeOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:chpg.SerializedGraph.SerializedSchemaEdge)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -2329,25 +2329,25 @@ public final class GraphSerialization {
       int getTo();
     }
     /**
-     * Protobuf type {@code chpg.Graph.SchemaEdge}
+     * Protobuf type {@code chpg.SerializedGraph.SerializedSchemaEdge}
      */
-    public  static final class SchemaEdge extends
+    public  static final class SerializedSchemaEdge extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:chpg.Graph.SchemaEdge)
-        SchemaEdgeOrBuilder {
+        // @@protoc_insertion_point(message_implements:chpg.SerializedGraph.SerializedSchemaEdge)
+        SerializedSchemaEdgeOrBuilder {
     private static final long serialVersionUID = 0L;
-      // Use SchemaEdge.newBuilder() to construct.
-      private SchemaEdge(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // Use SerializedSchemaEdge.newBuilder() to construct.
+      private SerializedSchemaEdge(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-      private SchemaEdge() {
+      private SerializedSchemaEdge() {
       }
 
       @java.lang.Override
       @SuppressWarnings({"unused"})
       protected java.lang.Object newInstance(
           UnusedPrivateParameter unused) {
-        return new SchemaEdge();
+        return new SerializedSchemaEdge();
       }
 
       @java.lang.Override
@@ -2355,7 +2355,7 @@ public final class GraphSerialization {
       getUnknownFields() {
         return this.unknownFields;
       }
-      private SchemaEdge(
+      private SerializedSchemaEdge(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2410,15 +2410,15 @@ public final class GraphSerialization {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaEdge_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaEdge_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaEdge_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaEdge_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Graph.SchemaEdge.class, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder.class);
       }
 
       private int bitField0_;
@@ -2533,10 +2533,10 @@ public final class GraphSerialization {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof chpg.io.support.GraphSerialization.Graph.SchemaEdge)) {
+        if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge)) {
           return super.equals(obj);
         }
-        chpg.io.support.GraphSerialization.Graph.SchemaEdge other = (chpg.io.support.GraphSerialization.Graph.SchemaEdge) obj;
+        chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge other = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge) obj;
 
         if (hasAddress() != other.hasAddress()) return false;
         if (hasAddress()) {
@@ -2581,69 +2581,69 @@ public final class GraphSerialization {
         return hash;
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(byte[] data)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseDelimitedFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseDelimitedFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -2656,7 +2656,7 @@ public final class GraphSerialization {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(chpg.io.support.GraphSerialization.Graph.SchemaEdge prototype) {
+      public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -2672,26 +2672,26 @@ public final class GraphSerialization {
         return builder;
       }
       /**
-       * Protobuf type {@code chpg.Graph.SchemaEdge}
+       * Protobuf type {@code chpg.SerializedGraph.SerializedSchemaEdge}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:chpg.Graph.SchemaEdge)
-          chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder {
+          // @@protoc_insertion_point(builder_implements:chpg.SerializedGraph.SerializedSchemaEdge)
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaEdge_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaEdge_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaEdge_fieldAccessorTable
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaEdge_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  chpg.io.support.GraphSerialization.Graph.SchemaEdge.class, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder.class);
+                  chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder.class);
         }
 
-        // Construct using chpg.io.support.GraphSerialization.Graph.SchemaEdge.newBuilder()
+        // Construct using chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -2721,17 +2721,17 @@ public final class GraphSerialization {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_SchemaEdge_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedSchemaEdge_descriptor;
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.SchemaEdge getDefaultInstanceForType() {
-          return chpg.io.support.GraphSerialization.Graph.SchemaEdge.getDefaultInstance();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge getDefaultInstanceForType() {
+          return chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.getDefaultInstance();
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.SchemaEdge build() {
-          chpg.io.support.GraphSerialization.Graph.SchemaEdge result = buildPartial();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge build() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -2739,8 +2739,8 @@ public final class GraphSerialization {
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.SchemaEdge buildPartial() {
-          chpg.io.support.GraphSerialization.Graph.SchemaEdge result = new chpg.io.support.GraphSerialization.Graph.SchemaEdge(this);
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge buildPartial() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge result = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -2794,16 +2794,16 @@ public final class GraphSerialization {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof chpg.io.support.GraphSerialization.Graph.SchemaEdge) {
-            return mergeFrom((chpg.io.support.GraphSerialization.Graph.SchemaEdge)other);
+          if (other instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge) {
+            return mergeFrom((chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.SchemaEdge other) {
-          if (other == chpg.io.support.GraphSerialization.Graph.SchemaEdge.getDefaultInstance()) return this;
+        public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge other) {
+          if (other == chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.getDefaultInstance()) return this;
           if (other.hasAddress()) {
             setAddress(other.getAddress());
           }
@@ -2837,11 +2837,11 @@ public final class GraphSerialization {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          chpg.io.support.GraphSerialization.Graph.SchemaEdge parsedMessage = null;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (chpg.io.support.GraphSerialization.Graph.SchemaEdge) e.getUnfinishedMessage();
+            parsedMessage = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -2960,48 +2960,48 @@ public final class GraphSerialization {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:chpg.Graph.SchemaEdge)
+        // @@protoc_insertion_point(builder_scope:chpg.SerializedGraph.SerializedSchemaEdge)
       }
 
-      // @@protoc_insertion_point(class_scope:chpg.Graph.SchemaEdge)
-      private static final chpg.io.support.GraphSerialization.Graph.SchemaEdge DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:chpg.SerializedGraph.SerializedSchemaEdge)
+      private static final chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Graph.SchemaEdge();
+        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge();
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.SchemaEdge getDefaultInstance() {
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated public static final com.google.protobuf.Parser<SchemaEdge>
-          PARSER = new com.google.protobuf.AbstractParser<SchemaEdge>() {
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedSchemaEdge>
+          PARSER = new com.google.protobuf.AbstractParser<SerializedSchemaEdge>() {
         @java.lang.Override
-        public SchemaEdge parsePartialFrom(
+        public SerializedSchemaEdge parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new SchemaEdge(input, extensionRegistry);
+          return new SerializedSchemaEdge(input, extensionRegistry);
         }
       };
 
-      public static com.google.protobuf.Parser<SchemaEdge> parser() {
+      public static com.google.protobuf.Parser<SerializedSchemaEdge> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<SchemaEdge> getParserForType() {
+      public com.google.protobuf.Parser<SerializedSchemaEdge> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph.SchemaEdge getDefaultInstanceForType() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
-    public interface NodeOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:chpg.Graph.Node)
+    public interface SerializedNodeOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:chpg.SerializedGraph.SerializedNode)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -3028,66 +3028,66 @@ public final class GraphSerialization {
           getNameBytes();
 
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      java.util.List<chpg.io.support.GraphSerialization.Attribute> 
+      java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> 
           getAttributeList();
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      chpg.io.support.GraphSerialization.Attribute getAttribute(int index);
+      chpg.io.support.GraphSerialization.SerializedAttribute getAttribute(int index);
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
       int getAttributeCount();
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      java.util.List<? extends chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+      java.util.List<? extends chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
           getAttributeOrBuilderList();
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      chpg.io.support.GraphSerialization.AttributeOrBuilder getAttributeOrBuilder(
+      chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder getAttributeOrBuilder(
           int index);
 
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      java.util.List<chpg.io.support.GraphSerialization.Tag> 
+      java.util.List<chpg.io.support.GraphSerialization.SerializedTag> 
           getTagList();
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      chpg.io.support.GraphSerialization.Tag getTag(int index);
+      chpg.io.support.GraphSerialization.SerializedTag getTag(int index);
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
       int getTagCount();
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      java.util.List<? extends chpg.io.support.GraphSerialization.TagOrBuilder> 
+      java.util.List<? extends chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
           getTagOrBuilderList();
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      chpg.io.support.GraphSerialization.TagOrBuilder getTagOrBuilder(
+      chpg.io.support.GraphSerialization.SerializedTagOrBuilder getTagOrBuilder(
           int index);
     }
     /**
-     * Protobuf type {@code chpg.Graph.Node}
+     * Protobuf type {@code chpg.SerializedGraph.SerializedNode}
      */
-    public  static final class Node extends
+    public  static final class SerializedNode extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:chpg.Graph.Node)
-        NodeOrBuilder {
+        // @@protoc_insertion_point(message_implements:chpg.SerializedGraph.SerializedNode)
+        SerializedNodeOrBuilder {
     private static final long serialVersionUID = 0L;
-      // Use Node.newBuilder() to construct.
-      private Node(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // Use SerializedNode.newBuilder() to construct.
+      private SerializedNode(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-      private Node() {
+      private SerializedNode() {
         name_ = "";
         attribute_ = java.util.Collections.emptyList();
         tag_ = java.util.Collections.emptyList();
@@ -3097,7 +3097,7 @@ public final class GraphSerialization {
       @SuppressWarnings({"unused"})
       protected java.lang.Object newInstance(
           UnusedPrivateParameter unused) {
-        return new Node();
+        return new SerializedNode();
       }
 
       @java.lang.Override
@@ -3105,7 +3105,7 @@ public final class GraphSerialization {
       getUnknownFields() {
         return this.unknownFields;
       }
-      private Node(
+      private SerializedNode(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3137,20 +3137,20 @@ public final class GraphSerialization {
               }
               case 26: {
                 if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                  attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Attribute>();
+                  attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedAttribute>();
                   mutable_bitField0_ |= 0x00000004;
                 }
                 attribute_.add(
-                    input.readMessage(chpg.io.support.GraphSerialization.Attribute.PARSER, extensionRegistry));
+                    input.readMessage(chpg.io.support.GraphSerialization.SerializedAttribute.PARSER, extensionRegistry));
                 break;
               }
               case 34: {
                 if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                  tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Tag>();
+                  tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedTag>();
                   mutable_bitField0_ |= 0x00000008;
                 }
                 tag_.add(
-                    input.readMessage(chpg.io.support.GraphSerialization.Tag.PARSER, extensionRegistry));
+                    input.readMessage(chpg.io.support.GraphSerialization.SerializedTag.PARSER, extensionRegistry));
                 break;
               }
               default: {
@@ -3180,15 +3180,15 @@ public final class GraphSerialization {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Node_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedNode_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Node_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedNode_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Graph.Node.class, chpg.io.support.GraphSerialization.Graph.Node.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder.class);
       }
 
       private int bitField0_;
@@ -3250,71 +3250,71 @@ public final class GraphSerialization {
       }
 
       public static final int ATTRIBUTE_FIELD_NUMBER = 3;
-      private java.util.List<chpg.io.support.GraphSerialization.Attribute> attribute_;
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> attribute_;
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Attribute> getAttributeList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> getAttributeList() {
         return attribute_;
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
           getAttributeOrBuilderList() {
         return attribute_;
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
       public int getAttributeCount() {
         return attribute_.size();
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.Attribute getAttribute(int index) {
+      public chpg.io.support.GraphSerialization.SerializedAttribute getAttribute(int index) {
         return attribute_.get(index);
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 3;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.AttributeOrBuilder getAttributeOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder getAttributeOrBuilder(
           int index) {
         return attribute_.get(index);
       }
 
       public static final int TAG_FIELD_NUMBER = 4;
-      private java.util.List<chpg.io.support.GraphSerialization.Tag> tag_;
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedTag> tag_;
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Tag> getTagList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedTag> getTagList() {
         return tag_;
       }
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.TagOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
           getTagOrBuilderList() {
         return tag_;
       }
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
       public int getTagCount() {
         return tag_.size();
       }
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.Tag getTag(int index) {
+      public chpg.io.support.GraphSerialization.SerializedTag getTag(int index) {
         return tag_.get(index);
       }
       /**
-       * <code>repeated .chpg.Tag tag = 4;</code>
+       * <code>repeated .chpg.SerializedTag tag = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.TagOrBuilder getTagOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedTagOrBuilder getTagOrBuilder(
           int index) {
         return tag_.get(index);
       }
@@ -3395,10 +3395,10 @@ public final class GraphSerialization {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof chpg.io.support.GraphSerialization.Graph.Node)) {
+        if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode)) {
           return super.equals(obj);
         }
-        chpg.io.support.GraphSerialization.Graph.Node other = (chpg.io.support.GraphSerialization.Graph.Node) obj;
+        chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode other = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode) obj;
 
         if (hasAddress() != other.hasAddress()) return false;
         if (hasAddress()) {
@@ -3446,69 +3446,69 @@ public final class GraphSerialization {
         return hash;
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(byte[] data)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseDelimitedFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseDelimitedFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Node parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -3521,7 +3521,7 @@ public final class GraphSerialization {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(chpg.io.support.GraphSerialization.Graph.Node prototype) {
+      public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -3537,26 +3537,26 @@ public final class GraphSerialization {
         return builder;
       }
       /**
-       * Protobuf type {@code chpg.Graph.Node}
+       * Protobuf type {@code chpg.SerializedGraph.SerializedNode}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:chpg.Graph.Node)
-          chpg.io.support.GraphSerialization.Graph.NodeOrBuilder {
+          // @@protoc_insertion_point(builder_implements:chpg.SerializedGraph.SerializedNode)
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Node_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedNode_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Node_fieldAccessorTable
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedNode_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  chpg.io.support.GraphSerialization.Graph.Node.class, chpg.io.support.GraphSerialization.Graph.Node.Builder.class);
+                  chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder.class);
         }
 
-        // Construct using chpg.io.support.GraphSerialization.Graph.Node.newBuilder()
+        // Construct using chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -3598,17 +3598,17 @@ public final class GraphSerialization {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Node_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedNode_descriptor;
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.Node getDefaultInstanceForType() {
-          return chpg.io.support.GraphSerialization.Graph.Node.getDefaultInstance();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode getDefaultInstanceForType() {
+          return chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.getDefaultInstance();
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.Node build() {
-          chpg.io.support.GraphSerialization.Graph.Node result = buildPartial();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode build() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -3616,8 +3616,8 @@ public final class GraphSerialization {
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.Node buildPartial() {
-          chpg.io.support.GraphSerialization.Graph.Node result = new chpg.io.support.GraphSerialization.Graph.Node(this);
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode buildPartial() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode result = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -3685,16 +3685,16 @@ public final class GraphSerialization {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof chpg.io.support.GraphSerialization.Graph.Node) {
-            return mergeFrom((chpg.io.support.GraphSerialization.Graph.Node)other);
+          if (other instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode) {
+            return mergeFrom((chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.Node other) {
-          if (other == chpg.io.support.GraphSerialization.Graph.Node.getDefaultInstance()) return this;
+        public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode other) {
+          if (other == chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.getDefaultInstance()) return this;
           if (other.hasAddress()) {
             setAddress(other.getAddress());
           }
@@ -3783,11 +3783,11 @@ public final class GraphSerialization {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          chpg.io.support.GraphSerialization.Graph.Node parsedMessage = null;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (chpg.io.support.GraphSerialization.Graph.Node) e.getUnfinishedMessage();
+            parsedMessage = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -3906,22 +3906,22 @@ public final class GraphSerialization {
           return this;
         }
 
-        private java.util.List<chpg.io.support.GraphSerialization.Attribute> attribute_ =
+        private java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> attribute_ =
           java.util.Collections.emptyList();
         private void ensureAttributeIsMutable() {
           if (!((bitField0_ & 0x00000004) != 0)) {
-            attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Attribute>(attribute_);
+            attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedAttribute>(attribute_);
             bitField0_ |= 0x00000004;
            }
         }
 
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Attribute, chpg.io.support.GraphSerialization.Attribute.Builder, chpg.io.support.GraphSerialization.AttributeOrBuilder> attributeBuilder_;
+            chpg.io.support.GraphSerialization.SerializedAttribute, chpg.io.support.GraphSerialization.SerializedAttribute.Builder, chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> attributeBuilder_;
 
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Attribute> getAttributeList() {
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> getAttributeList() {
           if (attributeBuilder_ == null) {
             return java.util.Collections.unmodifiableList(attribute_);
           } else {
@@ -3929,7 +3929,7 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public int getAttributeCount() {
           if (attributeBuilder_ == null) {
@@ -3939,9 +3939,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute getAttribute(int index) {
+        public chpg.io.support.GraphSerialization.SerializedAttribute getAttribute(int index) {
           if (attributeBuilder_ == null) {
             return attribute_.get(index);
           } else {
@@ -3949,10 +3949,10 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder setAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute value) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute value) {
           if (attributeBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -3966,10 +3966,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder setAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute.Builder builderForValue) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             attribute_.set(index, builderForValue.build());
@@ -3980,9 +3980,9 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public Builder addAttribute(chpg.io.support.GraphSerialization.Attribute value) {
+        public Builder addAttribute(chpg.io.support.GraphSerialization.SerializedAttribute value) {
           if (attributeBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -3996,10 +3996,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder addAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute value) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute value) {
           if (attributeBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -4013,10 +4013,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder addAttribute(
-            chpg.io.support.GraphSerialization.Attribute.Builder builderForValue) {
+            chpg.io.support.GraphSerialization.SerializedAttribute.Builder builderForValue) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             attribute_.add(builderForValue.build());
@@ -4027,10 +4027,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder addAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute.Builder builderForValue) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             attribute_.add(index, builderForValue.build());
@@ -4041,10 +4041,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder addAllAttribute(
-            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Attribute> values) {
+            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedAttribute> values) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -4056,7 +4056,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder clearAttribute() {
           if (attributeBuilder_ == null) {
@@ -4069,7 +4069,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
         public Builder removeAttribute(int index) {
           if (attributeBuilder_ == null) {
@@ -4082,16 +4082,16 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute.Builder getAttributeBuilder(
+        public chpg.io.support.GraphSerialization.SerializedAttribute.Builder getAttributeBuilder(
             int index) {
           return getAttributeFieldBuilder().getBuilder(index);
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public chpg.io.support.GraphSerialization.AttributeOrBuilder getAttributeOrBuilder(
+        public chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder getAttributeOrBuilder(
             int index) {
           if (attributeBuilder_ == null) {
             return attribute_.get(index);  } else {
@@ -4099,9 +4099,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public java.util.List<? extends chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+        public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
              getAttributeOrBuilderList() {
           if (attributeBuilder_ != null) {
             return attributeBuilder_.getMessageOrBuilderList();
@@ -4110,33 +4110,33 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute.Builder addAttributeBuilder() {
+        public chpg.io.support.GraphSerialization.SerializedAttribute.Builder addAttributeBuilder() {
           return getAttributeFieldBuilder().addBuilder(
-              chpg.io.support.GraphSerialization.Attribute.getDefaultInstance());
+              chpg.io.support.GraphSerialization.SerializedAttribute.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute.Builder addAttributeBuilder(
+        public chpg.io.support.GraphSerialization.SerializedAttribute.Builder addAttributeBuilder(
             int index) {
           return getAttributeFieldBuilder().addBuilder(
-              index, chpg.io.support.GraphSerialization.Attribute.getDefaultInstance());
+              index, chpg.io.support.GraphSerialization.SerializedAttribute.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 3;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 3;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Attribute.Builder> 
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute.Builder> 
              getAttributeBuilderList() {
           return getAttributeFieldBuilder().getBuilderList();
         }
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Attribute, chpg.io.support.GraphSerialization.Attribute.Builder, chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+            chpg.io.support.GraphSerialization.SerializedAttribute, chpg.io.support.GraphSerialization.SerializedAttribute.Builder, chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
             getAttributeFieldBuilder() {
           if (attributeBuilder_ == null) {
             attributeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                chpg.io.support.GraphSerialization.Attribute, chpg.io.support.GraphSerialization.Attribute.Builder, chpg.io.support.GraphSerialization.AttributeOrBuilder>(
+                chpg.io.support.GraphSerialization.SerializedAttribute, chpg.io.support.GraphSerialization.SerializedAttribute.Builder, chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder>(
                     attribute_,
                     ((bitField0_ & 0x00000004) != 0),
                     getParentForChildren(),
@@ -4146,22 +4146,22 @@ public final class GraphSerialization {
           return attributeBuilder_;
         }
 
-        private java.util.List<chpg.io.support.GraphSerialization.Tag> tag_ =
+        private java.util.List<chpg.io.support.GraphSerialization.SerializedTag> tag_ =
           java.util.Collections.emptyList();
         private void ensureTagIsMutable() {
           if (!((bitField0_ & 0x00000008) != 0)) {
-            tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Tag>(tag_);
+            tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedTag>(tag_);
             bitField0_ |= 0x00000008;
            }
         }
 
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Tag, chpg.io.support.GraphSerialization.Tag.Builder, chpg.io.support.GraphSerialization.TagOrBuilder> tagBuilder_;
+            chpg.io.support.GraphSerialization.SerializedTag, chpg.io.support.GraphSerialization.SerializedTag.Builder, chpg.io.support.GraphSerialization.SerializedTagOrBuilder> tagBuilder_;
 
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Tag> getTagList() {
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedTag> getTagList() {
           if (tagBuilder_ == null) {
             return java.util.Collections.unmodifiableList(tag_);
           } else {
@@ -4169,7 +4169,7 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public int getTagCount() {
           if (tagBuilder_ == null) {
@@ -4179,9 +4179,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag getTag(int index) {
+        public chpg.io.support.GraphSerialization.SerializedTag getTag(int index) {
           if (tagBuilder_ == null) {
             return tag_.get(index);
           } else {
@@ -4189,10 +4189,10 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder setTag(
-            int index, chpg.io.support.GraphSerialization.Tag value) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag value) {
           if (tagBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -4206,10 +4206,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder setTag(
-            int index, chpg.io.support.GraphSerialization.Tag.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag.Builder builderForValue) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             tag_.set(index, builderForValue.build());
@@ -4220,9 +4220,9 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public Builder addTag(chpg.io.support.GraphSerialization.Tag value) {
+        public Builder addTag(chpg.io.support.GraphSerialization.SerializedTag value) {
           if (tagBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -4236,10 +4236,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder addTag(
-            int index, chpg.io.support.GraphSerialization.Tag value) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag value) {
           if (tagBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -4253,10 +4253,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder addTag(
-            chpg.io.support.GraphSerialization.Tag.Builder builderForValue) {
+            chpg.io.support.GraphSerialization.SerializedTag.Builder builderForValue) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             tag_.add(builderForValue.build());
@@ -4267,10 +4267,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder addTag(
-            int index, chpg.io.support.GraphSerialization.Tag.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag.Builder builderForValue) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             tag_.add(index, builderForValue.build());
@@ -4281,10 +4281,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder addAllTag(
-            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Tag> values) {
+            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedTag> values) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -4296,7 +4296,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder clearTag() {
           if (tagBuilder_ == null) {
@@ -4309,7 +4309,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
         public Builder removeTag(int index) {
           if (tagBuilder_ == null) {
@@ -4322,16 +4322,16 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag.Builder getTagBuilder(
+        public chpg.io.support.GraphSerialization.SerializedTag.Builder getTagBuilder(
             int index) {
           return getTagFieldBuilder().getBuilder(index);
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public chpg.io.support.GraphSerialization.TagOrBuilder getTagOrBuilder(
+        public chpg.io.support.GraphSerialization.SerializedTagOrBuilder getTagOrBuilder(
             int index) {
           if (tagBuilder_ == null) {
             return tag_.get(index);  } else {
@@ -4339,9 +4339,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public java.util.List<? extends chpg.io.support.GraphSerialization.TagOrBuilder> 
+        public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
              getTagOrBuilderList() {
           if (tagBuilder_ != null) {
             return tagBuilder_.getMessageOrBuilderList();
@@ -4350,33 +4350,33 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag.Builder addTagBuilder() {
+        public chpg.io.support.GraphSerialization.SerializedTag.Builder addTagBuilder() {
           return getTagFieldBuilder().addBuilder(
-              chpg.io.support.GraphSerialization.Tag.getDefaultInstance());
+              chpg.io.support.GraphSerialization.SerializedTag.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag.Builder addTagBuilder(
+        public chpg.io.support.GraphSerialization.SerializedTag.Builder addTagBuilder(
             int index) {
           return getTagFieldBuilder().addBuilder(
-              index, chpg.io.support.GraphSerialization.Tag.getDefaultInstance());
+              index, chpg.io.support.GraphSerialization.SerializedTag.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Tag tag = 4;</code>
+         * <code>repeated .chpg.SerializedTag tag = 4;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Tag.Builder> 
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedTag.Builder> 
              getTagBuilderList() {
           return getTagFieldBuilder().getBuilderList();
         }
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Tag, chpg.io.support.GraphSerialization.Tag.Builder, chpg.io.support.GraphSerialization.TagOrBuilder> 
+            chpg.io.support.GraphSerialization.SerializedTag, chpg.io.support.GraphSerialization.SerializedTag.Builder, chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
             getTagFieldBuilder() {
           if (tagBuilder_ == null) {
             tagBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                chpg.io.support.GraphSerialization.Tag, chpg.io.support.GraphSerialization.Tag.Builder, chpg.io.support.GraphSerialization.TagOrBuilder>(
+                chpg.io.support.GraphSerialization.SerializedTag, chpg.io.support.GraphSerialization.SerializedTag.Builder, chpg.io.support.GraphSerialization.SerializedTagOrBuilder>(
                     tag_,
                     ((bitField0_ & 0x00000008) != 0),
                     getParentForChildren(),
@@ -4398,48 +4398,48 @@ public final class GraphSerialization {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:chpg.Graph.Node)
+        // @@protoc_insertion_point(builder_scope:chpg.SerializedGraph.SerializedNode)
       }
 
-      // @@protoc_insertion_point(class_scope:chpg.Graph.Node)
-      private static final chpg.io.support.GraphSerialization.Graph.Node DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:chpg.SerializedGraph.SerializedNode)
+      private static final chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Graph.Node();
+        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode();
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.Node getDefaultInstance() {
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated public static final com.google.protobuf.Parser<Node>
-          PARSER = new com.google.protobuf.AbstractParser<Node>() {
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedNode>
+          PARSER = new com.google.protobuf.AbstractParser<SerializedNode>() {
         @java.lang.Override
-        public Node parsePartialFrom(
+        public SerializedNode parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Node(input, extensionRegistry);
+          return new SerializedNode(input, extensionRegistry);
         }
       };
 
-      public static com.google.protobuf.Parser<Node> parser() {
+      public static com.google.protobuf.Parser<SerializedNode> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<Node> getParserForType() {
+      public com.google.protobuf.Parser<SerializedNode> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph.Node getDefaultInstanceForType() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
-    public interface EdgeOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:chpg.Graph.Edge)
+    public interface SerializedEdgeOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:chpg.SerializedGraph.SerializedEdge)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -4484,66 +4484,66 @@ public final class GraphSerialization {
           getNameBytes();
 
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      java.util.List<chpg.io.support.GraphSerialization.Attribute> 
+      java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> 
           getAttributeList();
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      chpg.io.support.GraphSerialization.Attribute getAttribute(int index);
+      chpg.io.support.GraphSerialization.SerializedAttribute getAttribute(int index);
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
       int getAttributeCount();
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      java.util.List<? extends chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+      java.util.List<? extends chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
           getAttributeOrBuilderList();
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      chpg.io.support.GraphSerialization.AttributeOrBuilder getAttributeOrBuilder(
+      chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder getAttributeOrBuilder(
           int index);
 
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      java.util.List<chpg.io.support.GraphSerialization.Tag> 
+      java.util.List<chpg.io.support.GraphSerialization.SerializedTag> 
           getTagList();
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      chpg.io.support.GraphSerialization.Tag getTag(int index);
+      chpg.io.support.GraphSerialization.SerializedTag getTag(int index);
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
       int getTagCount();
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      java.util.List<? extends chpg.io.support.GraphSerialization.TagOrBuilder> 
+      java.util.List<? extends chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
           getTagOrBuilderList();
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      chpg.io.support.GraphSerialization.TagOrBuilder getTagOrBuilder(
+      chpg.io.support.GraphSerialization.SerializedTagOrBuilder getTagOrBuilder(
           int index);
     }
     /**
-     * Protobuf type {@code chpg.Graph.Edge}
+     * Protobuf type {@code chpg.SerializedGraph.SerializedEdge}
      */
-    public  static final class Edge extends
+    public  static final class SerializedEdge extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:chpg.Graph.Edge)
-        EdgeOrBuilder {
+        // @@protoc_insertion_point(message_implements:chpg.SerializedGraph.SerializedEdge)
+        SerializedEdgeOrBuilder {
     private static final long serialVersionUID = 0L;
-      // Use Edge.newBuilder() to construct.
-      private Edge(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // Use SerializedEdge.newBuilder() to construct.
+      private SerializedEdge(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-      private Edge() {
+      private SerializedEdge() {
         name_ = "";
         attribute_ = java.util.Collections.emptyList();
         tag_ = java.util.Collections.emptyList();
@@ -4553,7 +4553,7 @@ public final class GraphSerialization {
       @SuppressWarnings({"unused"})
       protected java.lang.Object newInstance(
           UnusedPrivateParameter unused) {
-        return new Edge();
+        return new SerializedEdge();
       }
 
       @java.lang.Override
@@ -4561,7 +4561,7 @@ public final class GraphSerialization {
       getUnknownFields() {
         return this.unknownFields;
       }
-      private Edge(
+      private SerializedEdge(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4603,20 +4603,20 @@ public final class GraphSerialization {
               }
               case 42: {
                 if (!((mutable_bitField0_ & 0x00000010) != 0)) {
-                  attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Attribute>();
+                  attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedAttribute>();
                   mutable_bitField0_ |= 0x00000010;
                 }
                 attribute_.add(
-                    input.readMessage(chpg.io.support.GraphSerialization.Attribute.PARSER, extensionRegistry));
+                    input.readMessage(chpg.io.support.GraphSerialization.SerializedAttribute.PARSER, extensionRegistry));
                 break;
               }
               case 50: {
                 if (!((mutable_bitField0_ & 0x00000020) != 0)) {
-                  tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Tag>();
+                  tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedTag>();
                   mutable_bitField0_ |= 0x00000020;
                 }
                 tag_.add(
-                    input.readMessage(chpg.io.support.GraphSerialization.Tag.PARSER, extensionRegistry));
+                    input.readMessage(chpg.io.support.GraphSerialization.SerializedTag.PARSER, extensionRegistry));
                 break;
               }
               default: {
@@ -4646,15 +4646,15 @@ public final class GraphSerialization {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Edge_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedEdge_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Edge_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedEdge_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Graph.Edge.class, chpg.io.support.GraphSerialization.Graph.Edge.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder.class);
       }
 
       private int bitField0_;
@@ -4746,71 +4746,71 @@ public final class GraphSerialization {
       }
 
       public static final int ATTRIBUTE_FIELD_NUMBER = 5;
-      private java.util.List<chpg.io.support.GraphSerialization.Attribute> attribute_;
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> attribute_;
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Attribute> getAttributeList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> getAttributeList() {
         return attribute_;
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
           getAttributeOrBuilderList() {
         return attribute_;
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
       public int getAttributeCount() {
         return attribute_.size();
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      public chpg.io.support.GraphSerialization.Attribute getAttribute(int index) {
+      public chpg.io.support.GraphSerialization.SerializedAttribute getAttribute(int index) {
         return attribute_.get(index);
       }
       /**
-       * <code>repeated .chpg.Attribute attribute = 5;</code>
+       * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
        */
-      public chpg.io.support.GraphSerialization.AttributeOrBuilder getAttributeOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder getAttributeOrBuilder(
           int index) {
         return attribute_.get(index);
       }
 
       public static final int TAG_FIELD_NUMBER = 6;
-      private java.util.List<chpg.io.support.GraphSerialization.Tag> tag_;
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedTag> tag_;
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Tag> getTagList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedTag> getTagList() {
         return tag_;
       }
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.TagOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
           getTagOrBuilderList() {
         return tag_;
       }
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
       public int getTagCount() {
         return tag_.size();
       }
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      public chpg.io.support.GraphSerialization.Tag getTag(int index) {
+      public chpg.io.support.GraphSerialization.SerializedTag getTag(int index) {
         return tag_.get(index);
       }
       /**
-       * <code>repeated .chpg.Tag tag = 6;</code>
+       * <code>repeated .chpg.SerializedTag tag = 6;</code>
        */
-      public chpg.io.support.GraphSerialization.TagOrBuilder getTagOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedTagOrBuilder getTagOrBuilder(
           int index) {
         return tag_.get(index);
       }
@@ -4913,10 +4913,10 @@ public final class GraphSerialization {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof chpg.io.support.GraphSerialization.Graph.Edge)) {
+        if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge)) {
           return super.equals(obj);
         }
-        chpg.io.support.GraphSerialization.Graph.Edge other = (chpg.io.support.GraphSerialization.Graph.Edge) obj;
+        chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge other = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge) obj;
 
         if (hasAddress() != other.hasAddress()) return false;
         if (hasAddress()) {
@@ -4982,69 +4982,69 @@ public final class GraphSerialization {
         return hash;
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(byte[] data)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseDelimitedFrom(java.io.InputStream input)
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseDelimitedFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static chpg.io.support.GraphSerialization.Graph.Edge parseFrom(
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -5057,7 +5057,7 @@ public final class GraphSerialization {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(chpg.io.support.GraphSerialization.Graph.Edge prototype) {
+      public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -5073,26 +5073,26 @@ public final class GraphSerialization {
         return builder;
       }
       /**
-       * Protobuf type {@code chpg.Graph.Edge}
+       * Protobuf type {@code chpg.SerializedGraph.SerializedEdge}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:chpg.Graph.Edge)
-          chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder {
+          // @@protoc_insertion_point(builder_implements:chpg.SerializedGraph.SerializedEdge)
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Edge_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedEdge_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Edge_fieldAccessorTable
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedEdge_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  chpg.io.support.GraphSerialization.Graph.Edge.class, chpg.io.support.GraphSerialization.Graph.Edge.Builder.class);
+                  chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.class, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder.class);
         }
 
-        // Construct using chpg.io.support.GraphSerialization.Graph.Edge.newBuilder()
+        // Construct using chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -5138,17 +5138,17 @@ public final class GraphSerialization {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_Edge_descriptor;
+          return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_SerializedEdge_descriptor;
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.Edge getDefaultInstanceForType() {
-          return chpg.io.support.GraphSerialization.Graph.Edge.getDefaultInstance();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge getDefaultInstanceForType() {
+          return chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.getDefaultInstance();
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.Edge build() {
-          chpg.io.support.GraphSerialization.Graph.Edge result = buildPartial();
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge build() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -5156,8 +5156,8 @@ public final class GraphSerialization {
         }
 
         @java.lang.Override
-        public chpg.io.support.GraphSerialization.Graph.Edge buildPartial() {
-          chpg.io.support.GraphSerialization.Graph.Edge result = new chpg.io.support.GraphSerialization.Graph.Edge(this);
+        public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge buildPartial() {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge result = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -5233,16 +5233,16 @@ public final class GraphSerialization {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof chpg.io.support.GraphSerialization.Graph.Edge) {
-            return mergeFrom((chpg.io.support.GraphSerialization.Graph.Edge)other);
+          if (other instanceof chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge) {
+            return mergeFrom((chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph.Edge other) {
-          if (other == chpg.io.support.GraphSerialization.Graph.Edge.getDefaultInstance()) return this;
+        public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge other) {
+          if (other == chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.getDefaultInstance()) return this;
           if (other.hasAddress()) {
             setAddress(other.getAddress());
           }
@@ -5343,11 +5343,11 @@ public final class GraphSerialization {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          chpg.io.support.GraphSerialization.Graph.Edge parsedMessage = null;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (chpg.io.support.GraphSerialization.Graph.Edge) e.getUnfinishedMessage();
+            parsedMessage = (chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -5530,22 +5530,22 @@ public final class GraphSerialization {
           return this;
         }
 
-        private java.util.List<chpg.io.support.GraphSerialization.Attribute> attribute_ =
+        private java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> attribute_ =
           java.util.Collections.emptyList();
         private void ensureAttributeIsMutable() {
           if (!((bitField0_ & 0x00000010) != 0)) {
-            attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Attribute>(attribute_);
+            attribute_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedAttribute>(attribute_);
             bitField0_ |= 0x00000010;
            }
         }
 
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Attribute, chpg.io.support.GraphSerialization.Attribute.Builder, chpg.io.support.GraphSerialization.AttributeOrBuilder> attributeBuilder_;
+            chpg.io.support.GraphSerialization.SerializedAttribute, chpg.io.support.GraphSerialization.SerializedAttribute.Builder, chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> attributeBuilder_;
 
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Attribute> getAttributeList() {
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute> getAttributeList() {
           if (attributeBuilder_ == null) {
             return java.util.Collections.unmodifiableList(attribute_);
           } else {
@@ -5553,7 +5553,7 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public int getAttributeCount() {
           if (attributeBuilder_ == null) {
@@ -5563,9 +5563,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute getAttribute(int index) {
+        public chpg.io.support.GraphSerialization.SerializedAttribute getAttribute(int index) {
           if (attributeBuilder_ == null) {
             return attribute_.get(index);
           } else {
@@ -5573,10 +5573,10 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder setAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute value) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute value) {
           if (attributeBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5590,10 +5590,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder setAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute.Builder builderForValue) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             attribute_.set(index, builderForValue.build());
@@ -5604,9 +5604,9 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public Builder addAttribute(chpg.io.support.GraphSerialization.Attribute value) {
+        public Builder addAttribute(chpg.io.support.GraphSerialization.SerializedAttribute value) {
           if (attributeBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5620,10 +5620,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder addAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute value) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute value) {
           if (attributeBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5637,10 +5637,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder addAttribute(
-            chpg.io.support.GraphSerialization.Attribute.Builder builderForValue) {
+            chpg.io.support.GraphSerialization.SerializedAttribute.Builder builderForValue) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             attribute_.add(builderForValue.build());
@@ -5651,10 +5651,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder addAttribute(
-            int index, chpg.io.support.GraphSerialization.Attribute.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedAttribute.Builder builderForValue) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             attribute_.add(index, builderForValue.build());
@@ -5665,10 +5665,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder addAllAttribute(
-            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Attribute> values) {
+            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedAttribute> values) {
           if (attributeBuilder_ == null) {
             ensureAttributeIsMutable();
             com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -5680,7 +5680,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder clearAttribute() {
           if (attributeBuilder_ == null) {
@@ -5693,7 +5693,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
         public Builder removeAttribute(int index) {
           if (attributeBuilder_ == null) {
@@ -5706,16 +5706,16 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute.Builder getAttributeBuilder(
+        public chpg.io.support.GraphSerialization.SerializedAttribute.Builder getAttributeBuilder(
             int index) {
           return getAttributeFieldBuilder().getBuilder(index);
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public chpg.io.support.GraphSerialization.AttributeOrBuilder getAttributeOrBuilder(
+        public chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder getAttributeOrBuilder(
             int index) {
           if (attributeBuilder_ == null) {
             return attribute_.get(index);  } else {
@@ -5723,9 +5723,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public java.util.List<? extends chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+        public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
              getAttributeOrBuilderList() {
           if (attributeBuilder_ != null) {
             return attributeBuilder_.getMessageOrBuilderList();
@@ -5734,33 +5734,33 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute.Builder addAttributeBuilder() {
+        public chpg.io.support.GraphSerialization.SerializedAttribute.Builder addAttributeBuilder() {
           return getAttributeFieldBuilder().addBuilder(
-              chpg.io.support.GraphSerialization.Attribute.getDefaultInstance());
+              chpg.io.support.GraphSerialization.SerializedAttribute.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public chpg.io.support.GraphSerialization.Attribute.Builder addAttributeBuilder(
+        public chpg.io.support.GraphSerialization.SerializedAttribute.Builder addAttributeBuilder(
             int index) {
           return getAttributeFieldBuilder().addBuilder(
-              index, chpg.io.support.GraphSerialization.Attribute.getDefaultInstance());
+              index, chpg.io.support.GraphSerialization.SerializedAttribute.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Attribute attribute = 5;</code>
+         * <code>repeated .chpg.SerializedAttribute attribute = 5;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Attribute.Builder> 
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedAttribute.Builder> 
              getAttributeBuilderList() {
           return getAttributeFieldBuilder().getBuilderList();
         }
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Attribute, chpg.io.support.GraphSerialization.Attribute.Builder, chpg.io.support.GraphSerialization.AttributeOrBuilder> 
+            chpg.io.support.GraphSerialization.SerializedAttribute, chpg.io.support.GraphSerialization.SerializedAttribute.Builder, chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder> 
             getAttributeFieldBuilder() {
           if (attributeBuilder_ == null) {
             attributeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                chpg.io.support.GraphSerialization.Attribute, chpg.io.support.GraphSerialization.Attribute.Builder, chpg.io.support.GraphSerialization.AttributeOrBuilder>(
+                chpg.io.support.GraphSerialization.SerializedAttribute, chpg.io.support.GraphSerialization.SerializedAttribute.Builder, chpg.io.support.GraphSerialization.SerializedAttributeOrBuilder>(
                     attribute_,
                     ((bitField0_ & 0x00000010) != 0),
                     getParentForChildren(),
@@ -5770,22 +5770,22 @@ public final class GraphSerialization {
           return attributeBuilder_;
         }
 
-        private java.util.List<chpg.io.support.GraphSerialization.Tag> tag_ =
+        private java.util.List<chpg.io.support.GraphSerialization.SerializedTag> tag_ =
           java.util.Collections.emptyList();
         private void ensureTagIsMutable() {
           if (!((bitField0_ & 0x00000020) != 0)) {
-            tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Tag>(tag_);
+            tag_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedTag>(tag_);
             bitField0_ |= 0x00000020;
            }
         }
 
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Tag, chpg.io.support.GraphSerialization.Tag.Builder, chpg.io.support.GraphSerialization.TagOrBuilder> tagBuilder_;
+            chpg.io.support.GraphSerialization.SerializedTag, chpg.io.support.GraphSerialization.SerializedTag.Builder, chpg.io.support.GraphSerialization.SerializedTagOrBuilder> tagBuilder_;
 
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Tag> getTagList() {
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedTag> getTagList() {
           if (tagBuilder_ == null) {
             return java.util.Collections.unmodifiableList(tag_);
           } else {
@@ -5793,7 +5793,7 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public int getTagCount() {
           if (tagBuilder_ == null) {
@@ -5803,9 +5803,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag getTag(int index) {
+        public chpg.io.support.GraphSerialization.SerializedTag getTag(int index) {
           if (tagBuilder_ == null) {
             return tag_.get(index);
           } else {
@@ -5813,10 +5813,10 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder setTag(
-            int index, chpg.io.support.GraphSerialization.Tag value) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag value) {
           if (tagBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5830,10 +5830,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder setTag(
-            int index, chpg.io.support.GraphSerialization.Tag.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag.Builder builderForValue) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             tag_.set(index, builderForValue.build());
@@ -5844,9 +5844,9 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public Builder addTag(chpg.io.support.GraphSerialization.Tag value) {
+        public Builder addTag(chpg.io.support.GraphSerialization.SerializedTag value) {
           if (tagBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5860,10 +5860,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder addTag(
-            int index, chpg.io.support.GraphSerialization.Tag value) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag value) {
           if (tagBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5877,10 +5877,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder addTag(
-            chpg.io.support.GraphSerialization.Tag.Builder builderForValue) {
+            chpg.io.support.GraphSerialization.SerializedTag.Builder builderForValue) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             tag_.add(builderForValue.build());
@@ -5891,10 +5891,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder addTag(
-            int index, chpg.io.support.GraphSerialization.Tag.Builder builderForValue) {
+            int index, chpg.io.support.GraphSerialization.SerializedTag.Builder builderForValue) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             tag_.add(index, builderForValue.build());
@@ -5905,10 +5905,10 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder addAllTag(
-            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Tag> values) {
+            java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedTag> values) {
           if (tagBuilder_ == null) {
             ensureTagIsMutable();
             com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -5920,7 +5920,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder clearTag() {
           if (tagBuilder_ == null) {
@@ -5933,7 +5933,7 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
         public Builder removeTag(int index) {
           if (tagBuilder_ == null) {
@@ -5946,16 +5946,16 @@ public final class GraphSerialization {
           return this;
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag.Builder getTagBuilder(
+        public chpg.io.support.GraphSerialization.SerializedTag.Builder getTagBuilder(
             int index) {
           return getTagFieldBuilder().getBuilder(index);
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public chpg.io.support.GraphSerialization.TagOrBuilder getTagOrBuilder(
+        public chpg.io.support.GraphSerialization.SerializedTagOrBuilder getTagOrBuilder(
             int index) {
           if (tagBuilder_ == null) {
             return tag_.get(index);  } else {
@@ -5963,9 +5963,9 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public java.util.List<? extends chpg.io.support.GraphSerialization.TagOrBuilder> 
+        public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
              getTagOrBuilderList() {
           if (tagBuilder_ != null) {
             return tagBuilder_.getMessageOrBuilderList();
@@ -5974,33 +5974,33 @@ public final class GraphSerialization {
           }
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag.Builder addTagBuilder() {
+        public chpg.io.support.GraphSerialization.SerializedTag.Builder addTagBuilder() {
           return getTagFieldBuilder().addBuilder(
-              chpg.io.support.GraphSerialization.Tag.getDefaultInstance());
+              chpg.io.support.GraphSerialization.SerializedTag.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public chpg.io.support.GraphSerialization.Tag.Builder addTagBuilder(
+        public chpg.io.support.GraphSerialization.SerializedTag.Builder addTagBuilder(
             int index) {
           return getTagFieldBuilder().addBuilder(
-              index, chpg.io.support.GraphSerialization.Tag.getDefaultInstance());
+              index, chpg.io.support.GraphSerialization.SerializedTag.getDefaultInstance());
         }
         /**
-         * <code>repeated .chpg.Tag tag = 6;</code>
+         * <code>repeated .chpg.SerializedTag tag = 6;</code>
          */
-        public java.util.List<chpg.io.support.GraphSerialization.Tag.Builder> 
+        public java.util.List<chpg.io.support.GraphSerialization.SerializedTag.Builder> 
              getTagBuilderList() {
           return getTagFieldBuilder().getBuilderList();
         }
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            chpg.io.support.GraphSerialization.Tag, chpg.io.support.GraphSerialization.Tag.Builder, chpg.io.support.GraphSerialization.TagOrBuilder> 
+            chpg.io.support.GraphSerialization.SerializedTag, chpg.io.support.GraphSerialization.SerializedTag.Builder, chpg.io.support.GraphSerialization.SerializedTagOrBuilder> 
             getTagFieldBuilder() {
           if (tagBuilder_ == null) {
             tagBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                chpg.io.support.GraphSerialization.Tag, chpg.io.support.GraphSerialization.Tag.Builder, chpg.io.support.GraphSerialization.TagOrBuilder>(
+                chpg.io.support.GraphSerialization.SerializedTag, chpg.io.support.GraphSerialization.SerializedTag.Builder, chpg.io.support.GraphSerialization.SerializedTagOrBuilder>(
                     tag_,
                     ((bitField0_ & 0x00000020) != 0),
                     getParentForChildren(),
@@ -6022,182 +6022,182 @@ public final class GraphSerialization {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:chpg.Graph.Edge)
+        // @@protoc_insertion_point(builder_scope:chpg.SerializedGraph.SerializedEdge)
       }
 
-      // @@protoc_insertion_point(class_scope:chpg.Graph.Edge)
-      private static final chpg.io.support.GraphSerialization.Graph.Edge DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:chpg.SerializedGraph.SerializedEdge)
+      private static final chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Graph.Edge();
+        DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge();
       }
 
-      public static chpg.io.support.GraphSerialization.Graph.Edge getDefaultInstance() {
+      public static chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated public static final com.google.protobuf.Parser<Edge>
-          PARSER = new com.google.protobuf.AbstractParser<Edge>() {
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedEdge>
+          PARSER = new com.google.protobuf.AbstractParser<SerializedEdge>() {
         @java.lang.Override
-        public Edge parsePartialFrom(
+        public SerializedEdge parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Edge(input, extensionRegistry);
+          return new SerializedEdge(input, extensionRegistry);
         }
       };
 
-      public static com.google.protobuf.Parser<Edge> parser() {
+      public static com.google.protobuf.Parser<SerializedEdge> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<Edge> getParserForType() {
+      public com.google.protobuf.Parser<SerializedEdge> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph.Edge getDefaultInstanceForType() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public static final int SCHEMANODE_FIELD_NUMBER = 1;
-    private java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaNode> schemaNode_;
+    private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode> schemaNode_;
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    public java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaNode> getSchemaNodeList() {
+    public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode> getSchemaNodeList() {
       return schemaNode_;
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder> 
+    public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder> 
         getSchemaNodeOrBuilderList() {
       return schemaNode_;
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
     public int getSchemaNodeCount() {
       return schemaNode_.size();
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.SchemaNode getSchemaNode(int index) {
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode getSchemaNode(int index) {
       return schemaNode_.get(index);
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder getSchemaNodeOrBuilder(
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder getSchemaNodeOrBuilder(
         int index) {
       return schemaNode_.get(index);
     }
 
     public static final int SCHEMAEDGE_FIELD_NUMBER = 2;
-    private java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaEdge> schemaEdge_;
+    private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge> schemaEdge_;
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    public java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaEdge> getSchemaEdgeList() {
+    public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge> getSchemaEdgeList() {
       return schemaEdge_;
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder> 
+    public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder> 
         getSchemaEdgeOrBuilderList() {
       return schemaEdge_;
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
     public int getSchemaEdgeCount() {
       return schemaEdge_.size();
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.SchemaEdge getSchemaEdge(int index) {
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge getSchemaEdge(int index) {
       return schemaEdge_.get(index);
     }
     /**
-     * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder getSchemaEdgeOrBuilder(
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder getSchemaEdgeOrBuilder(
         int index) {
       return schemaEdge_.get(index);
     }
 
     public static final int NODE_FIELD_NUMBER = 3;
-    private java.util.List<chpg.io.support.GraphSerialization.Graph.Node> node_;
+    private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode> node_;
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    public java.util.List<chpg.io.support.GraphSerialization.Graph.Node> getNodeList() {
+    public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode> getNodeList() {
       return node_;
     }
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.NodeOrBuilder> 
+    public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder> 
         getNodeOrBuilderList() {
       return node_;
     }
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
     public int getNodeCount() {
       return node_.size();
     }
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.Node getNode(int index) {
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode getNode(int index) {
       return node_.get(index);
     }
     /**
-     * <code>repeated .chpg.Graph.Node node = 3;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.NodeOrBuilder getNodeOrBuilder(
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder getNodeOrBuilder(
         int index) {
       return node_.get(index);
     }
 
     public static final int EDGE_FIELD_NUMBER = 4;
-    private java.util.List<chpg.io.support.GraphSerialization.Graph.Edge> edge_;
+    private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge> edge_;
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    public java.util.List<chpg.io.support.GraphSerialization.Graph.Edge> getEdgeList() {
+    public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge> getEdgeList() {
       return edge_;
     }
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder> 
+    public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder> 
         getEdgeOrBuilderList() {
       return edge_;
     }
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
     public int getEdgeCount() {
       return edge_.size();
     }
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.Edge getEdge(int index) {
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge getEdge(int index) {
       return edge_.get(index);
     }
     /**
-     * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+     * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
      */
-    public chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder getEdgeOrBuilder(
+    public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder getEdgeOrBuilder(
         int index) {
       return edge_.get(index);
     }
@@ -6287,10 +6287,10 @@ public final class GraphSerialization {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof chpg.io.support.GraphSerialization.Graph)) {
+      if (!(obj instanceof chpg.io.support.GraphSerialization.SerializedGraph)) {
         return super.equals(obj);
       }
-      chpg.io.support.GraphSerialization.Graph other = (chpg.io.support.GraphSerialization.Graph) obj;
+      chpg.io.support.GraphSerialization.SerializedGraph other = (chpg.io.support.GraphSerialization.SerializedGraph) obj;
 
       if (!getSchemaNodeList()
           .equals(other.getSchemaNodeList())) return false;
@@ -6332,69 +6332,69 @@ public final class GraphSerialization {
       return hash;
     }
 
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(byte[] data)
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(java.io.InputStream input)
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseDelimitedFrom(java.io.InputStream input)
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseDelimitedFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static chpg.io.support.GraphSerialization.Graph parseFrom(
+    public static chpg.io.support.GraphSerialization.SerializedGraph parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6407,7 +6407,7 @@ public final class GraphSerialization {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(chpg.io.support.GraphSerialization.Graph prototype) {
+    public static Builder newBuilder(chpg.io.support.GraphSerialization.SerializedGraph prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6423,26 +6423,26 @@ public final class GraphSerialization {
       return builder;
     }
     /**
-     * Protobuf type {@code chpg.Graph}
+     * Protobuf type {@code chpg.SerializedGraph}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:chpg.Graph)
-        chpg.io.support.GraphSerialization.GraphOrBuilder {
+        // @@protoc_insertion_point(builder_implements:chpg.SerializedGraph)
+        chpg.io.support.GraphSerialization.SerializedGraphOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_fieldAccessorTable
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                chpg.io.support.GraphSerialization.Graph.class, chpg.io.support.GraphSerialization.Graph.Builder.class);
+                chpg.io.support.GraphSerialization.SerializedGraph.class, chpg.io.support.GraphSerialization.SerializedGraph.Builder.class);
       }
 
-      // Construct using chpg.io.support.GraphSerialization.Graph.newBuilder()
+      // Construct using chpg.io.support.GraphSerialization.SerializedGraph.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6494,17 +6494,17 @@ public final class GraphSerialization {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return chpg.io.support.GraphSerialization.internal_static_chpg_Graph_descriptor;
+        return chpg.io.support.GraphSerialization.internal_static_chpg_SerializedGraph_descriptor;
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph getDefaultInstanceForType() {
-        return chpg.io.support.GraphSerialization.Graph.getDefaultInstance();
+      public chpg.io.support.GraphSerialization.SerializedGraph getDefaultInstanceForType() {
+        return chpg.io.support.GraphSerialization.SerializedGraph.getDefaultInstance();
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph build() {
-        chpg.io.support.GraphSerialization.Graph result = buildPartial();
+      public chpg.io.support.GraphSerialization.SerializedGraph build() {
+        chpg.io.support.GraphSerialization.SerializedGraph result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6512,8 +6512,8 @@ public final class GraphSerialization {
       }
 
       @java.lang.Override
-      public chpg.io.support.GraphSerialization.Graph buildPartial() {
-        chpg.io.support.GraphSerialization.Graph result = new chpg.io.support.GraphSerialization.Graph(this);
+      public chpg.io.support.GraphSerialization.SerializedGraph buildPartial() {
+        chpg.io.support.GraphSerialization.SerializedGraph result = new chpg.io.support.GraphSerialization.SerializedGraph(this);
         int from_bitField0_ = bitField0_;
         if (schemaNodeBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -6589,16 +6589,16 @@ public final class GraphSerialization {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof chpg.io.support.GraphSerialization.Graph) {
-          return mergeFrom((chpg.io.support.GraphSerialization.Graph)other);
+        if (other instanceof chpg.io.support.GraphSerialization.SerializedGraph) {
+          return mergeFrom((chpg.io.support.GraphSerialization.SerializedGraph)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(chpg.io.support.GraphSerialization.Graph other) {
-        if (other == chpg.io.support.GraphSerialization.Graph.getDefaultInstance()) return this;
+      public Builder mergeFrom(chpg.io.support.GraphSerialization.SerializedGraph other) {
+        if (other == chpg.io.support.GraphSerialization.SerializedGraph.getDefaultInstance()) return this;
         if (schemaNodeBuilder_ == null) {
           if (!other.schemaNode_.isEmpty()) {
             if (schemaNode_.isEmpty()) {
@@ -6738,11 +6738,11 @@ public final class GraphSerialization {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        chpg.io.support.GraphSerialization.Graph parsedMessage = null;
+        chpg.io.support.GraphSerialization.SerializedGraph parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (chpg.io.support.GraphSerialization.Graph) e.getUnfinishedMessage();
+          parsedMessage = (chpg.io.support.GraphSerialization.SerializedGraph) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6753,22 +6753,22 @@ public final class GraphSerialization {
       }
       private int bitField0_;
 
-      private java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaNode> schemaNode_ =
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode> schemaNode_ =
         java.util.Collections.emptyList();
       private void ensureSchemaNodeIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          schemaNode_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.SchemaNode>(schemaNode_);
+          schemaNode_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode>(schemaNode_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.SchemaNode, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder, chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder> schemaNodeBuilder_;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder> schemaNodeBuilder_;
 
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaNode> getSchemaNodeList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode> getSchemaNodeList() {
         if (schemaNodeBuilder_ == null) {
           return java.util.Collections.unmodifiableList(schemaNode_);
         } else {
@@ -6776,7 +6776,7 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public int getSchemaNodeCount() {
         if (schemaNodeBuilder_ == null) {
@@ -6786,9 +6786,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaNode getSchemaNode(int index) {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode getSchemaNode(int index) {
         if (schemaNodeBuilder_ == null) {
           return schemaNode_.get(index);
         } else {
@@ -6796,10 +6796,10 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder setSchemaNode(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaNode value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode value) {
         if (schemaNodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6813,10 +6813,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder setSchemaNode(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder builderForValue) {
         if (schemaNodeBuilder_ == null) {
           ensureSchemaNodeIsMutable();
           schemaNode_.set(index, builderForValue.build());
@@ -6827,9 +6827,9 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public Builder addSchemaNode(chpg.io.support.GraphSerialization.Graph.SchemaNode value) {
+      public Builder addSchemaNode(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode value) {
         if (schemaNodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6843,10 +6843,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder addSchemaNode(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaNode value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode value) {
         if (schemaNodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6860,10 +6860,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder addSchemaNode(
-          chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder builderForValue) {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder builderForValue) {
         if (schemaNodeBuilder_ == null) {
           ensureSchemaNodeIsMutable();
           schemaNode_.add(builderForValue.build());
@@ -6874,10 +6874,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder addSchemaNode(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder builderForValue) {
         if (schemaNodeBuilder_ == null) {
           ensureSchemaNodeIsMutable();
           schemaNode_.add(index, builderForValue.build());
@@ -6888,10 +6888,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder addAllSchemaNode(
-          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Graph.SchemaNode> values) {
+          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode> values) {
         if (schemaNodeBuilder_ == null) {
           ensureSchemaNodeIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -6903,7 +6903,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder clearSchemaNode() {
         if (schemaNodeBuilder_ == null) {
@@ -6916,7 +6916,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
       public Builder removeSchemaNode(int index) {
         if (schemaNodeBuilder_ == null) {
@@ -6929,16 +6929,16 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder getSchemaNodeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder getSchemaNodeBuilder(
           int index) {
         return getSchemaNodeFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder getSchemaNodeOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder getSchemaNodeOrBuilder(
           int index) {
         if (schemaNodeBuilder_ == null) {
           return schemaNode_.get(index);  } else {
@@ -6946,9 +6946,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder> 
            getSchemaNodeOrBuilderList() {
         if (schemaNodeBuilder_ != null) {
           return schemaNodeBuilder_.getMessageOrBuilderList();
@@ -6957,33 +6957,33 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder addSchemaNodeBuilder() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder addSchemaNodeBuilder() {
         return getSchemaNodeFieldBuilder().addBuilder(
-            chpg.io.support.GraphSerialization.Graph.SchemaNode.getDefaultInstance());
+            chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder addSchemaNodeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder addSchemaNodeBuilder(
           int index) {
         return getSchemaNodeFieldBuilder().addBuilder(
-            index, chpg.io.support.GraphSerialization.Graph.SchemaNode.getDefaultInstance());
+            index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaNode schemaNode = 1;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaNode schemaNode = 1;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder> 
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder> 
            getSchemaNodeBuilderList() {
         return getSchemaNodeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.SchemaNode, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder, chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder> 
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder> 
           getSchemaNodeFieldBuilder() {
         if (schemaNodeBuilder_ == null) {
           schemaNodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              chpg.io.support.GraphSerialization.Graph.SchemaNode, chpg.io.support.GraphSerialization.Graph.SchemaNode.Builder, chpg.io.support.GraphSerialization.Graph.SchemaNodeOrBuilder>(
+              chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNode.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaNodeOrBuilder>(
                   schemaNode_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -6993,22 +6993,22 @@ public final class GraphSerialization {
         return schemaNodeBuilder_;
       }
 
-      private java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaEdge> schemaEdge_ =
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge> schemaEdge_ =
         java.util.Collections.emptyList();
       private void ensureSchemaEdgeIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          schemaEdge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.SchemaEdge>(schemaEdge_);
+          schemaEdge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge>(schemaEdge_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.SchemaEdge, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder, chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder> schemaEdgeBuilder_;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder> schemaEdgeBuilder_;
 
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaEdge> getSchemaEdgeList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge> getSchemaEdgeList() {
         if (schemaEdgeBuilder_ == null) {
           return java.util.Collections.unmodifiableList(schemaEdge_);
         } else {
@@ -7016,7 +7016,7 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public int getSchemaEdgeCount() {
         if (schemaEdgeBuilder_ == null) {
@@ -7026,9 +7026,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaEdge getSchemaEdge(int index) {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge getSchemaEdge(int index) {
         if (schemaEdgeBuilder_ == null) {
           return schemaEdge_.get(index);
         } else {
@@ -7036,10 +7036,10 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder setSchemaEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaEdge value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge value) {
         if (schemaEdgeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7053,10 +7053,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder setSchemaEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder builderForValue) {
         if (schemaEdgeBuilder_ == null) {
           ensureSchemaEdgeIsMutable();
           schemaEdge_.set(index, builderForValue.build());
@@ -7067,9 +7067,9 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public Builder addSchemaEdge(chpg.io.support.GraphSerialization.Graph.SchemaEdge value) {
+      public Builder addSchemaEdge(chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge value) {
         if (schemaEdgeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7083,10 +7083,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder addSchemaEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaEdge value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge value) {
         if (schemaEdgeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7100,10 +7100,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder addSchemaEdge(
-          chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder builderForValue) {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder builderForValue) {
         if (schemaEdgeBuilder_ == null) {
           ensureSchemaEdgeIsMutable();
           schemaEdge_.add(builderForValue.build());
@@ -7114,10 +7114,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder addSchemaEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder builderForValue) {
         if (schemaEdgeBuilder_ == null) {
           ensureSchemaEdgeIsMutable();
           schemaEdge_.add(index, builderForValue.build());
@@ -7128,10 +7128,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder addAllSchemaEdge(
-          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Graph.SchemaEdge> values) {
+          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge> values) {
         if (schemaEdgeBuilder_ == null) {
           ensureSchemaEdgeIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -7143,7 +7143,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder clearSchemaEdge() {
         if (schemaEdgeBuilder_ == null) {
@@ -7156,7 +7156,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
       public Builder removeSchemaEdge(int index) {
         if (schemaEdgeBuilder_ == null) {
@@ -7169,16 +7169,16 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder getSchemaEdgeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder getSchemaEdgeBuilder(
           int index) {
         return getSchemaEdgeFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder getSchemaEdgeOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder getSchemaEdgeOrBuilder(
           int index) {
         if (schemaEdgeBuilder_ == null) {
           return schemaEdge_.get(index);  } else {
@@ -7186,9 +7186,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder> 
            getSchemaEdgeOrBuilderList() {
         if (schemaEdgeBuilder_ != null) {
           return schemaEdgeBuilder_.getMessageOrBuilderList();
@@ -7197,33 +7197,33 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder addSchemaEdgeBuilder() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder addSchemaEdgeBuilder() {
         return getSchemaEdgeFieldBuilder().addBuilder(
-            chpg.io.support.GraphSerialization.Graph.SchemaEdge.getDefaultInstance());
+            chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder addSchemaEdgeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder addSchemaEdgeBuilder(
           int index) {
         return getSchemaEdgeFieldBuilder().addBuilder(
-            index, chpg.io.support.GraphSerialization.Graph.SchemaEdge.getDefaultInstance());
+            index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.SchemaEdge schemaEdge = 2;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedSchemaEdge schemaEdge = 2;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder> 
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder> 
            getSchemaEdgeBuilderList() {
         return getSchemaEdgeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.SchemaEdge, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder, chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder> 
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder> 
           getSchemaEdgeFieldBuilder() {
         if (schemaEdgeBuilder_ == null) {
           schemaEdgeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              chpg.io.support.GraphSerialization.Graph.SchemaEdge, chpg.io.support.GraphSerialization.Graph.SchemaEdge.Builder, chpg.io.support.GraphSerialization.Graph.SchemaEdgeOrBuilder>(
+              chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdge.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedSchemaEdgeOrBuilder>(
                   schemaEdge_,
                   ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
@@ -7233,22 +7233,22 @@ public final class GraphSerialization {
         return schemaEdgeBuilder_;
       }
 
-      private java.util.List<chpg.io.support.GraphSerialization.Graph.Node> node_ =
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode> node_ =
         java.util.Collections.emptyList();
       private void ensureNodeIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
-          node_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.Node>(node_);
+          node_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode>(node_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.Node, chpg.io.support.GraphSerialization.Graph.Node.Builder, chpg.io.support.GraphSerialization.Graph.NodeOrBuilder> nodeBuilder_;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder> nodeBuilder_;
 
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.Node> getNodeList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode> getNodeList() {
         if (nodeBuilder_ == null) {
           return java.util.Collections.unmodifiableList(node_);
         } else {
@@ -7256,7 +7256,7 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public int getNodeCount() {
         if (nodeBuilder_ == null) {
@@ -7266,9 +7266,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Node getNode(int index) {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode getNode(int index) {
         if (nodeBuilder_ == null) {
           return node_.get(index);
         } else {
@@ -7276,10 +7276,10 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder setNode(
-          int index, chpg.io.support.GraphSerialization.Graph.Node value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode value) {
         if (nodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7293,10 +7293,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder setNode(
-          int index, chpg.io.support.GraphSerialization.Graph.Node.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder builderForValue) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           node_.set(index, builderForValue.build());
@@ -7307,9 +7307,9 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public Builder addNode(chpg.io.support.GraphSerialization.Graph.Node value) {
+      public Builder addNode(chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode value) {
         if (nodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7323,10 +7323,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder addNode(
-          int index, chpg.io.support.GraphSerialization.Graph.Node value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode value) {
         if (nodeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7340,10 +7340,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder addNode(
-          chpg.io.support.GraphSerialization.Graph.Node.Builder builderForValue) {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder builderForValue) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           node_.add(builderForValue.build());
@@ -7354,10 +7354,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder addNode(
-          int index, chpg.io.support.GraphSerialization.Graph.Node.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder builderForValue) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           node_.add(index, builderForValue.build());
@@ -7368,10 +7368,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder addAllNode(
-          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Graph.Node> values) {
+          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode> values) {
         if (nodeBuilder_ == null) {
           ensureNodeIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -7383,7 +7383,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder clearNode() {
         if (nodeBuilder_ == null) {
@@ -7396,7 +7396,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
       public Builder removeNode(int index) {
         if (nodeBuilder_ == null) {
@@ -7409,16 +7409,16 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Node.Builder getNodeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder getNodeBuilder(
           int index) {
         return getNodeFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.NodeOrBuilder getNodeOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder getNodeOrBuilder(
           int index) {
         if (nodeBuilder_ == null) {
           return node_.get(index);  } else {
@@ -7426,9 +7426,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.NodeOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder> 
            getNodeOrBuilderList() {
         if (nodeBuilder_ != null) {
           return nodeBuilder_.getMessageOrBuilderList();
@@ -7437,33 +7437,33 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Node.Builder addNodeBuilder() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder addNodeBuilder() {
         return getNodeFieldBuilder().addBuilder(
-            chpg.io.support.GraphSerialization.Graph.Node.getDefaultInstance());
+            chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Node.Builder addNodeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder addNodeBuilder(
           int index) {
         return getNodeFieldBuilder().addBuilder(
-            index, chpg.io.support.GraphSerialization.Graph.Node.getDefaultInstance());
+            index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.Node node = 3;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedNode node = 3;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.Node.Builder> 
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder> 
            getNodeBuilderList() {
         return getNodeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.Node, chpg.io.support.GraphSerialization.Graph.Node.Builder, chpg.io.support.GraphSerialization.Graph.NodeOrBuilder> 
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder> 
           getNodeFieldBuilder() {
         if (nodeBuilder_ == null) {
           nodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              chpg.io.support.GraphSerialization.Graph.Node, chpg.io.support.GraphSerialization.Graph.Node.Builder, chpg.io.support.GraphSerialization.Graph.NodeOrBuilder>(
+              chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNode.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedNodeOrBuilder>(
                   node_,
                   ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
@@ -7473,22 +7473,22 @@ public final class GraphSerialization {
         return nodeBuilder_;
       }
 
-      private java.util.List<chpg.io.support.GraphSerialization.Graph.Edge> edge_ =
+      private java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge> edge_ =
         java.util.Collections.emptyList();
       private void ensureEdgeIsMutable() {
         if (!((bitField0_ & 0x00000008) != 0)) {
-          edge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.Graph.Edge>(edge_);
+          edge_ = new java.util.ArrayList<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge>(edge_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.Edge, chpg.io.support.GraphSerialization.Graph.Edge.Builder, chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder> edgeBuilder_;
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder> edgeBuilder_;
 
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.Edge> getEdgeList() {
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge> getEdgeList() {
         if (edgeBuilder_ == null) {
           return java.util.Collections.unmodifiableList(edge_);
         } else {
@@ -7496,7 +7496,7 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public int getEdgeCount() {
         if (edgeBuilder_ == null) {
@@ -7506,9 +7506,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Edge getEdge(int index) {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge getEdge(int index) {
         if (edgeBuilder_ == null) {
           return edge_.get(index);
         } else {
@@ -7516,10 +7516,10 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder setEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.Edge value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge value) {
         if (edgeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7533,10 +7533,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder setEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.Edge.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder builderForValue) {
         if (edgeBuilder_ == null) {
           ensureEdgeIsMutable();
           edge_.set(index, builderForValue.build());
@@ -7547,9 +7547,9 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public Builder addEdge(chpg.io.support.GraphSerialization.Graph.Edge value) {
+      public Builder addEdge(chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge value) {
         if (edgeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7563,10 +7563,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder addEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.Edge value) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge value) {
         if (edgeBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7580,10 +7580,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder addEdge(
-          chpg.io.support.GraphSerialization.Graph.Edge.Builder builderForValue) {
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder builderForValue) {
         if (edgeBuilder_ == null) {
           ensureEdgeIsMutable();
           edge_.add(builderForValue.build());
@@ -7594,10 +7594,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder addEdge(
-          int index, chpg.io.support.GraphSerialization.Graph.Edge.Builder builderForValue) {
+          int index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder builderForValue) {
         if (edgeBuilder_ == null) {
           ensureEdgeIsMutable();
           edge_.add(index, builderForValue.build());
@@ -7608,10 +7608,10 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder addAllEdge(
-          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.Graph.Edge> values) {
+          java.lang.Iterable<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge> values) {
         if (edgeBuilder_ == null) {
           ensureEdgeIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -7623,7 +7623,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder clearEdge() {
         if (edgeBuilder_ == null) {
@@ -7636,7 +7636,7 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
       public Builder removeEdge(int index) {
         if (edgeBuilder_ == null) {
@@ -7649,16 +7649,16 @@ public final class GraphSerialization {
         return this;
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Edge.Builder getEdgeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder getEdgeBuilder(
           int index) {
         return getEdgeFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder getEdgeOrBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder getEdgeOrBuilder(
           int index) {
         if (edgeBuilder_ == null) {
           return edge_.get(index);  } else {
@@ -7666,9 +7666,9 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public java.util.List<? extends chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder> 
+      public java.util.List<? extends chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder> 
            getEdgeOrBuilderList() {
         if (edgeBuilder_ != null) {
           return edgeBuilder_.getMessageOrBuilderList();
@@ -7677,33 +7677,33 @@ public final class GraphSerialization {
         }
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Edge.Builder addEdgeBuilder() {
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder addEdgeBuilder() {
         return getEdgeFieldBuilder().addBuilder(
-            chpg.io.support.GraphSerialization.Graph.Edge.getDefaultInstance());
+            chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public chpg.io.support.GraphSerialization.Graph.Edge.Builder addEdgeBuilder(
+      public chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder addEdgeBuilder(
           int index) {
         return getEdgeFieldBuilder().addBuilder(
-            index, chpg.io.support.GraphSerialization.Graph.Edge.getDefaultInstance());
+            index, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.getDefaultInstance());
       }
       /**
-       * <code>repeated .chpg.Graph.Edge edge = 4;</code>
+       * <code>repeated .chpg.SerializedGraph.SerializedEdge edge = 4;</code>
        */
-      public java.util.List<chpg.io.support.GraphSerialization.Graph.Edge.Builder> 
+      public java.util.List<chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder> 
            getEdgeBuilderList() {
         return getEdgeFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          chpg.io.support.GraphSerialization.Graph.Edge, chpg.io.support.GraphSerialization.Graph.Edge.Builder, chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder> 
+          chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder> 
           getEdgeFieldBuilder() {
         if (edgeBuilder_ == null) {
           edgeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              chpg.io.support.GraphSerialization.Graph.Edge, chpg.io.support.GraphSerialization.Graph.Edge.Builder, chpg.io.support.GraphSerialization.Graph.EdgeOrBuilder>(
+              chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdge.Builder, chpg.io.support.GraphSerialization.SerializedGraph.SerializedEdgeOrBuilder>(
                   edge_,
                   ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
@@ -7725,81 +7725,81 @@ public final class GraphSerialization {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:chpg.Graph)
+      // @@protoc_insertion_point(builder_scope:chpg.SerializedGraph)
     }
 
-    // @@protoc_insertion_point(class_scope:chpg.Graph)
-    private static final chpg.io.support.GraphSerialization.Graph DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:chpg.SerializedGraph)
+    private static final chpg.io.support.GraphSerialization.SerializedGraph DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.Graph();
+      DEFAULT_INSTANCE = new chpg.io.support.GraphSerialization.SerializedGraph();
     }
 
-    public static chpg.io.support.GraphSerialization.Graph getDefaultInstance() {
+    public static chpg.io.support.GraphSerialization.SerializedGraph getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Graph>
-        PARSER = new com.google.protobuf.AbstractParser<Graph>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<SerializedGraph>
+        PARSER = new com.google.protobuf.AbstractParser<SerializedGraph>() {
       @java.lang.Override
-      public Graph parsePartialFrom(
+      public SerializedGraph parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Graph(input, extensionRegistry);
+        return new SerializedGraph(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Graph> parser() {
+    public static com.google.protobuf.Parser<SerializedGraph> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Graph> getParserForType() {
+    public com.google.protobuf.Parser<SerializedGraph> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public chpg.io.support.GraphSerialization.Graph getDefaultInstanceForType() {
+    public chpg.io.support.GraphSerialization.SerializedGraph getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Attribute_descriptor;
+    internal_static_chpg_SerializedAttribute_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Attribute_fieldAccessorTable;
+      internal_static_chpg_SerializedAttribute_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Tag_descriptor;
+    internal_static_chpg_SerializedTag_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Tag_fieldAccessorTable;
+      internal_static_chpg_SerializedTag_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Graph_descriptor;
+    internal_static_chpg_SerializedGraph_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Graph_fieldAccessorTable;
+      internal_static_chpg_SerializedGraph_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Graph_SchemaNode_descriptor;
+    internal_static_chpg_SerializedGraph_SerializedSchemaNode_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Graph_SchemaNode_fieldAccessorTable;
+      internal_static_chpg_SerializedGraph_SerializedSchemaNode_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Graph_SchemaEdge_descriptor;
+    internal_static_chpg_SerializedGraph_SerializedSchemaEdge_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Graph_SchemaEdge_fieldAccessorTable;
+      internal_static_chpg_SerializedGraph_SerializedSchemaEdge_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Graph_Node_descriptor;
+    internal_static_chpg_SerializedGraph_SerializedNode_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Graph_Node_fieldAccessorTable;
+      internal_static_chpg_SerializedGraph_SerializedNode_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_chpg_Graph_Edge_descriptor;
+    internal_static_chpg_SerializedGraph_SerializedEdge_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_chpg_Graph_Edge_fieldAccessorTable;
+      internal_static_chpg_SerializedGraph_SerializedEdge_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7809,68 +7809,72 @@ public final class GraphSerialization {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013graph.proto\022\004chpg\"(\n\tAttribute\022\014\n\004name" +
-      "\030\001 \002(\t\022\r\n\005value\030\002 \002(\t\"\023\n\003Tag\022\014\n\004name\030\001 \002" +
-      "(\t\"\344\003\n\005Graph\022*\n\nschemaNode\030\001 \003(\0132\026.chpg." +
-      "Graph.SchemaNode\022*\n\nschemaEdge\030\002 \003(\0132\026.c" +
-      "hpg.Graph.SchemaEdge\022\036\n\004node\030\003 \003(\0132\020.chp" +
-      "g.Graph.Node\022\036\n\004edge\030\004 \003(\0132\020.chpg.Graph." +
-      "Edge\032*\n\nSchemaNode\022\017\n\007address\030\001 \002(\005\022\013\n\003t" +
-      "ag\030\002 \002(\t\0327\n\nSchemaEdge\022\017\n\007address\030\001 \002(\005\022" +
-      "\014\n\004from\030\002 \002(\005\022\n\n\002to\030\003 \002(\005\032a\n\004Node\022\017\n\007add" +
-      "ress\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\"\n\tattribute\030\003 " +
-      "\003(\0132\017.chpg.Attribute\022\026\n\003tag\030\004 \003(\0132\t.chpg" +
-      ".Tag\032{\n\004Edge\022\017\n\007address\030\001 \002(\005\022\014\n\004from\030\002 " +
-      "\002(\005\022\n\n\002to\030\003 \002(\005\022\014\n\004name\030\004 \001(\t\022\"\n\tattribu" +
-      "te\030\005 \003(\0132\017.chpg.Attribute\022\026\n\003tag\030\006 \003(\0132\t" +
-      ".chpg.TagB%\n\017chpg.io.supportB\022GraphSeria" +
-      "lization"
+      "\n\013graph.proto\022\004chpg\"2\n\023SerializedAttribu" +
+      "te\022\014\n\004name\030\001 \002(\t\022\r\n\005value\030\002 \002(\t\"\035\n\rSeria" +
+      "lizedTag\022\014\n\004name\030\001 \002(\t\"\217\005\n\017SerializedGra" +
+      "ph\022>\n\nschemaNode\030\001 \003(\0132*.chpg.Serialized" +
+      "Graph.SerializedSchemaNode\022>\n\nschemaEdge" +
+      "\030\002 \003(\0132*.chpg.SerializedGraph.Serialized" +
+      "SchemaEdge\0222\n\004node\030\003 \003(\0132$.chpg.Serializ" +
+      "edGraph.SerializedNode\0222\n\004edge\030\004 \003(\0132$.c" +
+      "hpg.SerializedGraph.SerializedEdge\0324\n\024Se" +
+      "rializedSchemaNode\022\017\n\007address\030\001 \002(\005\022\013\n\003t" +
+      "ag\030\002 \002(\t\032A\n\024SerializedSchemaEdge\022\017\n\007addr" +
+      "ess\030\001 \002(\005\022\014\n\004from\030\002 \002(\005\022\n\n\002to\030\003 \002(\005\032\177\n\016S" +
+      "erializedNode\022\017\n\007address\030\001 \002(\005\022\014\n\004name\030\002" +
+      " \001(\t\022,\n\tattribute\030\003 \003(\0132\031.chpg.Serialize" +
+      "dAttribute\022 \n\003tag\030\004 \003(\0132\023.chpg.Serialize" +
+      "dTag\032\231\001\n\016SerializedEdge\022\017\n\007address\030\001 \002(\005" +
+      "\022\014\n\004from\030\002 \002(\005\022\n\n\002to\030\003 \002(\005\022\014\n\004name\030\004 \001(\t" +
+      "\022,\n\tattribute\030\005 \003(\0132\031.chpg.SerializedAtt" +
+      "ribute\022 \n\003tag\030\006 \003(\0132\023.chpg.SerializedTag" +
+      "B%\n\017chpg.io.supportB\022GraphSerialization"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_chpg_Attribute_descriptor =
+    internal_static_chpg_SerializedAttribute_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_chpg_Attribute_fieldAccessorTable = new
+    internal_static_chpg_SerializedAttribute_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Attribute_descriptor,
+        internal_static_chpg_SerializedAttribute_descriptor,
         new java.lang.String[] { "Name", "Value", });
-    internal_static_chpg_Tag_descriptor =
+    internal_static_chpg_SerializedTag_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_chpg_Tag_fieldAccessorTable = new
+    internal_static_chpg_SerializedTag_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Tag_descriptor,
+        internal_static_chpg_SerializedTag_descriptor,
         new java.lang.String[] { "Name", });
-    internal_static_chpg_Graph_descriptor =
+    internal_static_chpg_SerializedGraph_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_chpg_Graph_fieldAccessorTable = new
+    internal_static_chpg_SerializedGraph_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Graph_descriptor,
+        internal_static_chpg_SerializedGraph_descriptor,
         new java.lang.String[] { "SchemaNode", "SchemaEdge", "Node", "Edge", });
-    internal_static_chpg_Graph_SchemaNode_descriptor =
-      internal_static_chpg_Graph_descriptor.getNestedTypes().get(0);
-    internal_static_chpg_Graph_SchemaNode_fieldAccessorTable = new
+    internal_static_chpg_SerializedGraph_SerializedSchemaNode_descriptor =
+      internal_static_chpg_SerializedGraph_descriptor.getNestedTypes().get(0);
+    internal_static_chpg_SerializedGraph_SerializedSchemaNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Graph_SchemaNode_descriptor,
+        internal_static_chpg_SerializedGraph_SerializedSchemaNode_descriptor,
         new java.lang.String[] { "Address", "Tag", });
-    internal_static_chpg_Graph_SchemaEdge_descriptor =
-      internal_static_chpg_Graph_descriptor.getNestedTypes().get(1);
-    internal_static_chpg_Graph_SchemaEdge_fieldAccessorTable = new
+    internal_static_chpg_SerializedGraph_SerializedSchemaEdge_descriptor =
+      internal_static_chpg_SerializedGraph_descriptor.getNestedTypes().get(1);
+    internal_static_chpg_SerializedGraph_SerializedSchemaEdge_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Graph_SchemaEdge_descriptor,
+        internal_static_chpg_SerializedGraph_SerializedSchemaEdge_descriptor,
         new java.lang.String[] { "Address", "From", "To", });
-    internal_static_chpg_Graph_Node_descriptor =
-      internal_static_chpg_Graph_descriptor.getNestedTypes().get(2);
-    internal_static_chpg_Graph_Node_fieldAccessorTable = new
+    internal_static_chpg_SerializedGraph_SerializedNode_descriptor =
+      internal_static_chpg_SerializedGraph_descriptor.getNestedTypes().get(2);
+    internal_static_chpg_SerializedGraph_SerializedNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Graph_Node_descriptor,
+        internal_static_chpg_SerializedGraph_SerializedNode_descriptor,
         new java.lang.String[] { "Address", "Name", "Attribute", "Tag", });
-    internal_static_chpg_Graph_Edge_descriptor =
-      internal_static_chpg_Graph_descriptor.getNestedTypes().get(3);
-    internal_static_chpg_Graph_Edge_fieldAccessorTable = new
+    internal_static_chpg_SerializedGraph_SerializedEdge_descriptor =
+      internal_static_chpg_SerializedGraph_descriptor.getNestedTypes().get(3);
+    internal_static_chpg_SerializedGraph_SerializedEdge_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_chpg_Graph_Edge_descriptor,
+        internal_static_chpg_SerializedGraph_SerializedEdge_descriptor,
         new java.lang.String[] { "Address", "From", "To", "Name", "Attribute", "Tag", });
   }
 
