@@ -18,6 +18,12 @@ import io.github.spencerpark.ijava.runtime.Display;
 
 public class GraphView {
 	
+	private static boolean debug = false;
+	
+	public static void setDebug(boolean enabled) {
+		debug = enabled;
+	}
+	
 	public static final int DEFAULT_VERTICAL_SIZE = 600;
 	public static final int DEFAULT_NAVIGATOR_NODES_SIZE = 20;
 	public static final boolean DEFAULT_PANZOOM = true;
@@ -68,7 +74,9 @@ public class GraphView {
 					graph = graph.union(containsGraph.reverse(graph));
 				}
 				File graphViewerDirectory = Files.createTempDirectory("graph-viewer").toFile();
-//				System.out.println("DEBUG: " + graphViewerDirectory.getAbsolutePath());
+				if(debug) {
+					System.out.println("DEBUG: " + graphViewerDirectory.getAbsolutePath());
+				}
 				for(String resource : Resources.getResources()) {
 					File resourceFile = new File(graphViewerDirectory.getAbsolutePath() + File.separator + resource.replace("/", File.separator).replaceFirst("templates/", ""));
 					resourceFile.getParentFile().mkdirs();
@@ -85,12 +93,20 @@ public class GraphView {
 							if(nodeList.length() != 0) {
 								nodeList.append(",");
 							}
-							String nodeName = "n" + node.getName();
+							String nodeName = node.getName();
+							// TODO: better escaping (probably use a json library)
+							nodeName = nodeName.replace("\\", "\\\\");
+							nodeName = nodeName.replace("\"", "\\\"");
+							nodeName = nodeName.replace("\b", "\\b");
+						    nodeName = nodeName.replace("\f", "\\f");
+						    nodeName = nodeName.replace("\n", "\\n");
+						    nodeName = nodeName.replace("\r", "\\r");
+						    nodeName = nodeName.replace("\t", "\\t");
 							Node parentNode = containsGraph.predecessors(node).one();
 							if(!extend || parentNode == null) {
 								nodeList.append("{ data: { id: \"" + "n" + node.getAddress() + "\", name: \"" + nodeName + "\" } }");
 							} else {
-								nodeList.append("{ data: { id: \"" + "n" + node.getAddress() + "\", name: \"" + nodeName + "\" }, parent: \"" + "n" + parentNode.getAddress() + "\" }, classes: ['container'] }");
+								nodeList.append("{ data: { id: \"" + "n" + node.getAddress() + "\", name: \"" + nodeName + "\", parent: \"" + "n" + parentNode.getAddress() + "\" }, classes: ['container'] }");
 							}
 						}
 						index = index.replace("TEMPLATE_NODES", nodeList.toString());
@@ -98,7 +114,15 @@ public class GraphView {
 						// edges
 						StringBuilder edgeList = new StringBuilder();
 						for(Edge edge : graph.edges()) {
-							String edgeName = "e" + edge.getName();
+							String edgeName = edge.getName();
+							// TODO: better escaping (probably use a json library)
+							edgeName = edgeName.replace("\\", "\\\\");
+							edgeName = edgeName.replace("\"", "\\\"");
+							edgeName = edgeName.replace("\b", "\\b");
+							edgeName = edgeName.replace("\f", "\\f");
+							edgeName = edgeName.replace("\n", "\\n");
+							edgeName = edgeName.replace("\r", "\\r");
+							edgeName = edgeName.replace("\t", "\\t");
 							edgeList.append(",{");
 						    edgeList.append("data: {");
 						    edgeList.append("id: \"" + edge.getAddress() + "\",");

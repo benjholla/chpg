@@ -16,7 +16,7 @@ public class SchemaNode extends Node {
 	
 	@Override
 	public String toString() {
-		return "SchemaNode [name=" + getName() + "]";
+		return "SchemaNode [name=" + getName() + ", address=" + getAddress() + "]";
 	}
 
 	@Override

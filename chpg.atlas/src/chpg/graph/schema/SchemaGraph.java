@@ -13,13 +13,16 @@ public class SchemaGraph extends Graph {
 	 */
 	public static final String Contains = "CHPG.Contains";
 	
+	public final SchemaNode ContainsSchemaNode;
+	
 	/**
 	 * Construct an empty schema graph
 	 */
 	public SchemaGraph() {
 		this.nodes = new GraphElementHashSet<Node>();
 		this.edges = new GraphElementHashSet<Edge>();
-		add(new SchemaNode(Contains));
+		ContainsSchemaNode = new SchemaNode(Contains);
+		add(ContainsSchemaNode);
 	}
 	
 	@Override
@@ -70,6 +73,22 @@ public class SchemaGraph extends Graph {
 			addAll(graph.nodes());
 			addAll(graph.edges());
 		}
+	}
+	
+	/**
+	 * Returns the schema node denoted by the given node name (tag)
+	 * @param address
+	 * @return
+	 */
+	public SchemaNode getSchemaNodeByName(String name) {
+		for(Node node : nodes()) {
+			if(node instanceof SchemaNode) {
+				if(node.getName().equals(name)) {
+					return (SchemaNode) node;
+				}
+			}
+		}
+		return null;
 	}
 	
 	/**

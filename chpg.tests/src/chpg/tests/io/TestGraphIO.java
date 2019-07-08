@@ -13,8 +13,7 @@ import org.junit.Test;
 import chpg.graph.Edge;
 import chpg.graph.Node;
 import chpg.graph.PropertyGraph;
-import chpg.io.GraphExport;
-import chpg.io.GraphImport;
+import chpg.io.GraphIO;
 
 public class TestGraphIO {
 
@@ -36,9 +35,9 @@ public class TestGraphIO {
 		}
 		
 		File tmp = File.createTempFile("test", "chpg");
-		GraphExport.exportGraph(graph, tmp);
+		GraphIO.exportGraph(graph, tmp);
 		
-		PropertyGraph graph2 = GraphImport.importGraph(tmp);
+		PropertyGraph graph2 = GraphIO.importGraph(tmp);
 		tmp.delete();
 		
 		if(graph.getSchema().nodes().size() != graph2.getSchema().nodes().size()) {

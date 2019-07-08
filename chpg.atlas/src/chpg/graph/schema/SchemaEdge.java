@@ -10,7 +10,7 @@ public class SchemaEdge extends Edge {
 
 	@Override
 	public String toString() {
-		return "SchemaEdge [from=" + from() + ", to=" + to() + "]";
+		return "SchemaEdge [from=" + from() + ", to=" + to() + ", qddress=" + getAddress() +  "]";
 	}
 	
 }
