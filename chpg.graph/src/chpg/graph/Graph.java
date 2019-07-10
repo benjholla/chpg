@@ -403,7 +403,17 @@ public abstract class Graph {
 	 * @return
 	 */
 	public Graph forwardStep(Graph origin){
-		return forwardStep(origin.nodes());
+		Graph result = empty();
+		result.addAll(origin.nodes());
+		for(Node node : origin.nodes()){
+			GraphElementSet<Edge> outEdges = getOutEdgesFromNode(node);
+			for(Edge edge : outEdges){
+				result.nodes().add(edge.from());
+				result.nodes().add(edge.to());
+				result.edges().add(edge);
+			}
+		}
+		return result.union(origin);
 	}
 	
 	/**
@@ -417,17 +427,7 @@ public abstract class Graph {
 	 * @return
 	 */
 	public Graph forwardStep(GraphElementSet<Node> origin){
-		Graph result = empty();
-		result.addAll(origin);
-		for(Node node : origin){
-			GraphElementSet<Edge> outEdges = getOutEdgesFromNode(node);
-			for(Edge edge : outEdges){
-				result.nodes().add(edge.from());
-				result.nodes().add(edge.to());
-				result.edges().add(edge);
-			}
-		}
-		return result;
+		return forwardStep(this.toGraph(origin));
 	}
 	
 	/**
@@ -455,7 +455,17 @@ public abstract class Graph {
 	 * @return
 	 */
 	public Graph reverseStep(Graph origin){
-		return reverseStep(origin.nodes());
+		Graph result = empty();
+		result.addAll(origin.nodes());
+		for(Node node : origin.nodes()){
+			GraphElementSet<Edge> inEdges = getInEdgesToNode(node);
+			for(Edge edge : inEdges){
+				result.nodes().add(edge.from());
+				result.nodes().add(edge.to());
+				result.edges().add(edge);
+			}
+		}
+		return result.union(origin);
 	}
 	
 	/**
@@ -469,17 +479,7 @@ public abstract class Graph {
 	 * @return
 	 */
 	public Graph reverseStep(GraphElementSet<Node> origin){
-		Graph result = empty();
-		result.addAll(origin);
-		for(Node node : origin){
-			GraphElementSet<Edge> inEdges = getInEdgesToNode(node);
-			for(Edge edge : inEdges){
-				result.nodes().add(edge.from());
-				result.nodes().add(edge.to());
-				result.edges().add(edge);
-			}
-		}
-		return result;
+		return reverseStep(this.toGraph(origin));
 	}
 	
 	/**
@@ -813,20 +813,9 @@ public abstract class Graph {
 	 * @return
 	 */
 	public Graph forward(Graph origin){
-		return forward(origin.nodes());
-	}
-	
-	/**
-	 * From this graph, selects the subgraph reachable from the given nodes
-	 * using forward transitive traversal.
-	 * 
-	 * @param origin
-	 * @return
-	 */
-	public Graph forward(GraphElementSet<Node> origin){
 		Graph result = empty();
-		result.nodes().addAll(origin);
-		GraphElementSet<Node> frontier = new GraphElementHashSet<Node>(origin);
+		result.nodes().addAll(origin.nodes());
+		GraphElementSet<Node> frontier = new GraphElementHashSet<Node>(origin.nodes());
 		while(!frontier.isEmpty()){
 			Node next = frontier.one();
 			frontier.remove(next);
@@ -837,7 +826,19 @@ public abstract class Graph {
 				result.edges().add(edge);
 			}
 		}
-		return result;
+		return result.union(origin);
+		
+	}
+	
+	/**
+	 * From this graph, selects the subgraph reachable from the given nodes
+	 * using forward transitive traversal.
+	 * 
+	 * @param origin
+	 * @return
+	 */
+	public Graph forward(GraphElementSet<Node> origin){
+		return forward(this.toGraph(origin));
 	}
 	
 	/**
@@ -859,20 +860,9 @@ public abstract class Graph {
 	 * @return
 	 */
 	public Graph reverse(Graph origin){
-		return reverse(origin.nodes());
-	}
-	
-	/**
-	 * From this graph, selects the subgraph reachable from the given nodes
-	 * using reverse transitive traversal.
-	 * 
-	 * @param origin
-	 * @return
-	 */
-	public Graph reverse(GraphElementSet<Node> origin){
 		Graph result = empty();
-		result.nodes().addAll(origin);
-		GraphElementSet<Node> frontier = new GraphElementHashSet<Node>(origin);
+		result.nodes().addAll(origin.nodes());
+		GraphElementSet<Node> frontier = new GraphElementHashSet<Node>(origin.nodes());
 		while(!frontier.isEmpty()){
 			Node next = frontier.one();
 			frontier.remove(next);
@@ -883,7 +873,18 @@ public abstract class Graph {
 				result.edges().add(edge);
 			}
 		}
-		return result;
+		return result.union(origin);
+	}
+	
+	/**
+	 * From this graph, selects the subgraph reachable from the given nodes
+	 * using reverse transitive traversal.
+	 * 
+	 * @param origin
+	 * @return
+	 */
+	public Graph reverse(GraphElementSet<Node> origin){
+		return reverse(this.toGraph(origin));
 	}
 	
 	/**
@@ -1080,7 +1081,7 @@ public abstract class Graph {
 	 * @return
 	 */
 	public GraphElementSet<Edge> selectEdges(String attribute){
-		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+		return edges.filter(attribute);
 	}
 	
 	/**
@@ -1089,7 +1090,7 @@ public abstract class Graph {
 	 * @return
 	 */
 	public GraphElementSet<Edge> selectEdges(String attribute, Object... values){
-		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+		return edges.filter(attribute, values);
 	}
 	
 	/**
@@ -1098,7 +1099,7 @@ public abstract class Graph {
 	 * @return
 	 */
 	public GraphElementSet<Node> selectNodes(String attribute){
-		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+		return nodes.filter(attribute);
 	}
 	
 	/**
@@ -1107,7 +1108,7 @@ public abstract class Graph {
 	 * @return
 	 */
 	public GraphElementSet<Node> selectNodes(String attribute, Object... values){
-		throw new RuntimeException("Operation not implemented for graph type " + this.getClass().getName());
+		return nodes.filter(attribute, values);
 	}
 	
 	// TODO: how to implement without a single underlying universal graph?

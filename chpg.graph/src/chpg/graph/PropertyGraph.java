@@ -198,26 +198,6 @@ public class PropertyGraph extends Graph {
 		return result;
 	}
 	
-	@Override
-	public GraphElementSet<Edge> selectEdges(String attribute){
-		return edges.filter(attribute);
-	}
-	
-	@Override
-	public GraphElementSet<Edge> selectEdges(String attribute, Object... values){
-		return edges.filter(attribute, values);
-	}
-	
-	@Override
-	public GraphElementSet<Node> selectNodes(String attribute){
-		return nodes.filter(attribute);
-	}
-	
-	@Override
-	public GraphElementSet<Node> selectNodes(String attribute, Object... values){
-		return nodes.filter(attribute, values);
-	}
-	
 	// TODO: how to implement without a single underlying universal graph?
 	
 //	@Override
