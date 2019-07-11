@@ -97,7 +97,7 @@ public abstract class GraphElementSet<E extends GraphElement> extends GraphEleme
 	}
 	
 	/**
-	 * Returns a graph element set filtered to elements with the attribute key and any of the given values
+	 * Returns a graph element set filtered to elements with the attribute key and value
 	 * @param attribute
 	 * @param value
 	 * @return
@@ -105,14 +105,18 @@ public abstract class GraphElementSet<E extends GraphElement> extends GraphEleme
 	public GraphElementSet<E> filter(String attribute, Object... values){
 		GraphElementSet<E> result = new GraphElementHashSet<E>();
 		if(attribute != null && values != null){
-			Set<Object> valueSet = new HashSet<Object>();
-			for(Object value : values) {
-				valueSet.add(value);
-			}
 			for(E e : this){
 				if(e.hasAttr(attribute)) {
-					if(valueSet.contains(e.getAttr(attribute))) {
-						result.add(e);
+					Object attributeValue = e.attributes().get(attribute);
+					if(attributeValue != null) {
+						for(Object value : values) {
+							if(value != null) {
+								if(Objects.equals(attributeValue, value)) {
+									result.add(e);
+									break;
+								}
+							}
+						}
 					}
 				}
 			}
