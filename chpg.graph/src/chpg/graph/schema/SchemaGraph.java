@@ -1,18 +1,27 @@
 package chpg.graph.schema;
 
+import chpg.graph.AbstractGraph;
 import chpg.graph.Edge;
 import chpg.graph.Graph;
 import chpg.graph.GraphElementHashSet;
 import chpg.graph.GraphElementSet;
 import chpg.graph.Node;
 
-public class SchemaGraph extends Graph {
+/**
+ * A graph schema for defining tag hierarchies.
+ * 
+ * Graph must form a tree (DAG)
+ */
+public class SchemaGraph extends AbstractGraph {
 
 	/**
 	 * The base tag for structural containment relationships
 	 */
 	public static final String Contains = "CHPG.Contains";
 	
+	/**
+	 * The root schema node for containment relationships
+	 */
 	public final SchemaNode ContainsSchemaNode;
 	
 	/**
@@ -28,6 +37,28 @@ public class SchemaGraph extends Graph {
 	@Override
 	public Graph empty() {
 		return new SchemaGraph();
+	}
+	
+	/**
+	 * Returns true if the schema is well formed
+	 * @return
+	 */
+	public boolean isWellFormed() {
+		for(Node node : nodes()) {
+			GraphElementSet<Edge> incomingEdges = this.getInEdgesToNode(node);
+			if(incomingEdges.size() > 1) {
+				// schema cannot have more than 1 incoming edge
+				return false;
+			} else if(incomingEdges.size() == 1) {
+				Edge edge = incomingEdges.one();
+				if(edge.from().equals(edge.to())) {
+					// no self cycles
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -123,6 +154,10 @@ public class SchemaGraph extends Graph {
 		return null;
 	}
 	
+	/**
+	 * Returns the set of schema edges
+	 * @return
+	 */
 	public GraphElementSet<SchemaEdge> getSchemaEdges(){
 		GraphElementSet<SchemaEdge> schemaEdges = new GraphElementHashSet<SchemaEdge>();
 		for(Edge edge : edges()) {
@@ -133,6 +168,10 @@ public class SchemaGraph extends Graph {
 		return schemaEdges;
 	}
 	
+	/**
+	 * Returns the set of schema nodes
+	 * @return
+	 */
 	public GraphElementSet<SchemaNode> getSchemaNodes(){
 		GraphElementSet<SchemaNode> schemaNodes = new GraphElementHashSet<SchemaNode>();
 		for(Node node : nodes()) {

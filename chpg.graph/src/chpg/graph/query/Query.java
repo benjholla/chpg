@@ -8,9 +8,53 @@ import chpg.graph.Node;
 public class Query {
 
 	private Graph graph;
+	private Graph referenceGraph;
 	
+	/**
+	 * Constructs a new query without an underlying reference graph for querying containment relationships
+	 * @param graph
+	 */
 	public Query(Graph graph) {
-		this.graph = graph;
+		if(graph != null) {
+			this.graph = graph;
+			this.referenceGraph = null;
+		} else {
+			throw new IllegalArgumentException("Graph must be non-null");
+		}
+	}
+	
+	/**
+	 * Constructs a new query with an underlying reference graph for querying containment relationships
+	 * @param graph
+	 * @param referenceGraph
+	 */
+	public Query(Graph graph, Graph referenceGraph) {
+		if(graph != null) {
+			this.graph = graph;
+			if(referenceGraph != null) {
+				this.referenceGraph = referenceGraph;
+			} else {
+				throw new IllegalArgumentException("Reference graph must be non-null");
+			}
+		} else {
+			throw new IllegalArgumentException("Graph must be non-null");
+		}
+	}
+	
+	/**
+	 * Returns the underlying reference graph used for containment queries
+	 * @return
+	 */
+	public Graph getReferenceGraph() {
+		return referenceGraph;
+	}
+	
+	/**
+	 * Sets the underlying reference graph used for containment queries
+	 * @param referenceGraph
+	 */
+	public void setReferenceGraph(Graph referenceGraph) {
+		this.referenceGraph = referenceGraph;
 	}
 	
 	public Graph evaluate() {
@@ -23,8 +67,11 @@ public class Query {
 	 * @return
 	 */
 	public Query nodes() {
-		graph = graph.toGraph(graph.nodes());
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.nodes()), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.nodes()));
+		}
 	}
 
 	/**
@@ -33,8 +80,11 @@ public class Query {
 	 * @return
 	 */
 	public Query edges() {
-		graph = graph.toGraph(graph.edges());
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.edges()), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.edges()));
+		}
 	}
 	
 	/**
@@ -53,8 +103,11 @@ public class Query {
 	 * @return
 	 */
 	public Query leaves(){
-		graph = graph.toGraph(graph.leaves());
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.leaves()), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.leaves()));
+		}
 	}
 	
 	/**
@@ -64,8 +117,11 @@ public class Query {
 	 * @return
 	 */
 	public Query roots(){
-		graph = graph.toGraph(graph.roots());
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.roots()), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.roots()));
+		}
 	}
 	
 	/**
@@ -76,8 +132,11 @@ public class Query {
 	 * @return The set of nodes reachable from incoming edges to the given nodes
 	 */
 	public Query predecessors(Node... origin){
-		graph = graph.toGraph(graph.predecessors(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.predecessors(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.predecessors(origin)));
+		}
 	}
 	
 	/**
@@ -88,8 +147,11 @@ public class Query {
 	 * @return The set of nodes reachable from incoming edges to the given nodes
 	 */
 	public Query predecessors(GraphElementSet<Node> origin){
-		graph = graph.toGraph(graph.predecessors(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.predecessors(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.predecessors(origin)));
+		}
 	}
 
 	/**
@@ -100,8 +162,11 @@ public class Query {
 	 * @return The set of nodes reachable from incoming edges to the given nodes
 	 */
 	public Query predecessors(Graph origin){
-		graph = graph.toGraph(graph.predecessors(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.predecessors(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.predecessors(origin)));
+		}
 	}
 	
 	/**
@@ -112,8 +177,7 @@ public class Query {
 	 * @return The set of nodes reachable from incoming edges to the given nodes
 	 */
 	public Query predecessors(Query origin){
-		graph = graph.toGraph(graph.predecessors(origin.evaluate()));
-		return this;
+		return predecessors(origin.evaluate());
 	}
 	
 	/**
@@ -124,8 +188,11 @@ public class Query {
 	 * @return The set of nodes reachable from outgoing edges from the given nodes
 	 */
 	public Query successors(Node... origin){
-		graph = graph.toGraph(graph.successors(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.successors(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.successors(origin)));
+		}
 	}
 	
 	/**
@@ -136,8 +203,11 @@ public class Query {
 	 * @return The set of nodes reachable from outgoing edges from the given nodes
 	 */
 	public Query successors(GraphElementSet<Node> origin){
-		graph = graph.toGraph(graph.successors(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.successors(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.successors(origin)));
+		}
 	}
 	
 	/**
@@ -148,8 +218,11 @@ public class Query {
 	 * @return The set of nodes reachable from outgoing edges from the given nodes
 	 */
 	public Query successors(Graph origin){
-		graph = graph.toGraph(graph.successors(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.successors(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.successors(origin)));
+		}
 	}
 	
 	/**
@@ -160,8 +233,7 @@ public class Query {
 	 * @return The set of nodes reachable from outgoing edges from the given nodes
 	 */
 	public Query successors(Query origin){
-		graph = graph.toGraph(graph.successors(origin.evaluate()));
-		return this;
+		return successors(origin.evaluate());
 	}
 	
 	/**
@@ -175,8 +247,11 @@ public class Query {
 	 * @return
 	 */
 	public Query forwardStep(Node... origin){
-		graph = graph.toGraph(graph.forwardStep(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.forwardStep(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.forwardStep(origin)));
+		}
 	}
 	
 	/**
@@ -190,8 +265,11 @@ public class Query {
 	 * @return
 	 */
 	public Query forwardStep(GraphElementSet<Node> origin){
-		graph = graph.toGraph(graph.forwardStep(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.forwardStep(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.forwardStep(origin)));
+		}
 	}
 	
 	/**
@@ -205,8 +283,11 @@ public class Query {
 	 * @return
 	 */
 	public Query forwardStep(Graph origin){
-		graph = graph.toGraph(graph.forwardStep(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.forwardStep(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.forwardStep(origin)));
+		}
 	}
 	
 	/**
@@ -220,8 +301,7 @@ public class Query {
 	 * @return
 	 */
 	public Query forwardStep(Query origin){
-		graph = graph.toGraph(graph.forwardStep(origin.evaluate()));
-		return this;
+		return forwardStep(origin.evaluate());
 	}
 	
 	/**
@@ -235,8 +315,11 @@ public class Query {
 	 * @return
 	 */
 	public Query reverseStep(Node... origin){
-		graph = graph.toGraph(graph.reverseStep(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.reverseStep(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.reverseStep(origin)));
+		}
 	}
 	
 	/**
@@ -250,8 +333,11 @@ public class Query {
 	 * @return
 	 */
 	public Query reverseStep(GraphElementSet<Node> origin){
-		graph = graph.toGraph(graph.reverseStep(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.reverseStep(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.reverseStep(origin)));
+		}
 	}
 	
 	/**
@@ -265,8 +351,11 @@ public class Query {
 	 * @return
 	 */
 	public Query reverseStep(Graph origin){
-		graph = graph.toGraph(graph.reverseStep(origin));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.reverseStep(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.reverseStep(origin)));
+		}
 	}
 	
 	/**
@@ -280,8 +369,7 @@ public class Query {
 	 * @return
 	 */
 	public Query reverseStep(Query origin){
-		graph = graph.toGraph(graph.reverseStep(origin.evaluate()));
-		return this;
+		return reverseStep(origin.evaluate());
 	}
 	
 	/**
@@ -293,8 +381,11 @@ public class Query {
 	 * @return
 	 */
 	public Query union(Node... nodes){
-		graph = graph.toGraph(graph.union(nodes));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.union(nodes)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.union(nodes)));
+		}
 	}
 	
 	/**
@@ -306,8 +397,11 @@ public class Query {
 	 * @return
 	 */
 	public Query union(Edge... edges){
-		graph = graph.toGraph(graph.union(edges));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.union(edges)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.union(edges)));
+		}
 	}
 	
 	/**
@@ -319,8 +413,11 @@ public class Query {
 	 * @return
 	 */
 	public Query union(Graph... graphs){
-		graph = graph.toGraph(graph.union(graphs));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.union(graphs)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.union(graphs)));
+		}
 	}
 	
 	/**
@@ -336,8 +433,7 @@ public class Query {
 		for(int i=0; i<queries.length; i++) {
 			graphs[i] = queries[i].evaluate();
 		}
-		graph = graph.toGraph(graph.union(graphs));
-		return this;
+		return union(graphs);
 	}
 	
 	/**
@@ -357,8 +453,11 @@ public class Query {
 	 * @return
 	 */
 	public Query difference(Node... nodes){
-		graph = graph.toGraph(graph.difference(nodes));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.difference(nodes)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.difference(nodes)));
+		}
 	}
 	
 	/**
@@ -378,8 +477,11 @@ public class Query {
 	 * @return
 	 */
 	public Query difference(Edge... edges){
-		graph = graph.toGraph(graph.difference(edges));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.difference(edges)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.difference(edges)));
+		}
 	}
 	
 	/**
@@ -399,8 +501,11 @@ public class Query {
 	 * @return
 	 */
 	public Query difference(Graph... graphs){
-		graph = graph.toGraph(graph.difference(graphs));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.difference(graphs)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.difference(graphs)));
+		}
 	}
 	
 	/**
@@ -424,8 +529,7 @@ public class Query {
 		for(int i=0; i<queries.length; i++) {
 			graphs[i] = queries[i].evaluate();
 		}
-		graph = graph.toGraph(graph.difference(graphs));
-		return this;
+		return difference(graphs);
 	}
 	
 	/**
@@ -435,8 +539,11 @@ public class Query {
 	 * @return
 	 */
 	public Query differenceEdges(Edge... edges){
-		graph = graph.toGraph(graph.differenceEdges(edges));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.differenceEdges(edges)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.differenceEdges(edges)));
+		}
 	}
 	
 	/**
@@ -446,8 +553,11 @@ public class Query {
 	 * @return
 	 */
 	public Query differenceEdges(Graph... graphs){
-		graph = graph.toGraph(graph.differenceEdges(graphs));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.differenceEdges(graphs)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.differenceEdges(graphs)));
+		}
 	}
 	
 	/**
@@ -461,8 +571,7 @@ public class Query {
 		for(int i=0; i<queries.length; i++) {
 			graphs[i] = queries[i].evaluate();
 		}
-		graph = graph.toGraph(graph.differenceEdges(graphs));
-		return this;
+		return differenceEdges(graphs);
 	}
 	
 	/**
@@ -474,8 +583,11 @@ public class Query {
 	 * @return
 	 */
 	public Query intersection(Node... nodes){
-		graph = graph.toGraph(graph.intersection(nodes));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.intersection(nodes)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.intersection(nodes)));
+		}
 	}
 	
 	/**
@@ -487,8 +599,11 @@ public class Query {
 	 * @return
 	 */
 	public Query intersection(Edge... edges){
-		graph = graph.toGraph(graph.intersection(edges));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.intersection(edges)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.intersection(edges)));
+		}
 	}
 	
 	/**
@@ -500,8 +615,11 @@ public class Query {
 	 * @return
 	 */
 	public Query intersection(Graph... graphs){
-		graph = graph.toGraph(graph.intersection(graphs));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.intersection(graphs)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.intersection(graphs)));
+		}
 	}
 	
 	/**
@@ -517,8 +635,7 @@ public class Query {
 		for(int i=0; i<queries.length; i++) {
 			graphs[i] = queries[i].evaluate();
 		}
-		graph = graph.toGraph(graph.intersection(graphs));
-		return this;
+		return intersection(graphs);
 	}
 	
 	/**
@@ -530,8 +647,11 @@ public class Query {
 	 * @return
 	 */
 	public Query betweenStep(Node from, Node to){
-		graph = graph.toGraph(graph.betweenStep(from, to));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.betweenStep(from, to)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.betweenStep(from, to)));
+		}
 	}
 	
 	/**
@@ -543,8 +663,11 @@ public class Query {
 	 * @return
 	 */
 	public Query betweenStep(GraphElementSet<Node> from, GraphElementSet<Node> to){
-		graph = graph.toGraph(graph.betweenStep(from, to));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.betweenStep(from, to)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.betweenStep(from, to)));
+		}
 	}
 	
 	/**
@@ -556,8 +679,11 @@ public class Query {
 	 * @return
 	 */
 	public Query betweenStep(Graph from, Graph to){
-		graph = graph.toGraph(graph.betweenStep(from.nodes(), to.nodes()));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.betweenStep(from, to)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.betweenStep(from, to)));
+		}
 	}
 	
 	/**
@@ -569,8 +695,7 @@ public class Query {
 	 * @return
 	 */
 	public Query betweenStep(Query from, Query to){
-		graph = graph.toGraph(graph.betweenStep(from.evaluate().nodes(), to.evaluate().nodes()));
-		return this;
+		return betweenStep(from.evaluate(), to.evaluate());
 	}
 	
 	/**
@@ -585,8 +710,11 @@ public class Query {
 	 * @return
 	 */
 	public Query between(Node from, Node to) {
-		graph = graph.toGraph(graph.between(from, to));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.between(from, to)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.between(from, to)));
+		}
 	}
 	
 	/**
@@ -601,8 +729,11 @@ public class Query {
 	 * @return
 	 */
 	public Query between(GraphElementSet<Node> from, GraphElementSet<Node> to) {
-		graph = graph.toGraph(graph.between(from, to));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.between(from, to)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.between(from, to)));
+		}
 	}
 	
 	/**
@@ -617,8 +748,11 @@ public class Query {
 	 * @return
 	 */
 	public Query between(Graph from, Graph to) {
-		graph = graph.toGraph(graph.between(from.nodes(), to.nodes()));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.between(from.nodes(), to.nodes())), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.between(from.nodes(), to.nodes())));
+		}
 	}
 	
 	/**
@@ -633,8 +767,7 @@ public class Query {
 	 * @return
 	 */
 	public Query between(Query from, Query to) {
-		graph = graph.toGraph(graph.between(from.evaluate().nodes(), to.evaluate().nodes()));
-		return this;
+		return between(from.evaluate(), to.evaluate());
 	}
 
 	/**
@@ -645,8 +778,11 @@ public class Query {
 	 * @return
 	 */
 	public Query forward(Node... origin){
-		graph = graph.forward(origin);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.forward(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.forward(origin)));
+		}
 	}
 	
 	/**
@@ -657,8 +793,11 @@ public class Query {
 	 * @return
 	 */
 	public Query forward(GraphElementSet<Node> origin){
-		graph = graph.forward(origin);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.forward(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.forward(origin)));
+		}
 	}
 	
 	/**
@@ -669,8 +808,11 @@ public class Query {
 	 * @return
 	 */
 	public Query forward(Graph origin){
-		graph = graph.forward(origin.nodes());
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.forward(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.forward(origin)));
+		}
 	}
 	
 	/**
@@ -681,8 +823,7 @@ public class Query {
 	 * @return
 	 */
 	public Query forward(Query origin){
-		graph = graph.forward(origin.evaluate().nodes());
-		return this;
+		return forward(origin.evaluate());
 	}
 	
 	/**
@@ -693,8 +834,11 @@ public class Query {
 	 * @return
 	 */
 	public Query reverse(Node... origin){
-		graph = graph.reverse(origin);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.reverse(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.reverse(origin)));
+		}
 	}
 	
 	/**
@@ -705,8 +849,11 @@ public class Query {
 	 * @return
 	 */
 	public Query reverse(GraphElementSet<Node> origin){
-		graph = graph.reverse(origin);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.reverse(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.reverse(origin)));
+		}
 	}
 	
 	/**
@@ -717,8 +864,11 @@ public class Query {
 	 * @return
 	 */
 	public Query reverse(Graph origin){
-		graph = graph.reverse(origin);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.reverse(origin)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.reverse(origin)));
+		}
 	}
 	
 	/**
@@ -729,8 +879,7 @@ public class Query {
 	 * @return
 	 */
 	public Query reverse(Query origin){
-		graph = graph.reverse(origin.evaluate().nodes());
-		return this;
+		return reverse(origin.evaluate());
 	}
 	
 	/**
@@ -742,8 +891,11 @@ public class Query {
 	 * @return
 	 */
 	public Query induce(Edge... edges){
-		graph = graph.induce(edges);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.induce(edges)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.induce(edges)));
+		}
 	}
 	
 	/**
@@ -755,8 +907,11 @@ public class Query {
 	 * @return
 	 */
 	public Query induce(Graph... graphs){
-		graph = graph.induce(graphs);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.induce(graphs)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.induce(graphs)));
+		}
 	}
 	
 	/**
@@ -768,8 +923,11 @@ public class Query {
 	 * @return
 	 */
 	public Query induce(GraphElementSet<Edge> edges){
-		graph = graph.induce(edges);
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.induce(edges)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.induce(edges)));
+		}
 	}
 	
 	/**
@@ -785,8 +943,7 @@ public class Query {
 		for(int i=0; i<queries.length; i++) {
 			graphs[i] = queries[i].evaluate();
 		}
-		graph = graph.induce(graphs);
-		return this;
+		return induce(graphs);
 	}
 
 	/**
@@ -796,8 +953,11 @@ public class Query {
 	 * @return
 	 */
 	public Query nodes(String... tags){
-		graph = graph.toGraph(graph.nodes(tags));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.nodes(tags)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.nodes(tags)));
+		}
 	}
 	
 	/**
@@ -808,8 +968,11 @@ public class Query {
 	 * @return
 	 */
 	public Query nodesTaggedWithAny(String... tags){
-		graph = graph.toGraph(graph.nodesTaggedWithAny(tags));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.nodesTaggedWithAny(tags)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.nodesTaggedWithAny(tags)));
+		}
 	}
 	
 	/**
@@ -820,8 +983,11 @@ public class Query {
 	 * @return
 	 */
 	public Query nodesTaggedWithAll(String... tags){
-		graph = graph.toGraph(graph.nodesTaggedWithAll(tags));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.nodesTaggedWithAll(tags)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.nodesTaggedWithAll(tags)));
+		}
 	}
 	
 	/**
@@ -831,8 +997,11 @@ public class Query {
 	 * @return
 	 */
 	public Query edges(String... tags){
-		graph = graph.toGraph(graph.edges(tags));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.edges(tags)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.edges(tags)));
+		}
 	}
 	
 	/**
@@ -843,8 +1012,11 @@ public class Query {
 	 * @return
 	 */
 	public Query edgesTaggedWithAny(String... tags){
-		graph = graph.toGraph(graph.edgesTaggedWithAny(tags));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.edgesTaggedWithAny(tags)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.edgesTaggedWithAny(tags)));
+		}
 	}
 	
 	/**
@@ -855,8 +1027,11 @@ public class Query {
 	 * @return
 	 */
 	public Query edgesTaggedWithAll(String... tags){
-		graph = graph.toGraph(graph.edgesTaggedWithAll(tags));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.edgesTaggedWithAll(tags)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.edgesTaggedWithAll(tags)));
+		}
 	}
 	
 	/**
@@ -865,8 +1040,11 @@ public class Query {
 	 * @return
 	 */
 	public Query selectEdges(String attribute){
-		graph = graph.toGraph(graph.selectEdges(attribute));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.selectEdges(attribute)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.selectEdges(attribute)));
+		}
 	}
 	
 	/**
@@ -875,8 +1053,37 @@ public class Query {
 	 * @return
 	 */
 	public Query selectEdges(String attribute, Object... values){
-		graph = graph.toGraph(graph.selectEdges(attribute, values));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.selectEdges(attribute, values)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.selectEdges(attribute, values)));
+		}
+	}
+	
+	/**
+	 * Select subgraph containing edges that have any of the given names defined
+	 * @param name
+	 * @return
+	 */
+	public Query selectEdgesByName(String... names){
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.selectEdgesByName(names)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.selectEdgesByName(names)));
+		}
+	}
+	
+	/**
+	 * Select subgraph containing nodes that have any of the given names defined
+	 * @param name
+	 * @return
+	 */
+	public Query selectNodesByName(String... names){
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.selectNodesByName(names)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.selectNodesByName(names)));
+		}
 	}
 	
 	/**
@@ -885,8 +1092,11 @@ public class Query {
 	 * @return
 	 */
 	public Query selectNodes(String attribute){
-		graph = graph.toGraph(graph.selectNodes(attribute));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.selectNodes(attribute)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.selectNodes(attribute)));
+		}
 	}
 	
 	/**
@@ -895,8 +1105,71 @@ public class Query {
 	 * @return
 	 */
 	public Query selectNodes(String attribute, Object... values){
-		graph = graph.toGraph(graph.selectNodes(attribute, values));
-		return this;
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(graph.selectNodes(attribute, values)), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(graph.selectNodes(attribute, values)));
+		}
+	}
+	
+	/**
+	 * For each node in this graph, select the nodes that are successors along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+	 * @return
+	 */
+	public Query children(){
+		if(referenceGraph == null) {
+			throw new IllegalArgumentException("Reference graph must be set to query children relationships");
+		}
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(referenceGraph.successors(graph.nodes())), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(referenceGraph.successors(graph.nodes())));
+		}
+	}
+	
+	/**
+	 * For each node in this graph, select the nodes that are predecessor along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+	 * @return
+	 */
+	public Query parent(){
+		if(referenceGraph == null) {
+			throw new IllegalArgumentException("Reference graph must be set to query parent relationships");
+		}
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(referenceGraph.predecessors(graph.nodes())), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(referenceGraph.predecessors(graph.nodes())));
+		}
+	}
+	
+	/**
+	 * Selects the nodes that are descendants along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+	 * @return
+	 */
+	public Query contained(){
+		if(referenceGraph == null) {
+			throw new IllegalArgumentException("Reference graph must be set to query contained relationships");
+		}
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(referenceGraph.forward(graph.nodes()).nodes()), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(referenceGraph.forward(graph.nodes()).nodes()));
+		}
+	}
+	
+	/**
+	 * Selects the nodes that are ancestors along CHPG.Contains or CHPG.Contains subtypes, not including the origin
+	 * @return
+	 */
+	public Query containers(){
+		if(referenceGraph == null) {
+			throw new IllegalArgumentException("Reference graph must be set to query containers relationships");
+		}
+		if(referenceGraph != null) {
+			return new Query(graph.toGraph(referenceGraph.reverse(graph.nodes()).nodes()), referenceGraph);
+		} else {
+			return new Query(graph.toGraph(referenceGraph.reverse(graph.nodes()).nodes()));
+		}
 	}
 	
 }

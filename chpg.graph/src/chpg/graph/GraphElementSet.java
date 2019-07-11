@@ -119,5 +119,10 @@ public abstract class GraphElementSet<E extends GraphElement> extends GraphEleme
 		}
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "GraphElementSet [size=" + size() + "]";
+	}
 	
 }

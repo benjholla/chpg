@@ -26,6 +26,10 @@ public abstract class GraphElement {
 		this.attributes = new HashMap<String,Object>();
 	}
 	
+	/**
+	 * Creates a new graph element with the given name
+	 * @param name
+	 */
 	protected GraphElement(String name) {
 		this();
 		this.name = name;

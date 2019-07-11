@@ -6,7 +6,7 @@ import java.util.Set;
 import chpg.graph.schema.SchemaGraph;
 import chpg.graph.schema.SchemaNode;
 
-public class PropertyGraph extends Graph {
+public class PropertyGraph extends AbstractGraph {
 
 	private SchemaGraph schema;
 	
@@ -197,31 +197,5 @@ public class PropertyGraph extends Graph {
 		}
 		return result;
 	}
-	
-	// TODO: how to implement without a single underlying universal graph?
-	
-//	@Override
-//	public GraphElementSet<Node> children(){
-//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-//		return result;
-//	}
-//	
-//	@Override
-//	public GraphElementSet<Node> parent(){
-//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-//		return result;
-//	}
-//	
-//	@Override
-//	public GraphElementSet<Node> contained(){
-//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-//		return result;
-//	}
-//	
-//	@Override
-//	public GraphElementSet<Node> containers(){
-//		GraphElementSet<Node> result = new GraphElementHashSet<Node>();
-//		return result;
-//	}
 	
 }
