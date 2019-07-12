@@ -341,9 +341,6 @@ public abstract class AbstractGraph implements Graph {
 		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
-		if(initial.isEmpty()) {
-			return empty();
-		}
 		Graph union = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
 			union.nodes().addAll(graph.nodes());
@@ -368,16 +365,13 @@ public abstract class AbstractGraph implements Graph {
 		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
-		if(initial.isEmpty()) {
-			return empty();
-		}
 		Graph difference = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
-			difference.nodes().removeAll(graph.nodes());
-			difference.edges().removeAll(graph.edges());
-			if(difference.edges().isEmpty()) {
+			if(difference.isEmpty()) {
 				break;
 			}
+			difference.nodes().removeAll(graph.nodes());
+			difference.edges().removeAll(graph.edges());
 		}
 		return difference;
 	}
@@ -393,15 +387,12 @@ public abstract class AbstractGraph implements Graph {
 		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
-		if(initial.isEmpty()) {
-			return empty();
-		}
 		Graph difference = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
-			difference.edges().removeAll(graph.edges());
 			if(difference.edges().isEmpty()) {
 				break;
 			}
+			difference.edges().removeAll(graph.edges());
 		}
 		return difference;
 	}
@@ -422,19 +413,15 @@ public abstract class AbstractGraph implements Graph {
 		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR);
 		Graph initial = sortedGraphs.remove(0);
-		if(initial.isEmpty()) {
-			return empty();
-		} else {
-			Graph intersection = toGraph(initial);
-			for(Graph graph : graphs){
-				intersection.nodes().retainAll(graph.nodes());
-				intersection.edges().retainAll(graph.edges());
-				if(intersection.isEmpty()) {
-					break;
-				}
+		Graph intersection = toGraph(initial);
+		for(Graph graph : graphs){
+			if(intersection.isEmpty()) {
+				break;
 			}
-			return intersection;
+			intersection.nodes().retainAll(graph.nodes());
+			intersection.edges().retainAll(graph.edges());
 		}
+		return intersection;
 	}
 	
 	@Override
