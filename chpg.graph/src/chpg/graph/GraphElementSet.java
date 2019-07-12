@@ -1,8 +1,7 @@
 package chpg.graph;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
 
 public abstract class GraphElementSet<E extends GraphElement> extends GraphElementCollection<E> {
 
