@@ -4,6 +4,7 @@ A list of TODOs in no particular order.
 
 - Typed Nodes/Edges
   - Make `Graph` generic with `Graph<N extends Node, E extends Edge<? extends Node, ? extends Node>>` and enforce tag hierarchy and attributes with explicit types
+  - `BasicGraph extends Graph<Node,Edge>`
 - IBinder examples
   - Hello World
   - Buffer overflow
