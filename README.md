@@ -16,17 +16,13 @@ All tags denote a set membership, however some tags may be implicit depending de
 Containment edges are hierarchal edge tags that denote structural nesting of nodes and form compound nodes.
 
 ## Graph Schema
-- registering graph schema
-- defining containment edges
-- defining tag hierarchy
-
-## Graph Views
-TODO
-
-- db "tables"
+- TODO: document
 
 ## Query Language
-TODO
+- TODO: document
 
 ## Serialization
-TODO
+- TODO: document
+
+## TODOs
+See [TODO.md](TODO.md).
