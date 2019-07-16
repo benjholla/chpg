@@ -8,7 +8,7 @@ A list of TODOs in no particular order.
   - Hello World
   - Buffer overflow
 - Documentation
-  - Philosphy
+  - Philosophy
   - Basic usage examples
 - Algorithms
   - Standard graph algorithms
