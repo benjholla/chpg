@@ -23,3 +23,5 @@ A list of TODOs in no particular order.
   - Selected properties details view
   - Export jpeg/png
   - Resizable vertical view
+  - Jupyter Notebook security issues ([https://www.stefaanlippens.net/jupyter-custom-d3-visualization.html](https://www.stefaanlippens.net/jupyter-custom-d3-visualization.html), [https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/JavaScript%20Notebook%20Extensions.html](https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/JavaScript%20Notebook%20Extensions.html)
+)
