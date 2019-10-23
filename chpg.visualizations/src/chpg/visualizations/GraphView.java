@@ -326,7 +326,7 @@ public class GraphView {
 		URL a = GraphView.class.getResource("/" + path); 
 		InputStream inputStream = GraphView.class.getResourceAsStream("/" + path); 
 		if(inputStream == null) {
-			throw new IOException("Unable to access resource at path: " + path + " derp a: " + a);
+			throw new IOException("Unable to access resource at path: /" + path);
 		}
 		return convertStreamToString(inputStream);
 	}
