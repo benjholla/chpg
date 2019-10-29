@@ -23,10 +23,10 @@ public class TestVisualization {
 		Graph graph = GraphIO.importGraph(serializedGraph);
 
 		// Create path to directory where HTML graph will be written
-		Path dirPath = Path.of("C:/Graphs/Test2");
+		Path dirPath = Path.of("C:/Graphs/Test4");
 
 		// Create the HTML
 		GraphView.setDebug(true);
-		GraphView.createHTML(graph, dirPath);
+		GraphView.createHTMLDocument(graph, dirPath);
 	}
 }
