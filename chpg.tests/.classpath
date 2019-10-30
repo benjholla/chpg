@@ -13,5 +13,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/chpg.visualizations"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/protobuf"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
