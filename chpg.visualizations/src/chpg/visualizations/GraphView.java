@@ -78,7 +78,6 @@ public class GraphView {
 
 	public static Path createHTMLDocument(Graph graph, Path directoryPath, String name, int verticalSize,
 			boolean extend, Layout layout, Menu menu, PanZoom panzoom, Navigator navigator) throws IOException {
-
 		// TODO handle indexPath not getting set
 		Path indexPath = null;
 
@@ -255,6 +254,18 @@ public class GraphView {
 			dataJson.addProperty("id", "n" + node.getAddress());
 			dataJson.addProperty("name", nodeName);
 
+			// Set shape of node TODO fix padding around diamond shape
+			dataJson.addProperty("shape", "round-rectangle");
+
+			if (node.tags().contains("XCSG.ControlFlowLoopCondition")
+					|| node.tags().contains("XCSG.ControlFlowIfCondition")) {
+				dataJson.addProperty("backgroundcolor", "#e8ae58");
+				// dataJson.addProperty("shape", "diamond");
+			} else {
+				dataJson.addProperty("backgroundcolor", "#34c2db");
+				// dataJson.addProperty("shape", "round-rectangle");
+			}
+
 			// If extend is set to true and this node has, add parent attribute to data and
 			// add classes attribute
 			if (extend && parentNode == null) {
@@ -264,7 +275,6 @@ public class GraphView {
 				classesJson.add("container");
 				nodeJson.add("classes", classesJson);
 			}
-
 			nodeJson.add("data", dataJson);
 
 			// Add the node to the array of nodes
@@ -395,7 +405,7 @@ public class GraphView {
 		}
 		return sb.toString();
 	}
-	
+
 	public static String escapeSchemaChars(String s) {
 		s = s.replace("\\", "\\\\");
 		s = s.replace("\"", "\\\"");

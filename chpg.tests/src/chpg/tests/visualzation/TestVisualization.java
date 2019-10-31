@@ -7,20 +7,35 @@ import org.junit.Test;
 import chpg.graph.Graph;
 import chpg.io.GraphIO;
 import chpg.visualizations.GraphView;
+import chpg.visualizations.GraphView.Layout;
+import chpg.visualizations.GraphView.Menu;
+import chpg.visualizations.GraphView.Navigator;
+import chpg.visualizations.GraphView.PanZoom;
 
 public class TestVisualization {
 
 	@Test
 	public void testGraphIO() throws IOException {
+
+		GraphView.setDebug(true);
+		
 		// Import serialized control flow graph
-		File serializedGraph = new File("C:/Graphs/graph1.chpg");
+		File serializedGraph = new File("C:/Graphs/abc.chpg");
 		Graph graph = GraphIO.importGraph(serializedGraph);
 
 		// Create path to directory where HTML graph will be written
-		Path dirPath = Path.of("C:/Graphs/Test5");
+		Path dirPath = Path.of("C:/Graphs/TestNew");
 
 		// Create the HTML
-		GraphView.setDebug(true);
-		GraphView.createHTMLDocument(graph, dirPath);
+		String name = "My Test Graph";
+		int verticalSize = 600;
+		boolean extend = true;
+//		Layout layout = Layout.DAGRE;
+		Layout layout = Layout.KLAY;
+		Menu menu = Menu.NONE;
+		PanZoom panzoom = PanZoom.ENABLED;
+		Navigator navigator = Navigator.DEFAULT;
+		
+		GraphView.createHTMLDocument(graph, dirPath, name, 600, extend, layout, menu, panzoom, navigator);
 	}
 }
