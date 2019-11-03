@@ -24,7 +24,7 @@ public class TestVisualization {
 		Graph graph = GraphIO.importGraph(serializedGraph);
 
 		// Create path to directory where HTML graph will be written
-		Path dirPath = Path.of("C:/Graphs/TestNew");
+		Path dirPath = Path.of("C:/Graphs/TestNew1");
 
 		// Create the HTML
 		String name = "My Test Graph";
@@ -36,6 +36,6 @@ public class TestVisualization {
 		PanZoom panzoom = PanZoom.ENABLED;
 		Navigator navigator = Navigator.DEFAULT;
 		
-		GraphView.createHTMLDocument(graph, dirPath, name, 600, extend, layout, menu, panzoom, navigator);
+		GraphView.createHTML(graph, dirPath, name, 600, extend, layout, menu, panzoom, navigator);
 	}
 }

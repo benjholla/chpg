@@ -8,7 +8,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.google.gson.JsonObject;
@@ -21,6 +22,29 @@ import chpg.graph.schema.SchemaGraph;
 import io.github.spencerpark.ijava.runtime.Display;
 
 public class GraphView {
+
+	private static String fontAwesomeCSS = "https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css";
+
+	private static String cytoscapeJS = "https://cdn.jsdelivr.net/npm/cytoscape@3.11.0/dist/cytoscape.min.js";
+
+	private static String jqueryJS = "https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js";
+
+	private static String dagreJS = "https://cdn.jsdelivr.net/npm/dagre@0.8.4/dist/dagre.min.js";
+	private static String cytoscapeDagreJS = "https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.2.2/cytoscape-dagre.min.js";
+
+	private static String klayJS = "https://cdn.jsdelivr.net/npm/klayjs@0.4.1/klay.min.js";
+	private static String cytoscapeKlayJS = "https://cdn.jsdelivr.net/npm/cytoscape-klay@3.1.3/cytoscape-klay.min.js";
+
+	private static String contextMenuJS = "https://cdn.jsdelivr.net/npm/cytoscape-context-menus@3.0.7/cytoscape-context-menus.min.js";
+	private static String contextMenuCSS = "https://cdn.jsdelivr.net/npm/cytoscape-context-menus@3.0.7/cytoscape-context-menus.css";
+
+	private static String wheelMenuJS = "https://cdn.jsdelivr.net/npm/cytoscape-cxtmenu@3.1.1/cytoscape-cxtmenu.min.js";
+
+	private static String panzoomJS = "https://cdn.jsdelivr.net/npm/cytoscape-panzoom@2.5.3/cytoscape-panzoom.js";
+	private static String panzoomCSS = "https://cdn.jsdelivr.net/npm/cytoscape-panzoom@2.5.3/cytoscape.js-panzoom.css";
+
+	private static String navigatorJS = "https://cdn.jsdelivr.net/npm/cytoscape-navigator@1.3.3/cytoscape-navigator.min.js";
+	private static String navigatorCSS = "https://cdn.jsdelivr.net/npm/cytoscape-navigator@1.3.3/cytoscape.js-navigator.css";
 
 	private static boolean debug = false;
 
@@ -48,44 +72,35 @@ public class GraphView {
 		DEFAULT, ENABLED, DISABLED
 	}
 
-	public static Path createHTMLDocument(Graph graph) throws IOException {
+	public static Path createHTML(Graph graph) throws IOException {
 		Path tempDirectory = Files.createTempDirectory("graph-viewer");
-		return createHTMLDocument(graph, tempDirectory, "", DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE,
+		return createHTML(graph, tempDirectory, "", DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE,
 				PanZoom.ENABLED, Navigator.DEFAULT);
 	}
 
-	public static Path createHTMLDocument(Graph graph, Path directoryPath) throws IOException {
-		return createHTMLDocument(graph, directoryPath, "", DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE,
+	public static Path createHTML(Graph graph, Path directoryPath) throws IOException {
+		return createHTML(graph, directoryPath, "", DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE,
 				PanZoom.ENABLED, Navigator.DEFAULT);
 	}
 
-	public static Path createHTMLDocument(Graph graph, Path directoryPath, String name) throws IOException {
-		return createHTMLDocument(graph, directoryPath, name, DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE,
+	public static Path createHTML(Graph graph, Path directoryPath, String name) throws IOException {
+		return createHTML(graph, directoryPath, name, DEFAULT_VERTICAL_SIZE, true, Layout.DAGRE, Menu.NONE,
 				PanZoom.ENABLED, Navigator.DEFAULT);
 	}
 
-	public static Path createHTMLDocument(Graph graph, Path directoryPath, String name, boolean extend)
+	public static Path createHTML(Graph graph, Path directoryPath, String name, boolean extend) throws IOException {
+		return createHTML(graph, directoryPath, name, DEFAULT_VERTICAL_SIZE, extend, Layout.DAGRE, Menu.NONE,
+				PanZoom.ENABLED, Navigator.DEFAULT);
+	}
+
+	public static Path createHTML(Graph graph, Path directoryPath, String name, boolean extend, int verticalSize)
 			throws IOException {
-		return createHTMLDocument(graph, directoryPath, name, DEFAULT_VERTICAL_SIZE, extend, Layout.DAGRE, Menu.NONE,
-				PanZoom.ENABLED, Navigator.DEFAULT);
+		return createHTML(graph, directoryPath, name, verticalSize, extend, Layout.DAGRE, Menu.NONE, PanZoom.ENABLED,
+				Navigator.DEFAULT);
 	}
 
-	public static Path createHTMLDocument(Graph graph, Path directoryPath, String name, boolean extend,
-			int verticalSize) throws IOException {
-		return createHTMLDocument(graph, directoryPath, name, verticalSize, extend, Layout.DAGRE, Menu.NONE,
-				PanZoom.ENABLED, Navigator.DEFAULT);
-	}
-
-	public static Path createHTMLDocument(Graph graph, Path directoryPath, String name, int verticalSize,
-			boolean extend, Layout layout, Menu menu, PanZoom panzoom, Navigator navigator) throws IOException {
-		// TODO handle indexPath not getting set
-		Path indexPath = null;
-
-		// Set name to empty if it is null
-		if (name == null) {
-			name = "";
-		}
-
+	public static Path createHTML(Graph graph, Path directoryPath, String name, int verticalSize, boolean extend,
+			Layout layout, Menu menu, PanZoom panzoom, Navigator navigator) throws IOException {
 		// Open the directory as a file
 		File graphViewerDirectory = directoryPath.toFile();
 
@@ -93,50 +108,45 @@ public class GraphView {
 		if (debug)
 			System.out.println("DEBUG: " + graphViewerDirectory.getAbsolutePath());
 
-		// Handle each file needed to create the HTML graph
-		for (String resource : Resources.getResources()) {
+		// TODO clean this up
+		// Create File object for the copy of this resource file in graphViewerDirectory
+		String htmlRes = "templates/index.html";
+		File resourceFile = new File(graphViewerDirectory.getAbsolutePath() + File.separator
+				+ htmlRes.replaceFirst("templates/", "").replace("/", File.separator));
 
-			// Create File object for the copy of this resource file in graphViewerDirectory
-			File resourceFile = new File(graphViewerDirectory.getAbsolutePath() + File.separator
-					+ resource.replaceFirst("templates/", "").replace("/", File.separator));
+		// Make the parent directory for the HTML graph if it doesn't exist
+		if (!resourceFile.getParentFile().exists())
+			resourceFile.getParentFile().mkdirs();
 
-			// Make the parent directory for the HTML graph if it doesn't exist
-			if (!resourceFile.getParentFile().exists())
-				resourceFile.getParentFile().mkdirs();
+		// Open the HTML template file and read its contents
+		FileWriter fw = new FileWriter(resourceFile);
 
-			if (resource.equals("templates/index.html")) {
-				// This is the main index.html file, handle creating of actual HTML file from
-				// template
-				// Store the path to the index.html file
-				indexPath = resourceFile.toPath();
+		// Open the HTML template file and read its contents
+		String htmlContents = readResource("templates/index.html" + ".template");
 
-				// Open the HTML template file and read its contents
-				FileWriter fw = new FileWriter(resourceFile);
-				String htmlContents = readResource(resource + ".template");
+		// Format the HTML file
+		htmlContents = formatHTML(htmlContents, graph, name, verticalSize, extend, layout, menu, panzoom, navigator);
 
-				// Format the HTML file
-				htmlContents = formatHTML(htmlContents, graph, name, verticalSize, extend, layout, menu, panzoom,
-						navigator);
+		// Write the formatted HTML to HTML document being created
+		fw.write(htmlContents);
+		fw.close();
 
-				// Write the formatted HTML to HTML document being created
-				fw.write(htmlContents);
-				fw.close();
-			} else {
-				// This is a resource file, simply copy over to the directory of the HTML
-				// document being created
-				InputStream inputStream = GraphView.class.getResourceAsStream("/" + resource);
-				if (inputStream == null) {
-					throw new IOException("Unable to access resource at path: " + resource);
-				}
-				Files.copy(inputStream, resourceFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-			}
-		}
-
-		return indexPath;
+		// Return the path of the HTML
+		return resourceFile.toPath();
 	}
 
 	public static String formatHTML(String htmlContents, Graph graph, String name, int verticalSize, boolean extend,
 			Layout layout, Menu menu, PanZoom panzoom, Navigator navigator) {
+		// If graph is empty, simply display text indicating that
+		if (graph.isEmpty()) {
+			return "<html><style></style><body><h1>Empty Graph</h1></body></html>";
+		}
+
+		// Set name to empty if it is null
+		if (name == null) {
+			name = "";
+		}
+
 		// TODO Unsure what this does
 		Graph containsGraph = graph.toGraph(graph.edges(SchemaGraph.Contains));
 		containsGraph = graph.toGraph(graph.nodes()).induce(containsGraph);
@@ -154,80 +164,77 @@ public class GraphView {
 		JsonObject layoutOptionsJsonObject = createLayoutOptions(layout);
 		htmlContents = htmlContents.replace("TEMPLATE_LAYOUT_OPTIONS", layoutOptionsJsonObject.toString());
 
-		// Add JavaScript sources to HTML depending on which layout is being used
+		// Add all necessary sources for the given options
+		Set<String> sourcesJS = new LinkedHashSet<String>();
+		sourcesJS.add(cytoscapeJS);
+		sourcesJS.add(jqueryJS);
+		Set<String> sourcesCSS = new LinkedHashSet<String>();
+
+		// Add sources for layout
 		if (layout.equals(Layout.DAGRE)) {
-			htmlContents = htmlContents.replace("TEMPLATE_LAYOUT",
-					"<script src=\"js/dagre.min.js\"></script><script src=\"js/cytoscape-dagre.js\"></script>");
+			sourcesJS.add(dagreJS);
+			sourcesJS.add(cytoscapeDagreJS);
 		} else if (layout.equals(Layout.KLAY)) {
-			htmlContents = htmlContents.replace("TEMPLATE_LAYOUT",
-					"<script src=\"js/klay.min.js\"></script><script src=\"js/cytoscape-klay.js\"></script>");
+			sourcesJS.add(klayJS);
+			sourcesJS.add(cytoscapeKlayJS);
 		}
 
-		// Add JavaScript sources to HTML for text menu
+		// Add sources for text menu
 		if (menu.equals(Menu.TEXT)) {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_TEXT_CONTEXT",
-					"<link href=\"css/cytoscape-context-menus.css\" rel=\"stylesheet\" type=\"text/css\" />");
-			htmlContents = htmlContents.replace("TEMPLATE_JQUERY", "<script src=\"js/jquery-2.0.3.min.js\"></script>");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_TEXT_CONTEXT",
-					"<script src=\"js/cytoscape-context-menus.js\"></script>");
+			sourcesCSS.add(contextMenuCSS);
+			sourcesJS.add(contextMenuJS);
+
+			// TODO set context menu options
 			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_TEXT", "// TODO: TEXT MENU OPTIONS");
-		} else {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_TEXT_CONTEXT", "");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_TEXT_CONTEXT", "");
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_TEXT", "");
 		}
 
-		// Add JavaScript sources to HTML for wheel menu
+		// Add sources for wheel menu
 		if (menu.equals(Menu.WHEEL)) {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_FONT_AWESOME",
-					"<link href=\"font-awesome-4.0.3/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\" />");
-			htmlContents = htmlContents.replace("TEMPLATE_JQUERY", "<script src=\"js/jquery-2.0.3.min.js\"></script>");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_WHEEL_CONTEXT",
-					"<script src=\"js/cytoscape-cxtmenu.js\"></script>");
+			sourcesCSS.add(fontAwesomeCSS);
+			sourcesJS.add(wheelMenuJS);
+
+			// TODO set wheel menu options
 			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_WHEEL", "// TODO: WHEEL MENU OPTIONS");
-		} else {
-			htmlContents = htmlContents.replace("TEMPLATE_JS_WHEEL_CONTEXT", "");
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_WHEEL", "");
 		}
 
-		// Add panzoom if enabled
+		// Add sources for panzoom menu
 		if (panzoom.equals(PanZoom.ENABLED)) {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_FONT_AWESOME",
-					"<link href=\"font-awesome-4.0.3/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\" />");
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_PANZOOM",
-					"<link href=\"css/cytoscape.js-panzoom.css\" rel=\"stylesheet\" type=\"text/css\" />");
-			htmlContents = htmlContents.replace("TEMPLATE_JQUERY", "<script src=\"js/jquery-2.0.3.min.js\"></script>");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_PANZOOM_CONTEXT",
-					"<script src=\"js/cytoscape-panzoom.js\"></script>");
+			sourcesCSS.add(panzoomCSS);
+			sourcesJS.add(panzoomJS);
+
 			// TODO add panzoom options
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_PANZOOM", "cy.panzoom({})");
-		} else {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_PANZOOM", "");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_PANZOOM_CONTEXT", "");
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_PANZOOM", "");
+			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_PANZOOM", "cy.panzoom({});");
 		}
 
-		// Add navigator if enabled
+		// Add sources for navigator menu
 		if (navigator.equals(Navigator.ENABLED)
 				|| (navigator.equals(Navigator.DEFAULT) && graph.nodes().size() >= DEFAULT_NAVIGATOR_NODES_SIZE)) {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_FONT_AWESOME",
-					"<link href=\"font-awesome-4.0.3/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\" />");
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_NAVIGATOR",
-					"<link href=\"css/cytoscape.js-navigator.css\" rel=\"stylesheet\" type=\"text/css\" />");
-			htmlContents = htmlContents.replace("TEMPLATE_JQUERY", "<script src=\"js/jquery-2.0.3.min.js\"></script>");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_NAVIGATOR_CONTEXT",
-					"<script src=\"js/cytoscape-navigator.js\"></script>");
+			sourcesCSS.add(fontAwesomeCSS);
+			sourcesCSS.add(navigatorCSS);
+			sourcesJS.add(navigatorJS);
+
 			// TODO add navigator options
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_NAVIGATOR", "cy.navigator({})");
-		} else {
-			htmlContents = htmlContents.replace("TEMPLATE_STYLE_NAVIGATOR", "");
-			htmlContents = htmlContents.replace("TEMPLATE_JS_NAVIGATOR_CONTEXT", "");
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_NAVIGATOR", "");
+			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_NAVIGATOR", "cy.navigator({});");
 		}
 
-		// Remove unused dependencies
-		htmlContents = htmlContents.replace("TEMPLATE_STYLE_FONT_AWESOME", "");
-		htmlContents = htmlContents.replace("TEMPLATE_JQUERY", "");
+		// Removed unused options
+		htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_PANZOOM", "");
+		htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_NAVIGATOR", "");
+		htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_TEXT", "");
+		htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_WHEEL", "");
+
+		// Concat the sources and add them to the HTML
+		StringBuilder sourcesJSsb = new StringBuilder();
+		for (String source : sourcesJS) {
+			sourcesJSsb.append("<script src=\"" + source + "\"></script>\n");
+		}
+		htmlContents = htmlContents.replace("TEMPLATE_JS_SOURCES", sourcesJSsb);
+
+		StringBuilder sourcesCSSsb = new StringBuilder();
+		for (String source : sourcesCSS) {
+			sourcesCSSsb.append("<link rel=\"stylesheet\" href=\"" + source + "\">\n");
+		}
+		htmlContents = htmlContents.replace("TEMPLATE_CSS_SOURCES", sourcesCSSsb);
 
 		// Replace functions and undefined values with proper text for JavaScript
 		htmlContents = toJavaScriptObjectString(htmlContents);
@@ -384,7 +391,10 @@ public class GraphView {
 	}
 
 	public static void show(Path indexPath, int verticalSize) {
-		Display.display("<html><iframe src='" + indexPath + "' width=\"100%\", height=\"" + verticalSize
+
+		String relative = new File(System.getProperty("user.dir")).toURI().relativize(indexPath.toUri()).getPath();
+
+		Display.display("<html><iframe src='file:///" + relative + "' width=\"100%\", height=\"" + verticalSize
 				+ "px\" frameBorder=\"0\"></iframe></html>", "text/html");
 	}
 
