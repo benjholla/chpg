@@ -385,17 +385,28 @@ public class GraphView {
 		return graphOptionsJsonObject;
 	}
 
-	public static void show(Path indexPath) {
+	public static void show(Path htmlPath) throws IOException, InterruptedException {
 		// TODO set appropriate default height
-		show(indexPath, 500);
+		show(htmlPath, 500);
 	}
 
-	public static void show(Path indexPath, int verticalSize) {
+	public static void show(Path htmlPath, int verticalSize) throws IOException, InterruptedException {
+		// Get the htmlContents
+		String htmlContents = Files.readString(htmlPath);
 
-		String relative = new File(System.getProperty("user.dir")).toURI().relativize(indexPath.toUri()).getPath();
+		// Create and start a thread for that listens on port and serves htmlContents 
+		int port = 8090;
+		Object sync = new Object();
+		HTMLSocket runnable = new HTMLSocket(sync, port, htmlContents);
+		Thread thread = new Thread(runnable);
+		thread.start();
 
-		Display.display("<html><iframe src='file:///" + relative + "' width=\"100%\", height=\"" + verticalSize
-				+ "px\" frameBorder=\"0\"></iframe></html>", "text/html");
+		// Wait for the SocketServer to start and then display an IFrame connecting to it
+		synchronized (sync) {
+			sync.wait();
+			Display.display("<html><iframe src='http://localhost:" + port + "/' width=\"100%\", height=\"" + verticalSize
+					+ "px\" frameBorder=\"0\"></iframe></html>", "text/html");
+		}
 	}
 
 	private static String readResource(String path) throws IOException {
