@@ -199,6 +199,7 @@ public class GraphView {
 
 		// Add sources for panzoom menu
 		if (panzoom.equals(PanZoom.ENABLED)) {
+			sourcesCSS.add(fontAwesomeCSS);
 			sourcesCSS.add(panzoomCSS);
 			sourcesJS.add(panzoomJS);
 
