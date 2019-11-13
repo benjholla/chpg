@@ -29,9 +29,8 @@ TEMPLATE_JS_SOURCES
 				style : {
 					"label" : "data(name)",
 					"shape" : "data(shape)",
-					//"background-color": "#33aff3",
-					"background-color" : "data(backgroundcolor)",
-					"width" : "label",
+					"background-color": "#33aff3",
+					"width" : "data(width)",
 					"height" : "label",
 					"padding" : "10px",
 					"text-wrap" : "wrap",
