@@ -1,5 +1,6 @@
 package chpg.visualizations;
 
+import java.lang.String;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -255,7 +256,10 @@ public class GraphView {
 
 			// Get the parent of the node if it exists
 			Node parentNode = containsGraph.predecessors(node).one();
-
+			
+			//Get the file name that contains this node
+			String fileName = nodeGetFileName(node);
+			
 			// Create the JSON for the node
 			JsonObject nodeObject = new JsonObject();
 
@@ -285,7 +289,7 @@ public class GraphView {
 				JsonArray classesJson = new JsonArray();
 				classesJson.add("container");
 				nodeObject.add("classes", classesJson);
-			}
+			}			
 			nodeObject.add("data", dataObject);
 
 			// Add the node to the array of nodes
@@ -447,6 +451,25 @@ public class GraphView {
 					+ verticalSize + "px\" frameBorder=\"0\"></iframe></html>", "text/html");
 		}
 	}
+	
+	private static String nodeGetFileName(Node node) {
+		// Get the filename of the given node
+		String sourceAttribute = "XCSG.ModelElement.sourceCorrespondence";
+		
+		if(node.attributes().containsKey(sourceAttribute)) {
+			String pathName = (String) node.attributes().get(sourceAttribute);
+			
+			int end = pathName.indexOf(",");
+			pathName = pathName.substring(0,end);
+			
+			String filename = new File(pathName).getName();
+			
+			return filename;
+		}
+		
+		return null;
+	}
+	
 
 	private static String readResource(String path) throws IOException {
 		// Read and return the contents of the resource at the given path
