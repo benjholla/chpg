@@ -18,6 +18,7 @@ TEMPLATE_JS_SOURCES
 <body>
 	<div id="cy"></div>
 	<script>
+		console.log(document.getElementById("cy"));
 		var cytoscapeOptions = {
 			container : document.getElementById("cy"),
 			// layout options
@@ -35,7 +36,7 @@ TEMPLATE_JS_SOURCES
 					"height" : "label",
 					"padding" : "10px",
 					"text-wrap" : "wrap",
-					"text-max-width" : 100,
+					"text-max-width" : 50,
 					"text-opacity" : 1,
 					"background-opacity" : 1,
 					"border-width" : 2,

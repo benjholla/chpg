@@ -1,5 +1,6 @@
 package chpg.visualizations;
 
+import java.lang.String;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -253,7 +254,10 @@ public class GraphView {
 
 			// Get the parent of the node if it exists
 			Node parentNode = containsGraph.predecessors(node).one();
-
+			
+			//Get the file name that contains this node
+			String fileName = nodeGetFileName(node);
+			
 			// Create the JSON for the node
 			JsonObject nodeJson = new JsonObject();
 
@@ -263,6 +267,12 @@ public class GraphView {
 			dataJson.addProperty("name", nodeName);
 
 			// Set shape of node TODO fix padding around diamond shape
+//			if(parentNode) {
+//				dataJson.addProperty("shape", "rectangle");
+//			}
+//			else {
+//				dataJson.addProperty("shape", "round-rectangle");
+//			}
 			dataJson.addProperty("shape", "round-rectangle");
 
 			if (node.tags().contains("XCSG.ControlFlowLoopCondition")
@@ -283,6 +293,7 @@ public class GraphView {
 				classesJson.add("container");
 				nodeJson.add("classes", classesJson);
 			}
+			
 			nodeJson.add("data", dataJson);
 
 			// Add the node to the array of nodes
@@ -409,6 +420,27 @@ public class GraphView {
 					+ "px\" frameBorder=\"0\"></iframe></html>", "text/html");
 		}
 	}
+	
+	private static String nodeGetFileName(Node node) {
+		String sourceAttribute = "XCSG.ModelElement.sourceCorrespondence";
+		
+		if(node.attributes().containsKey(sourceAttribute)) {
+			String pathName = (String) node.attributes().get(sourceAttribute);
+			
+			int end = pathName.indexOf(",");
+			pathName = pathName.substring(0,end);
+			
+			String filename = new File(pathName).getName();
+			
+			return filename;
+		}
+		
+		
+		
+
+		return null;
+	}
+	
 
 	private static String readResource(String path) throws IOException {
 		InputStream inputStream = GraphView.class.getResourceAsStream("/" + path);
