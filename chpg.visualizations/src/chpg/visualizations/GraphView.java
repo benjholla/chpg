@@ -266,22 +266,17 @@ public class GraphView {
 			dataJson.addProperty("id", "n" + node.getAddress());
 			dataJson.addProperty("name", nodeName);
 
-			// Set shape of node TODO fix padding around diamond shape
-//			if(parentNode) {
-//				dataJson.addProperty("shape", "rectangle");
-//			}
-//			else {
-//				dataJson.addProperty("shape", "round-rectangle");
-//			}
-			dataJson.addProperty("shape", "round-rectangle");
-
+			// Set styles dependent on node type
 			if (node.tags().contains("XCSG.ControlFlowLoopCondition")
 					|| node.tags().contains("XCSG.ControlFlowIfCondition")) {
-				dataJson.addProperty("backgroundcolor", "#e8ae58");
-				// dataJson.addProperty("shape", "diamond");
+				// Set diamond shape for loop conditions and if statements
+				dataJson.addProperty("shape", "diamond");
+				// Fix width issue for diamond nodes
+				dataJson.addProperty("width", nodeName.length() * 10);			 
 			} else {
-				dataJson.addProperty("backgroundcolor", "#34c2db");
-				// dataJson.addProperty("shape", "round-rectangle");
+				// Set default node style
+				dataJson.addProperty("shape", "round-rectangle");
+				dataJson.addProperty("width", "label");
 			}
 
 			// If extend is set to true and this node has, add parent attribute to data and
