@@ -30,7 +30,7 @@ public class TestVisualization {
 		String name = "My Test Graph";
 		int verticalSize = 600;
 		boolean extend = true;
-//		Layout layout = Layout.DAGRE;
+		// Layout layout = Layout.DAGRE;
 		Layout layout = Layout.KLAY;
 		Menu menu = Menu.NONE;
 		PanZoom panzoom = PanZoom.ENABLED;

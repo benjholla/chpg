@@ -4,14 +4,15 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 
-public class HTMLSocket implements Runnable {
+public class HTMLSocketRunner implements Runnable {
 
 	public Object sync;
 	private int port;
 	private String htmlContents;
 	
-	public HTMLSocket(Object sync, int port, String htmlContents) {
+	public HTMLSocketRunner(Object sync, int port, String htmlContents) {
 		this.sync = sync;
 		this.port = port;
 		this.htmlContents = htmlContents;
@@ -30,8 +31,8 @@ public class HTMLSocket implements Runnable {
 		// Set socket timeout so server.accept() does not endlessly block
 		try {
 			server.setSoTimeout(10);
-		} catch (SocketException e1) {
-			e1.printStackTrace();
+		} catch (SocketException e) {
+			e.printStackTrace();
 		}
 
 		// Listen for connections
@@ -45,8 +46,11 @@ public class HTMLSocket implements Runnable {
 				socket.close();
 				server.close();
 				return;
+			} catch (SocketTimeoutException e) {
+				// Ignore socket timeouts
 			} catch (IOException e) {
-				// e.printStackTrace();
+				// Display all other exceptions
+				e.printStackTrace();
 			}
 
 			// Notify that the SocketServer has started listening

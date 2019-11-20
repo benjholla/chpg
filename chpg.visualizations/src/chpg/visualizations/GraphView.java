@@ -108,7 +108,6 @@ public class GraphView {
 		if (debug)
 			System.out.println("DEBUG: " + graphViewerDirectory.getAbsolutePath());
 
-		// TODO clean this up
 		// Create File object for the copy of this resource file in graphViewerDirectory
 		String htmlRes = "templates/index.html";
 		File resourceFile = new File(graphViewerDirectory.getAbsolutePath() + File.separator
@@ -147,7 +146,7 @@ public class GraphView {
 			name = "";
 		}
 
-		// TODO Unsure what this does
+		// Create contains graph
 		Graph containsGraph = graph.toGraph(graph.edges(SchemaGraph.Contains));
 		containsGraph = graph.toGraph(graph.nodes()).induce(containsGraph);
 
@@ -155,14 +154,14 @@ public class GraphView {
 		htmlContents = htmlContents.replace("TEMPLATE_GRAPH_NAME", name);
 
 		// Create the nodes and edges JSON arrays, add them to a JSON array of elements
-		JsonArray elementsJsonArray = new JsonArray();
-		elementsJsonArray.addAll(createNodeJson(graph.nodes(), containsGraph, extend));
-		elementsJsonArray.addAll(createEdgesJson(graph.edges(), containsGraph));
-		htmlContents = htmlContents.replace("TEMPLATE_ELEMENTS", elementsJsonArray.toString());
+		JsonArray elements = new JsonArray();
+		elements.addAll(createNodeJson(graph.nodes(), containsGraph, extend));
+		elements.addAll(createEdgesJson(graph.edges(), containsGraph));
+		htmlContents = htmlContents.replace("TEMPLATE_ELEMENTS", elements.toString());
 
 		// Add layout options JSON
-		JsonObject layoutOptionsJsonObject = createLayoutOptions(layout);
-		htmlContents = htmlContents.replace("TEMPLATE_LAYOUT_OPTIONS", layoutOptionsJsonObject.toString());
+		JsonObject layoutOptions = createLayoutOptions(layout);
+		htmlContents = htmlContents.replace("TEMPLATE_LAYOUT_OPTIONS", layoutOptions.toString());
 
 		// Add all necessary sources for the given options
 		Set<String> sourcesJS = new LinkedHashSet<String>();
@@ -184,8 +183,10 @@ public class GraphView {
 			sourcesCSS.add(contextMenuCSS);
 			sourcesJS.add(contextMenuJS);
 
-			// TODO set context menu options
-			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_TEXT", "// TODO: TEXT MENU OPTIONS");
+			// Create the context menu options
+			JsonObject contextMenuOptions = createMenuJson();
+			htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_TEXT",
+					"cy.contextMenus(\n" + contextMenuOptions.toString() + "\n);");
 		}
 
 		// Add sources for wheel menu
@@ -224,13 +225,14 @@ public class GraphView {
 		htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_TEXT", "");
 		htmlContents = htmlContents.replace("TEMPLATE_OPTIONS_CONTEXT_WHEEL", "");
 
-		// Concat the sources and add them to the HTML
+		// Concat the JS sources and add them to the HTML
 		StringBuilder sourcesJSsb = new StringBuilder();
 		for (String source : sourcesJS) {
 			sourcesJSsb.append("<script src=\"" + source + "\"></script>\n");
 		}
 		htmlContents = htmlContents.replace("TEMPLATE_JS_SOURCES", sourcesJSsb);
 
+		// Concat the CSS sources and add them to the HTML
 		StringBuilder sourcesCSSsb = new StringBuilder();
 		for (String source : sourcesCSS) {
 			sourcesCSSsb.append("<link rel=\"stylesheet\" href=\"" + source + "\">\n");
@@ -245,7 +247,7 @@ public class GraphView {
 
 	public static JsonArray createNodeJson(GraphElementSet<Node> nodes, Graph containsGraph, boolean extend) {
 		// Create a list of JSON representations of the graph nodes
-		JsonArray nodeJsonArray = new JsonArray();
+		JsonArray nodesArray = new JsonArray();
 
 		for (Node node : nodes) {
 			// Get the escaped name of the nodes if it has a name
@@ -255,57 +257,56 @@ public class GraphView {
 			Node parentNode = containsGraph.predecessors(node).one();
 
 			// Create the JSON for the node
-			JsonObject nodeJson = new JsonObject();
+			JsonObject nodeObject = new JsonObject();
 
 			// Add the basic data attribute
-			JsonObject dataJson = new JsonObject();
-			dataJson.addProperty("id", "n" + node.getAddress());
-			dataJson.addProperty("name", nodeName);
+			JsonObject dataObject = new JsonObject();
+			dataObject.addProperty("id", "n" + node.getAddress());
+			dataObject.addProperty("name", nodeName);
 
 			// Set styles dependent on node type
 			if (node.tags().contains("XCSG.ControlFlowLoopCondition")
 					|| node.tags().contains("XCSG.ControlFlowIfCondition")) {
 				// Set diamond shape for loop conditions and if statements
-				dataJson.addProperty("shape", "diamond");
+				dataObject.addProperty("shape", "diamond");
 				// Fix width issue for diamond nodes
-				dataJson.addProperty("width", nodeName.length() * 10);			 
+				dataObject.addProperty("width", nodeName.length() * 10);
 			} else {
 				// Set default node style
-				dataJson.addProperty("shape", "round-rectangle");
-				dataJson.addProperty("width", "label");
+				dataObject.addProperty("shape", "round-rectangle");
+				dataObject.addProperty("width", "label");
 			}
 
 			// If extend is set to true and this node has, add parent attribute to data and
 			// add classes attribute
 			if (extend && parentNode == null) {
-				dataJson.addProperty("parent", "n" + node.getAddress());
+				dataObject.addProperty("parent", "n" + node.getAddress());
 
 				JsonArray classesJson = new JsonArray();
 				classesJson.add("container");
-				nodeJson.add("classes", classesJson);
+				nodeObject.add("classes", classesJson);
 			}
-			nodeJson.add("data", dataJson);
+			nodeObject.add("data", dataObject);
 
 			// Add the node to the array of nodes
-			nodeJsonArray.add(nodeJson);
+			nodesArray.add(nodeObject);
 		}
 
-		return nodeJsonArray;
+		return nodesArray;
 	}
 
 	public static JsonArray createEdgesJson(GraphElementSet<Edge> edges, Graph containsGraph) {
 		// Create a list of JSON representations of the graph edges
-		JsonArray edgesJsonArray = new JsonArray();
+		JsonArray edgesArray = new JsonArray();
 
 		for (Edge edge : edges) {
-			// TODO not sure what this does
+			// If the edge is in containsGraph, add it to the list of edges
 			if (!containsGraph.edges().contains(edge)) {
-
 				// Get the escaped name of the edge if it has a name
 				String edgeName = edge.hasName() ? escapeSchemaChars(edge.getName()) : "";
 
 				// Create the JSON for the edge
-				JsonObject edgeJson = new JsonObject();
+				JsonObject edgeObject = new JsonObject();
 
 				// Create the data attribute for the edge and add it to edgeJson
 				JsonObject dataJson = new JsonObject();
@@ -313,78 +314,114 @@ public class GraphView {
 				dataJson.addProperty("name", edgeName);
 				dataJson.addProperty("source", "n" + edge.from().getAddress());
 				dataJson.addProperty("target", "n" + edge.to().getAddress());
-				edgeJson.add("data", dataJson);
+				edgeObject.add("data", dataJson);
 
 				// Add the edge to the array of edges
-				edgesJsonArray.add(edgeJson);
+				edgesArray.add(edgeObject);
 			}
 		}
 
-		return edgesJsonArray;
+		return edgesArray;
+	}
+
+	public static JsonObject createMenuJson() {
+		// Create an array of all menu items
+		JsonArray menuItemsArray = new JsonArray();
+		
+		// Create hide and change color buttons
+		JsonObject hideButton = new JsonObject();
+		hideButton.addProperty("id", "hide");
+		hideButton.addProperty("content", "hide");
+		hideButton.addProperty("tooltipText", "hide");
+		hideButton.addProperty("selector", "*");
+		hideButton.addProperty("onClickFunction",
+				"function(event) {var target = event.target || event.cyTarget; target.hide();}");
+		JsonObject colorBlueButton = changeColorJson("blue");
+		JsonObject colorWhiteButton = changeColorJson("white");
+		menuItemsArray.add(hideButton);
+		menuItemsArray.add(colorBlueButton);
+		menuItemsArray.add(colorWhiteButton);
+		
+		// Return the menu within a JSON object
+		JsonObject contextMenu = new JsonObject();
+		contextMenu.add("menuItems", menuItemsArray);
+		return contextMenu;
+	}
+
+	public static JsonObject changeColorJson(String color) {
+		// Create a button for changing the node's color to color
+		JsonObject colorButton = new JsonObject();
+		colorButton.addProperty("id", "change" + color);
+		colorButton.addProperty("content", "Change to " + color);
+		colorButton.addProperty("tooltipText", "Change to " + color);
+		colorButton.addProperty("selector", "*");
+		colorButton.addProperty("onClickFunction",
+				"function(event) { var target = event.target || event.cyTarget; target.css(\"background-color\", \""
+						+ color + "\"); }");
+		return colorButton;
 	}
 
 	public static JsonObject createLayoutOptions(Layout layout) {
 		// Create a JSON object of graph options for the given layout type
-		JsonObject graphOptionsJsonObject = new JsonObject();
+		JsonObject graphOptions = new JsonObject();
 
 		// Add layout specific options
 		if (layout.equals(Layout.DAGRE)) {
-			graphOptionsJsonObject.addProperty("name", "dagre");
-			graphOptionsJsonObject.addProperty("nodeSep", "undefined");
-			graphOptionsJsonObject.addProperty("edgeSep", "undefined");
-			graphOptionsJsonObject.addProperty("rankSep", "undefined");
-			graphOptionsJsonObject.addProperty("rankDir", "TB");
-			graphOptionsJsonObject.addProperty("rankSep", "undefined");
-			graphOptionsJsonObject.addProperty("minLen", "function( edge ){ return 1; }");
-			graphOptionsJsonObject.addProperty("edgeWeight", "function( edge ){ return 1; }");
+			graphOptions.addProperty("name", "dagre");
+			graphOptions.addProperty("nodeSep", "undefined");
+			graphOptions.addProperty("edgeSep", "undefined");
+			graphOptions.addProperty("rankSep", "undefined");
+			graphOptions.addProperty("rankDir", "TB");
+			graphOptions.addProperty("rankSep", "undefined");
+			graphOptions.addProperty("minLen", "function( edge ){ return 1; }");
+			graphOptions.addProperty("edgeWeight", "function( edge ){ return 1; }");
 
 		} else if (layout.equals(Layout.KLAY)) {
-			graphOptionsJsonObject.addProperty("name", "klay");
-			graphOptionsJsonObject.addProperty("priority", "function( edge ){ return null; }");
+			graphOptions.addProperty("name", "klay");
+			graphOptions.addProperty("priority", "function( edge ){ return null; }");
 
-			JsonObject klayJsonObject = new JsonObject();
-			klayJsonObject.addProperty("addUnnecessaryBendpoints", false);
-			klayJsonObject.addProperty("aspectRatio", 1.6);
-			klayJsonObject.addProperty("borderSpacing", 20);
-			klayJsonObject.addProperty("compactComponents", false);
-			klayJsonObject.addProperty("crossingMinimization", "LAYER_SWEEP");
-			klayJsonObject.addProperty("cycleBreaking", "GREEDY");
-			klayJsonObject.addProperty("direction", "DOWN");
-			klayJsonObject.addProperty("edgeRouting", "ORTHOGONAL");
-			klayJsonObject.addProperty("edgeSpacingFactor", 0.5);
-			klayJsonObject.addProperty("feedbackEdges", false);
-			klayJsonObject.addProperty("fixedAlignment", "NONE");
-			klayJsonObject.addProperty("inLayerSpacingFactor", 1.0);
-			klayJsonObject.addProperty("layoutHierarchy", true);
-			klayJsonObject.addProperty("linearSegmentsDeflectionDampening", 0.3);
-			klayJsonObject.addProperty("mergeEdges", false);
-			klayJsonObject.addProperty("mergeHierarchyCrossingEdges", true);
-			klayJsonObject.addProperty("nodeLayering", "NETWORK_SIMPLEX");
-			klayJsonObject.addProperty("nodePlacement", "BRANDES_KOEPF");
-			klayJsonObject.addProperty("randomizationSeed", 1);
-			klayJsonObject.addProperty("routeSelfLoopInside", false);
-			klayJsonObject.addProperty("separateConnectedComponents", true);
-			klayJsonObject.addProperty("spacing", 20);
-			klayJsonObject.addProperty("thoroughness", 7);
-			graphOptionsJsonObject.add("klay", klayJsonObject);
+			JsonObject klayOptions = new JsonObject();
+			klayOptions.addProperty("addUnnecessaryBendpoints", false);
+			klayOptions.addProperty("aspectRatio", 1.6);
+			klayOptions.addProperty("borderSpacing", 20);
+			klayOptions.addProperty("compactComponents", false);
+			klayOptions.addProperty("crossingMinimization", "LAYER_SWEEP");
+			klayOptions.addProperty("cycleBreaking", "GREEDY");
+			klayOptions.addProperty("direction", "DOWN");
+			klayOptions.addProperty("edgeRouting", "ORTHOGONAL");
+			klayOptions.addProperty("edgeSpacingFactor", 0.5);
+			klayOptions.addProperty("feedbackEdges", false);
+			klayOptions.addProperty("fixedAlignment", "NONE");
+			klayOptions.addProperty("inLayerSpacingFactor", 1.0);
+			klayOptions.addProperty("layoutHierarchy", true);
+			klayOptions.addProperty("linearSegmentsDeflectionDampening", 0.3);
+			klayOptions.addProperty("mergeEdges", false);
+			klayOptions.addProperty("mergeHierarchyCrossingEdges", true);
+			klayOptions.addProperty("nodeLayering", "NETWORK_SIMPLEX");
+			klayOptions.addProperty("nodePlacement", "BRANDES_KOEPF");
+			klayOptions.addProperty("randomizationSeed", 1);
+			klayOptions.addProperty("routeSelfLoopInside", false);
+			klayOptions.addProperty("separateConnectedComponents", true);
+			klayOptions.addProperty("spacing", 20);
+			klayOptions.addProperty("thoroughness", 7);
+			graphOptions.add("klay", klayOptions);
 		}
 
 		// Add general layout options
-		graphOptionsJsonObject.addProperty("fit", true);
-		graphOptionsJsonObject.addProperty("padding", 30);
-		// find better way to handle undefined
-		graphOptionsJsonObject.addProperty("spacingFactor", "undefined");
-		graphOptionsJsonObject.addProperty("nodeDimensionsIncludeLabels", false);
-		graphOptionsJsonObject.addProperty("animate", false);
-		graphOptionsJsonObject.addProperty("animateFilter", "function( node, i ){ return true; }");
-		graphOptionsJsonObject.addProperty("animationDuration", 500);
-		graphOptionsJsonObject.addProperty("animationEasing", "undefined");
-		graphOptionsJsonObject.addProperty("boundingBox", "undefined");
-		graphOptionsJsonObject.addProperty("transform", "function( node, pos ){ return pos; }");
-		graphOptionsJsonObject.addProperty("ready", "function(){}");
-		graphOptionsJsonObject.addProperty("stop", "function(){}");
+		graphOptions.addProperty("fit", true);
+		graphOptions.addProperty("padding", 30);
+		graphOptions.addProperty("spacingFactor", "undefined");
+		graphOptions.addProperty("nodeDimensionsIncludeLabels", false);
+		graphOptions.addProperty("animate", false);
+		graphOptions.addProperty("animateFilter", "function( node, i ){ return true; }");
+		graphOptions.addProperty("animationDuration", 500);
+		graphOptions.addProperty("animationEasing", "undefined");
+		graphOptions.addProperty("boundingBox", "undefined");
+		graphOptions.addProperty("transform", "function( node, pos ){ return pos; }");
+		graphOptions.addProperty("ready", "function(){}");
+		graphOptions.addProperty("stop", "function(){}");
 
-		return graphOptionsJsonObject;
+		return graphOptions;
 	}
 
 	public static void show(Path htmlPath) throws IOException, InterruptedException {
@@ -396,22 +433,23 @@ public class GraphView {
 		// Get the htmlContents
 		String htmlContents = Files.readString(htmlPath);
 
-		// Create and start a thread for that listens on port and serves htmlContents 
+		// Create and start a thread for that listens on port and serves htmlContents
 		int port = 8090;
 		Object sync = new Object();
-		HTMLSocket runnable = new HTMLSocket(sync, port, htmlContents);
-		Thread thread = new Thread(runnable);
+		HTMLSocketRunner socketRunner = new HTMLSocketRunner(sync, port, htmlContents);
+		Thread thread = new Thread(socketRunner);
 		thread.start();
 
-		// Wait for the SocketServer to start and then display an IFrame connecting to it
+		// Wait for the SocketServer to start, then display an IFrame connecting to it
 		synchronized (sync) {
 			sync.wait();
-			Display.display("<html><iframe src='http://localhost:" + port + "/' width=\"100%\", height=\"" + verticalSize
-					+ "px\" frameBorder=\"0\"></iframe></html>", "text/html");
+			Display.display("<html><iframe src='http://localhost:" + port + "/' width=\"100%\", height=\""
+					+ verticalSize + "px\" frameBorder=\"0\"></iframe></html>", "text/html");
 		}
 	}
 
 	private static String readResource(String path) throws IOException {
+		// Read and return the contents of the resource at the given path
 		InputStream inputStream = GraphView.class.getResourceAsStream("/" + path);
 		if (inputStream == null) {
 			throw new IOException("Unable to access resource at path: /" + path);
@@ -420,6 +458,7 @@ public class GraphView {
 	}
 
 	private static String convertStreamToString(InputStream is) throws IOException {
+		// Read all of the contents of the InputStream and return it as a string
 		StringBuilder sb = new StringBuilder(2048);
 		char[] read = new char[128];
 		try (InputStreamReader ir = new InputStreamReader(is, StandardCharsets.UTF_8)) {
@@ -430,6 +469,7 @@ public class GraphView {
 	}
 
 	public static String escapeSchemaChars(String s) {
+		// Escape all schema characters
 		s = s.replace("\\", "\\\\");
 		s = s.replace("\"", "\\\"");
 		s = s.replace("\b", "\\b");
