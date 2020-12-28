@@ -414,7 +414,7 @@ public abstract class AbstractGraph implements Graph {
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR);
 		Graph initial = sortedGraphs.remove(0);
 		Graph intersection = toGraph(initial);
-		for(Graph graph : graphs){
+		for(Graph graph : sortedGraphs){
 			if(intersection.isEmpty()) {
 				break;
 			}
