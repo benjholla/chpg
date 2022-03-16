@@ -337,10 +337,13 @@ public abstract class AbstractGraph implements Graph {
 	
 	@Override
 	public Graph union(Graph... graphs){
+		// union operations commute, so we order all graphs including this graph
+		// by largest to smallest so that we start with the largest set and minimize add operations
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
 		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
 		Graph initial = sortedGraphs.remove(0);
+		
 		Graph union = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
 			union.nodes().addAll(graph.nodes());
@@ -361,17 +364,30 @@ public abstract class AbstractGraph implements Graph {
 	
 	@Override
 	public Graph difference(Graph... graphs){
+		// sorting the graphs to difference from this graph by largest to smallest
+		// in order to remove the most information up front
+		// note that this ordering does not include this graph because difference
+		// operations do not commute (the given graphs are effectively a union)
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
-		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
-		Graph initial = sortedGraphs.remove(0);
-		Graph difference = toGraph(initial.nodes(), initial.edges());
+		
+		Graph difference = toGraph(this.nodes(), this.edges());
 		for(Graph graph : sortedGraphs){
 			if(difference.isEmpty()) {
 				break;
 			}
+			// traverse the current result graph to discover the edges that should be removed as
+			// a result of removing nodes in the given graph
+			GraphElementSet<Edge> incomingEdges = difference.reverseStep(graph.nodes()).edges();
+			GraphElementSet<Edge> outgoingEdges = difference.forwardStep(graph.nodes()).edges();
+			
+			// remove nodes from given graph
 			difference.nodes().removeAll(graph.nodes());
+			
+			// remove edges from given graph, including edges incoming and outgoing from removed nodes
 			difference.edges().removeAll(graph.edges());
+			difference.edges().removeAll(incomingEdges);
+			difference.edges().removeAll(outgoingEdges);
 		}
 		return difference;
 	}
@@ -383,11 +399,14 @@ public abstract class AbstractGraph implements Graph {
 	
 	@Override
 	public Graph differenceEdges(Graph... graphs){
+		// sorting the graphs to difference from this graph by largest to smallest
+		// in order to remove the most information up front
+		// note that this ordering does not include this graph because difference
+		// operations do not commute (the given graphs are effectively a union)
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
-		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR.reversed());
-		Graph initial = sortedGraphs.remove(0);
-		Graph difference = toGraph(initial.nodes(), initial.edges());
+		
+		Graph difference = toGraph(this.nodes(), this.edges());
 		for(Graph graph : sortedGraphs){
 			if(difference.edges().isEmpty()) {
 				break;
@@ -409,11 +428,15 @@ public abstract class AbstractGraph implements Graph {
 	
 	@Override
 	public Graph intersection(Graph... graphs){
+		// intersections commute, so we order the given graphs including this graph 
+		// by the smallest to largest graph in order to start with the smallest set
+		// and minimize retain operations
 		ArrayList<Graph> sortedGraphs = new ArrayList<Graph>(Arrays.asList(graphs));
 		sortedGraphs.add(this);
 		Collections.sort(sortedGraphs, GRAPH_SIZE_COMPARATOR);
 		Graph initial = sortedGraphs.remove(0);
-		Graph intersection = toGraph(initial);
+		
+		Graph intersection = toGraph(initial.nodes(), initial.edges());
 		for(Graph graph : sortedGraphs){
 			if(intersection.isEmpty()) {
 				break;
